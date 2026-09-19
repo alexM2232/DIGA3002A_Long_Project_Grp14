@@ -331,7 +331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1517.9999, y: 87}
+  m_AnchoredPosition: {x: -1517.9999, y: 128}
   m_SizeDelta: {x: -3518.1, y: -1944.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &576766619
@@ -423,7 +423,7 @@ Transform:
   m_GameObject: {fileID: 576766619}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -67.9, y: -0.7, z: 0}
+  m_LocalPosition: {x: -67.9, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -441,9 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357621ae13a525042af84ff814097ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementJellyDash
-  moveSpeed: 7
-  verticalSpeed: 5
-  jumpForce: 10
+  moveSpeed: 10
+  verticalSpeed: 4
+  jumpForce: 20
+  fallGravityMultiplier: 2.5
 --- !u!50 &576766623
 Rigidbody2D:
   serializedVersion: 5
@@ -459,7 +460,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 19
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -505,7 +506,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.022642374}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -515,7 +516,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0452728, y: 1.0452847}
   m_EdgeRadius: 0
 --- !u!1 &621773352
 GameObject:
@@ -786,7 +787,7 @@ Transform:
   m_GameObject: {fileID: 1048506701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.0684805, y: 24.56386, z: 0}
+  m_LocalPosition: {x: 12.0684805, y: 20.89, z: 0}
   m_LocalScale: {x: 22.282755, y: 2.6724715, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1208,8 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoostFruit
   boostPrompt: {fileID: 480300334}
-  player: {fileID: 576766621}
-  panelOffset: {x: 0, y: 1.5, z: 0}
+  panelOffset: {x: 0, y: 1.5}
 --- !u!61 &1432873477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1324,8 +1324,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432873475}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.39, y: 1.53, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.3899994, y: 1.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1881,8 +1881,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1921245998}
+  - {fileID: 887258519}
   - {fileID: 576766621}
   - {fileID: 1725018308}
-  - {fileID: 887258519}
   - {fileID: 1581233059}
   - {fileID: 1432873479}

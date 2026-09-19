@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class BoostFruit : MonoBehaviour
@@ -5,16 +6,15 @@ public class BoostFruit : MonoBehaviour
     [Header("Q Panel")]
     public GameObject boostPrompt;
 
-    [Header("Player")]
-    public Transform player;
-
     [Header("Panel Position")]
-    public Vector3 panelOffset = new Vector3(0f, 1.5f, 0f);
+    public Vector2 panelOffset = new Vector2(0f, 100f);
 
     private bool boostCollected = false;
 
-    private Canvas canvas;
+    private Transform player;
     private RectTransform promptRect;
+    private RectTransform canvasRect;
+    private Canvas canvas;
     private Camera mainCamera;
 
     private void Start()
@@ -26,15 +26,18 @@ public class BoostFruit : MonoBehaviour
             boostPrompt.SetActive(false);
 
             promptRect = boostPrompt.GetComponent<RectTransform>();
-
             canvas = boostPrompt.GetComponentInParent<Canvas>();
+
+            if (canvas != null)
+            {
+                canvasRect = canvas.GetComponent<RectTransform>();
+            }
         }
     }
 
     private void Update()
     {
-        // Only move the Q panel after the fruit has been collected.
-        if (boostCollected && boostPrompt != null && player != null)
+        if (boostCollected && player != null)
         {
             FollowPlayer();
         }
@@ -42,15 +45,14 @@ public class BoostFruit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Only the Player can collect the fruit.
         if (other.CompareTag("Player") && !boostCollected)
         {
             boostCollected = true;
 
-            // Automatically find the player.
+            // Store the player's position.
             player = other.transform;
 
-            // Make the fruit disappear.
+            // Hide the fruit.
             gameObject.SetActive(false);
 
             // Show the Q panel.
@@ -65,20 +67,20 @@ public class BoostFruit : MonoBehaviour
 
     private void FollowPlayer()
     {
-        if (mainCamera == null || canvas == null || promptRect == null)
+        if (mainCamera == null ||
+            canvas == null ||
+            canvasRect == null ||
+            promptRect == null)
         {
             return;
         }
 
-        // Get the player's world position with an offset above them.
-        Vector3 worldPosition = player.position + panelOffset;
+        // Convert the player's world position into screen position.
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(
+            player.position
+        );
 
-        // Convert world position to screen position.
-        Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPosition);
-
-        // Convert screen position to Canvas position.
-        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-
+        // Convert screen position into Canvas position.
         Vector2 canvasPosition;
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -88,7 +90,7 @@ public class BoostFruit : MonoBehaviour
             out canvasPosition
         );
 
-        // Move the Q panel to the player's position.
-        promptRect.localPosition = canvasPosition;
+        // Put the Q panel above the player.
+        promptRect.anchoredPosition = canvasPosition + panelOffset;
     }
 }
