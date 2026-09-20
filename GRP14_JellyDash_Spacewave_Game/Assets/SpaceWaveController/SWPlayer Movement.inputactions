@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "name": "SWPlayer Movement",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "00e461ba-0f0e-46a9-88f3-406a18265ee8",
+            "actions": [
+                {
+                    "name": "Spacewaves",
+                    "type": "Button",
+                    "id": "f6b3caaf-5460-4390-a0b5-ef341f11490c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "77bbbbff-ae3d-4376-9f76-16711f868bff",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spacewaves",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
