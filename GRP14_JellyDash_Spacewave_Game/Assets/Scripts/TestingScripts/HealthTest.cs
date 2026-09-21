@@ -11,11 +11,20 @@ public class HealthTest : MonoBehaviour
 
     private int lives;
 
+    private RespawnTest respawn;
+    private GameUIManagerTest gameUI;
+
     public int CurrentLives => lives;
 
     private void Awake()
     {
         lives = startingLives;
+
+        respawn =
+            GetComponent<RespawnTest>();
+
+        gameUI =
+            FindFirstObjectByType<GameUIManagerTest>();
 
         if (lifeImages == null ||
             lifeImages.Length == 0)
@@ -66,6 +75,18 @@ public class HealthTest : MonoBehaviour
             Debug.Log(
                 "Player has no lives left."
             );
+
+            if (gameUI != null)
+            {
+                gameUI.ShowDeathPanel();
+            }
+        }
+        else
+        {
+            if (respawn != null)
+            {
+                respawn.RespawnPlayer();
+            }
         }
     }
 

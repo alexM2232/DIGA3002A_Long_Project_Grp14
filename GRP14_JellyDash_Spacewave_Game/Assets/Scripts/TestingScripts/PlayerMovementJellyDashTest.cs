@@ -4,20 +4,18 @@ public class PlayerMovementJellyDashTest : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float verticalSpeed = 5f;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce = 10f;
 
-    [Header("Gravity")]
-    [SerializeField] private float fallGravityMultiplier = 2.5f;
+    [Header("Ground Check")]
+    [SerializeField] private string groundTag = "Ground";
 
     private Rigidbody2D rb;
 
     private bool isGrounded;
 
     private float horizontalInput;
-    private float verticalInput;
 
     private float forwardDirection = 1f;
 
@@ -54,13 +52,11 @@ public class PlayerMovementJellyDashTest : MonoBehaviour
             return;
 
         MovePlayer();
-        ApplyBetterGravity();
     }
 
     private void GetMovementInput()
     {
         horizontalInput = 0f;
-        verticalInput = 0f;
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -72,16 +68,6 @@ public class PlayerMovementJellyDashTest : MonoBehaviour
         {
             horizontalInput = 1f;
             forwardDirection = 1f;
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            verticalInput = 1f;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            verticalInput = -1f;
         }
     }
 
@@ -96,22 +82,9 @@ public class PlayerMovementJellyDashTest : MonoBehaviour
                 horizontalInput * moveSpeed;
         }
 
-        float verticalMovement =
-            rb.linearVelocity.y;
-
-        if (verticalInput > 0f)
-        {
-            verticalMovement = verticalSpeed;
-        }
-
-        if (verticalInput < 0f)
-        {
-            verticalMovement = -verticalSpeed;
-        }
-
         rb.linearVelocity = new Vector2(
             horizontalMovement,
-            verticalMovement
+            rb.linearVelocity.y
         );
     }
 
@@ -129,22 +102,10 @@ public class PlayerMovementJellyDashTest : MonoBehaviour
         }
     }
 
-    private void ApplyBetterGravity()
-    {
-        if (rb.linearVelocity.y < 0f)
-        {
-            rb.linearVelocity +=
-                Vector2.up *
-                Physics2D.gravity.y *
-                (fallGravityMultiplier - 1f) *
-                Time.fixedDeltaTime;
-        }
-    }
-
     private void OnCollisionEnter2D(
         Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Ground"))
+        if (!collision.gameObject.CompareTag(groundTag))
             return;
 
         foreach (ContactPoint2D contact in collision.contacts)
@@ -160,7 +121,7 @@ public class PlayerMovementJellyDashTest : MonoBehaviour
     private void OnCollisionExit2D(
         Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag(groundTag))
         {
             isGrounded = false;
         }

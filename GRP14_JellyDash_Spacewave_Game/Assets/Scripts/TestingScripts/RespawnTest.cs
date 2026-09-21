@@ -28,25 +28,7 @@ public class RespawnTest : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(
-        Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Damage"))
-        {
-            RespawnPlayer();
-        }
-    }
-
-    private void OnTriggerEnter2D(
-        Collider2D other)
-    {
-        if (other.CompareTag("Damage"))
-        {
-            RespawnPlayer();
-        }
-    }
-
-    private void RespawnPlayer()
+    public void RespawnPlayer()
     {
         if (currentCheckpoint == null)
         {
