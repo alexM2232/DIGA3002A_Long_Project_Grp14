@@ -16,6 +16,8 @@ public class FinalPlayerMovement : MonoBehaviour
     private PlayerMovementJellyDashTest jellyDash;
     private SWPlayerControllerTest spaceWaves;
 
+  
+
     private MovementMode currentMode;
 
     private void Awake()
@@ -48,6 +50,8 @@ public class FinalPlayerMovement : MonoBehaviour
             spaceWaves.enabled =
                 newMode == MovementMode.SpaceWaves;
         }
+
+       
     }
 
     public MovementMode GetMovementMode()
