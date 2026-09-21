@@ -20,12 +20,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) moveInput = 1f;
         if (Input.GetKey(KeyCode.A)) moveInput = -1f;
 
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
 
         // Jump (works anytime, even mid-air)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
 }
