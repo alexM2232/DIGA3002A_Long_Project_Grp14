@@ -25,7 +25,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Makes movement smoother.
+        // Makes the player movement smoother.
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
@@ -61,7 +61,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
         }
 
         // W = Move Up
-        // W does NOT jump.
         if (Input.GetKey(KeyCode.W))
         {
             verticalInput = 1f;
@@ -76,17 +75,30 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     void MovePlayer()
     {
-        // Automatic forward movement.
+        // Automatic movement forward.
         float horizontalMovement = forwardDirection * moveSpeed;
 
-        // A/D can change the direction.
+        // A/D changes the direction.
         if (horizontalInput != 0f)
         {
             horizontalMovement = horizontalInput * moveSpeed;
         }
 
-        // W/S controls vertical movement.
-        float verticalMovement = verticalInput * verticalSpeed;
+        // IMPORTANT:
+        // Keep the player's current Y velocity so gravity and jumping work.
+        float verticalMovement = rb.linearVelocity.y;
+
+        // W can move the player upward.
+        if (verticalInput > 0f)
+        {
+            verticalMovement = verticalSpeed;
+        }
+
+        // S can move the player downward.
+        if (verticalInput < 0f)
+        {
+            verticalMovement = -verticalSpeed;
+        }
 
         rb.linearVelocity = new Vector2(
             horizontalMovement,
@@ -96,7 +108,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     void CheckJump()
     {
-        // SPACE is the ONLY jump button.
+        // SPACE makes the player jump.
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(
@@ -112,8 +124,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     void ApplyBetterGravity()
     {
-        // When the player is falling,
-        // increase gravity to make the fall feel stronger.
+        // Makes the player fall faster after jumping.
         if (rb.linearVelocity.y < 0)
         {
             rb.linearVelocity += Vector2.up *
@@ -127,10 +138,9 @@ public class PlayerMovementJellyDash : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // Check that the player is actually landing
-            // on top of the ground.
             foreach (ContactPoint2D contact in collision.contacts)
             {
+                // Player is standing on top of the ground.
                 if (contact.normal.y > 0.5f)
                 {
                     isGrounded = true;
@@ -148,4 +158,3 @@ public class PlayerMovementJellyDash : MonoBehaviour
         }
     }
 }
-
