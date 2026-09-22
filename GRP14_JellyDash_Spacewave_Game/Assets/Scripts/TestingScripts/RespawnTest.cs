@@ -9,11 +9,9 @@ public class RespawnTest : MonoBehaviour
 
     private void Start()
     {
-        if (checkpoints != null &&
-            checkpoints.Length > 0)
+        if (checkpoints != null && checkpoints.Length > 0)
         {
-            currentCheckpoint =
-                checkpoints[0];
+            currentCheckpoint = checkpoints[0];
 
             Debug.Log(
                 "Starting checkpoint: " +
@@ -39,16 +37,13 @@ public class RespawnTest : MonoBehaviour
             return;
         }
 
-        transform.position =
-            currentCheckpoint.position;
+        transform.position = currentCheckpoint.position;
 
-        Rigidbody2D rb =
-            GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
         if (rb != null)
         {
-            rb.linearVelocity =
-                Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
 
         Debug.Log(
@@ -57,14 +52,14 @@ public class RespawnTest : MonoBehaviour
         );
     }
 
-    public void SetCheckpoint(
-        Transform newCheckpoint)
+    public void SetCheckpoint(Transform newCheckpoint)
     {
         if (newCheckpoint == null)
+        {
             return;
+        }
 
-        if (checkpoints == null ||
-            checkpoints.Length == 0)
+        if (checkpoints == null || checkpoints.Length == 0)
         {
             Debug.LogWarning(
                 "RespawnTest: Checkpoint list is empty."
@@ -73,17 +68,15 @@ public class RespawnTest : MonoBehaviour
             return;
         }
 
-        int newIndex =
-            System.Array.IndexOf(
-                checkpoints,
-                newCheckpoint
-            );
+        int newIndex = System.Array.IndexOf(
+            checkpoints,
+            newCheckpoint
+        );
 
-        int currentIndex =
-            System.Array.IndexOf(
-                checkpoints,
-                currentCheckpoint
-            );
+        int currentIndex = System.Array.IndexOf(
+            checkpoints,
+            currentCheckpoint
+        );
 
         if (newIndex == -1)
         {
@@ -94,11 +87,9 @@ public class RespawnTest : MonoBehaviour
             return;
         }
 
-        if (currentCheckpoint == null ||
-            newIndex > currentIndex)
+        if (currentCheckpoint == null || newIndex > currentIndex)
         {
-            currentCheckpoint =
-                newCheckpoint;
+            currentCheckpoint = newCheckpoint;
 
             Debug.Log(
                 "Checkpoint updated to: " +

@@ -7,6 +7,8 @@ public class GameUIManagerTest : MonoBehaviour
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject winPanel;
 
+    private bool gameEnded = false;
+
     private void Awake()
     {
         // Hide panels when the game starts
@@ -22,10 +24,20 @@ public class GameUIManagerTest : MonoBehaviour
 
         // Make sure the game starts normally
         Time.timeScale = 1f;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ShowDeathPanel()
     {
+        if (gameEnded)
+        {
+            return;
+        }
+
+        gameEnded = true;
+
         if (deathPanel != null)
         {
             deathPanel.SetActive(true);
@@ -33,13 +45,21 @@ public class GameUIManagerTest : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        // Show cursor for the death menu
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        Debug.Log("Death Panel shown.");
     }
 
     public void ShowWinPanel()
     {
+        if (gameEnded)
+        {
+            return;
+        }
+
+        gameEnded = true;
+
         if (winPanel != null)
         {
             winPanel.SetActive(true);
@@ -47,22 +67,23 @@ public class GameUIManagerTest : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        // Show cursor for the win menu
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        Debug.Log("Win Panel shown.");
     }
 
     public void Retry()
     {
-        // Resume time before restarting
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().name
+        );
     }
 
     public void BackToMainMenu()
     {
-        // Resume time before changing scenes
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("MainMenu");
