@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: -142}
-  m_SizeDelta: {x: 1423.0364, y: 360.5142}
+  m_AnchoredPosition: {x: -374.4309, y: -256.29987}
+  m_SizeDelta: {x: 662.1747, y: 131.9145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512295869
 MonoBehaviour:
@@ -366,8 +366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: -611}
-  m_SizeDelta: {x: 1423.0364, y: 360.5142}
+  m_AnchoredPosition: {x: 452.9403, y: -266.36835}
+  m_SizeDelta: {x: 624.6433, y: 152.0567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642625915
 MonoBehaviour:
@@ -1087,7 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f31b9d41b4174f8c7221bfe3fdc3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  gameplaySceneName: Gameplay
 --- !u!4 &1389954302
 Transform:
   m_ObjectHideFlags: 0
@@ -1232,7 +1231,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -1157.691, y: -758.0121, z: -675.3196, w: 65.46301}
+  m_margin: {x: -1157.691, y: -405.80493, z: -606.5963, w: -205.13483}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
