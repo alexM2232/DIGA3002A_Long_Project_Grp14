@@ -1173,7 +1173,7 @@ Transform:
   m_GameObject: {fileID: 77923741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9, y: 2.5, z: 0}
+  m_LocalPosition: {x: -6.1, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9270,6 +9270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
   inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 0
   showDebugLogs: 0
 --- !u!212 &465555494
 SpriteRenderer:
@@ -12950,6 +12951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
   inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 0
   showDebugLogs: 0
 --- !u!61 &696288833
 BoxCollider2D:
@@ -19756,6 +19758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
   inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 0
   showDebugLogs: 0
 --- !u!61 &1017073136
 BoxCollider2D:
@@ -26503,6 +26506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
   inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 0
   showDebugLogs: 0
 --- !u!1 &1323224836
 GameObject:
@@ -29798,14 +29802,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1519221908}
   - component: {fileID: 1519221910}
-  - component: {fileID: 1519221909}
+  - component: {fileID: 1519221911}
   m_Layer: 0
   m_Name: Checkpoint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1519221908
 Transform:
   m_ObjectHideFlags: 0
@@ -29821,19 +29825,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 56408861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1519221909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519221907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec726f9f24151749acaaf244cfe2d75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CheckpointTriggerTest
-  isWinCheckpoint: 1
 --- !u!58 &1519221910
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -29870,6 +29861,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1519221911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519221907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a35c669fbd1504b9c958eda30ebe0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
+  inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
+  activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 1
+  showDebugLogs: 0
 --- !u!1 &1543140734
 GameObject:
   m_ObjectHideFlags: 0
@@ -32786,6 +32793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
   inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 0
   showDebugLogs: 0
 --- !u!61 &1673376614
 BoxCollider2D:
@@ -33501,6 +33509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointTrigger
   inactiveColor: {r: 1, g: 0.5, b: 0, a: 1}
   activeColor: {r: 0, g: 1, b: 0, a: 1}
+  isWinCheckpoint: 0
   showDebugLogs: 0
 --- !u!61 &1697383937
 BoxCollider2D:
