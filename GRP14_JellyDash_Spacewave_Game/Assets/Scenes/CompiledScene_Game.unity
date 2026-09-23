@@ -6894,7 +6894,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Movement-WASD
 
-    W-SPACE
+    W-Jump
 
     (jelly-dash)'
   m_isRightToLeft: 0
