@@ -9,7 +9,7 @@ public class MovementTransition : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         FinalPlayerMovement movement =
-            other.GetComponent<FinalPlayerMovement>();
+            other.GetComponentInParent<FinalPlayerMovement>();
 
         if (movement == null)
             return;
@@ -20,5 +20,7 @@ public class MovementTransition : MonoBehaviour
             "Movement transition triggered. New mode: " +
             targetMode
         );
+
+    
     }
 }
