@@ -1,103 +1,151 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementJellyDash : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 5f;
-    public float verticalSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float forwardPushSpeed = 5f;
 
     [Header("Jump")]
-    public float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 10f;
 
     [Header("Gravity")]
-    public float fallGravityMultiplier = 2.5f;
+    [SerializeField] private float fallGravityMultiplier = 1.5f;
+
+    [Header("Ground")]
+    [SerializeField] private string groundTag = "Ground";
+
+    [Header("Sticky Wall")]
+    [SerializeField] private string stickyWallTag = "StickyWall";
+    [SerializeField] private float stickyStretchX = 0.65f;
+    [SerializeField] private float stickyStretchY = 1.45f;
+
+    [Header("Climbing Walls")]
+    [SerializeField] private string climbingWallTag = "ClimbingWall";
+    [SerializeField] private float climbUpSpeed = 5f;
+    [SerializeField] private float climbSideSpeed = 4f;
+
+    [Header("Visual")]
+    [SerializeField] private float squashSpeed = 10f;
 
     private Rigidbody2D rb;
 
     private bool isGrounded;
+    private bool touchingStickyWall;
+    private bool touchingClimbingWall;
 
     private float horizontalInput;
-    private float verticalInput;
 
-    private float forwardDirection = 1f;
+    private Vector3 normalScale;
+    private Vector3 targetVisualScale;
 
-    void Start()
+    private Transform visual;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Makes the player movement smoother.
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        visual = transform.Find("Visual");
+
+        if (visual != null)
+        {
+            normalScale = visual.localScale;
+            targetVisualScale = normalScale;
+        }
+        else
+        {
+            normalScale = Vector3.one;
+            targetVisualScale = normalScale;
+        }
     }
 
-    void Update()
+    private void Update()
     {
         GetMovementInput();
+
         CheckJump();
+
+        UpdateVisual();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        MovePlayer();
-        ApplyBetterGravity();
+        if (touchingClimbingWall)
+        {
+            HandleClimbingMovement();
+        }
+        else
+        {
+            HandleNormalMovement();
+            ApplyGravity();
+        }
     }
 
-    void GetMovementInput()
+    private void GetMovementInput()
     {
         horizontalInput = 0f;
-        verticalInput = 0f;
 
-        // A = Move Left
-        if (Input.GetKey(KeyCode.A))
+        if (Keyboard.current == null)
+        {
+            return;
+        }
+
+        if (Keyboard.current.aKey.isPressed)
         {
             horizontalInput = -1f;
-            forwardDirection = -1f;
         }
 
-        // D = Move Right
-        if (Input.GetKey(KeyCode.D))
+        if (Keyboard.current.dKey.isPressed)
         {
             horizontalInput = 1f;
-            forwardDirection = 1f;
-        }
-
-        // W = Move Up
-        if (Input.GetKey(KeyCode.W))
-        {
-            verticalInput = 1f;
-        }
-
-        // S = Move Down
-        if (Input.GetKey(KeyCode.S))
-        {
-            verticalInput = -1f;
         }
     }
 
-    void MovePlayer()
+    private void HandleNormalMovement()
     {
-        // Automatic movement forward.
-        float horizontalMovement = forwardDirection * moveSpeed;
+        float horizontalMovement = horizontalInput * moveSpeed;
 
-        // A/D changes the direction.
-        if (horizontalInput != 0f)
+        if (horizontalInput == 0f)
         {
-            horizontalMovement = horizontalInput * moveSpeed;
+            horizontalMovement = moveSpeed;
         }
 
-        // IMPORTANT:
-        // Keep the player's current Y velocity so gravity and jumping work.
-        float verticalMovement = rb.linearVelocity.y;
+        rb.linearVelocity = new Vector2(
+            horizontalMovement,
+            rb.linearVelocity.y
+        );
+    }
 
-        // W can move the player upward.
-        if (verticalInput > 0f)
+    private void HandleClimbingMovement()
+    {
+        if (Keyboard.current == null)
         {
-            verticalMovement = verticalSpeed;
+            return;
         }
 
-        // S can move the player downward.
-        if (verticalInput < 0f)
+        bool pressingW = Keyboard.current.wKey.isPressed;
+        bool pressingA = Keyboard.current.aKey.isPressed;
+        bool pressingD = Keyboard.current.dKey.isPressed;
+
+        float horizontalMovement = 0f;
+        float verticalMovement = 0f;
+
+        if (pressingA)
         {
-            verticalMovement = -verticalSpeed;
+            horizontalMovement = -climbSideSpeed;
+        }
+
+        if (pressingD)
+        {
+            horizontalMovement = climbSideSpeed;
+        }
+
+        if (pressingW)
+        {
+            verticalMovement = climbUpSpeed;
         }
 
         rb.linearVelocity = new Vector2(
@@ -106,41 +154,70 @@ public class PlayerMovementJellyDash : MonoBehaviour
         );
     }
 
-    void CheckJump()
+    private void CheckJump()
     {
-        // SPACE makes the player jump.
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Keyboard.current == null)
         {
-            rb.linearVelocity = new Vector2(
-                rb.linearVelocity.x,
-                jumpForce
-            );
+            return;
+        }
 
-            isGrounded = false;
-
-            Debug.Log("JUMP!");
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            if (isGrounded)
+            {
+                PerformNormalJump();
+            }
         }
     }
 
-    void ApplyBetterGravity()
+    private void PerformNormalJump()
     {
-        // Makes the player fall faster after jumping.
-        if (rb.linearVelocity.y < 0)
+        rb.linearVelocity = new Vector2(
+            rb.linearVelocity.x,
+            jumpForce
+        );
+
+        isGrounded = false;
+    }
+
+    private void ApplyGravity()
+    {
+        if (rb.linearVelocity.y < 0f)
         {
             rb.linearVelocity += Vector2.up *
                 Physics2D.gravity.y *
-                (fallGravityMultiplier - 1) *
+                (fallGravityMultiplier - 1f) *
                 Time.fixedDeltaTime;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(
+        Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag(stickyWallTag))
+        {
+            touchingStickyWall = true;
+
+            targetVisualScale = new Vector3(
+                stickyStretchX,
+                stickyStretchY,
+                normalScale.z
+            );
+
+            Debug.Log("Touching StickyWall");
+        }
+
+        if (collision.gameObject.CompareTag(climbingWallTag))
+        {
+            touchingClimbingWall = true;
+
+            Debug.Log("Touching ClimbingWall");
+        }
+
+        if (collision.gameObject.CompareTag(groundTag))
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
-                // Player is standing on top of the ground.
                 if (contact.normal.y > 0.5f)
                 {
                     isGrounded = true;
@@ -150,11 +227,42 @@ public class PlayerMovementJellyDash : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(
+        Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag(stickyWallTag))
+        {
+            touchingStickyWall = false;
+            targetVisualScale = normalScale;
+        }
+
+        if (collision.gameObject.CompareTag(climbingWallTag))
+        {
+            touchingClimbingWall = false;
+        }
+
+        if (collision.gameObject.CompareTag(groundTag))
         {
             isGrounded = false;
         }
+    }
+
+    private void UpdateVisual()
+    {
+        if (visual == null)
+        {
+            return;
+        }
+
+        if (!touchingStickyWall)
+        {
+            targetVisualScale = normalScale;
+        }
+
+        visual.localScale = Vector3.Lerp(
+            visual.localScale,
+            targetVisualScale,
+            squashSpeed * Time.deltaTime
+        );
     }
 }
