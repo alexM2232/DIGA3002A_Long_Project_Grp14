@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 920f9c4a1a9d073488af5d5848e54ae1
   - enabled: 1
-    path: Assets/Scenes/CompiledScene_Game.unity
+    path: Assets/Scenes/jellydashes fixedScene.unity
     guid: 2a042271f36998b469403deb4b2902c1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
