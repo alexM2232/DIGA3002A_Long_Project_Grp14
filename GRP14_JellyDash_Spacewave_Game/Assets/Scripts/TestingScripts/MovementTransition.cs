@@ -25,6 +25,10 @@ public class MovementTransition : MonoBehaviour
         {
             npc.activateNPC();
         }
+        else
+        {
+            npc.deactivateNPC();
+        }
 
 
         Debug.Log(
