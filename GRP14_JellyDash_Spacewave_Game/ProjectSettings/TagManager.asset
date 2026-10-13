@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Damage
+  - SwingWall
+  - CllimbingWall
+  - ClimbingWall
   layers:
   - Default
   - TransparentFX
