@@ -10316,7 +10316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9dd5d11531a5d439a63a9ed0ec41aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::npcMovement
-  obstacleTag: Danger
+  obstacleTag: Damage
   checkPoints:
   - {fileID: 465555492}
   - {fileID: 1673376612}

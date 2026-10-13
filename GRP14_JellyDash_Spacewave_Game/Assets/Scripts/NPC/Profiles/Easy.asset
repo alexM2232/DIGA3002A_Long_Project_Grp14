@@ -20,6 +20,7 @@ MonoBehaviour:
   safetyMargin: 0.1
   stepTime: 0.2
   depth: 3
+  recklessness: 0.7
   yWeight: 1
   switchPenalty: 1
   decisionInterval: 0.15

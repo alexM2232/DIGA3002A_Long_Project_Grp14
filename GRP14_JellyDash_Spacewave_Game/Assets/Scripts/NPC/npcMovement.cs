@@ -4,7 +4,7 @@ using UnityEngine;
 public class npcMovement : MonoBehaviour
 {
     [Header("NPC Respawning")]
-    public string obstacleTag = "Danger";
+    public string obstacleTag = "Damage";
     public Transform[] checkPoints;
 
     public npcProfile profile;
@@ -128,7 +128,14 @@ public class npcMovement : MonoBehaviour
                 bestMask = mask;
             }
         }
- 
+
+            // Occasionally choose a random path instead of the best path
+            if (Random.value < profile.recklessness)
+            {
+                int randomMask = Random.Range(0, combos);
+
+                return (randomMask & 1) == 1;
+            }
         return (bestMask & 1) == 1;
     }
  
