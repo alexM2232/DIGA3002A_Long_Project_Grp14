@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Damage
+  - UpTrigger
+  - DownTrigger
+  - EnableTrigger
+  - DisableTrigger
+  - EnableTriggerTop
+  - DisableTriggerTop
   layers:
   - Default
   - TransparentFX
