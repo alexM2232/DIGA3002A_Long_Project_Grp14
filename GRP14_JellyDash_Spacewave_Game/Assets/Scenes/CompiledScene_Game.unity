@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 17797422}
   - component: {fileID: 17797424}
   - component: {fileID: 17797423}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (50)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 38273914}
   - component: {fileID: 38273916}
   - component: {fileID: 38273915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (41)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 61188032}
   - component: {fileID: 61188034}
   - component: {fileID: 61188033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (81)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 67262825}
   - component: {fileID: 67262827}
   - component: {fileID: 67262826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (55)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 109721317}
   - component: {fileID: 109721319}
   - component: {fileID: 109721318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (84)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -2632,7 +2632,7 @@ GameObject:
   - component: {fileID: 146685046}
   - component: {fileID: 146685048}
   - component: {fileID: 146685047}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (37)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -3049,7 +3049,7 @@ GameObject:
   - component: {fileID: 169380092}
   - component: {fileID: 169380094}
   - component: {fileID: 169380093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (56)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -3643,7 +3643,7 @@ GameObject:
   - component: {fileID: 192098084}
   - component: {fileID: 192098086}
   - component: {fileID: 192098085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (41)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -3782,7 +3782,7 @@ GameObject:
   - component: {fileID: 193839593}
   - component: {fileID: 193839595}
   - component: {fileID: 193839594}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (42)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -5011,7 +5011,7 @@ GameObject:
   - component: {fileID: 257754642}
   - component: {fileID: 257754644}
   - component: {fileID: 257754643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (26)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -5293,7 +5293,7 @@ GameObject:
   - component: {fileID: 266721884}
   - component: {fileID: 266721886}
   - component: {fileID: 266721885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6351,7 +6351,7 @@ GameObject:
   - component: {fileID: 315104553}
   - component: {fileID: 315104555}
   - component: {fileID: 315104554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (25)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -7864,7 +7864,7 @@ GameObject:
   - component: {fileID: 378224185}
   - component: {fileID: 378224187}
   - component: {fileID: 378224186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (30)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -8103,7 +8103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 1
-  npc: {fileID: 0}
+  npc: {fileID: 1817399303}
 --- !u!61 &385493032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9134,7 +9134,7 @@ GameObject:
   - component: {fileID: 452753676}
   - component: {fileID: 452753678}
   - component: {fileID: 452753677}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (43)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -10298,7 +10298,7 @@ GameObject:
   - component: {fileID: 516401937}
   - component: {fileID: 516401936}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: NPCEasy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10316,6 +10316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9dd5d11531a5d439a63a9ed0ec41aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::npcMovement
+  obstacleTag: Danger
+  checkPoints:
+  - {fileID: 465555492}
+  - {fileID: 1673376612}
   profile: {fileID: 11400000, guid: 601bbde2c6fd94a4b9aa8328a3f0da9a, type: 2}
   targetY: 0
 --- !u!58 &516401937
@@ -10449,12 +10453,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516401935}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.2, y: -11.41, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -335.56125, y: -46.65966, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1481205895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &520782684
 GameObject:
@@ -12123,7 +12127,7 @@ GameObject:
   - component: {fileID: 617083240}
   - component: {fileID: 617083242}
   - component: {fileID: 617083241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (29)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -13292,7 +13296,7 @@ GameObject:
   - component: {fileID: 677603781}
   - component: {fileID: 677603783}
   - component: {fileID: 677603782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14885,7 +14889,7 @@ GameObject:
   - component: {fileID: 739070977}
   - component: {fileID: 739070979}
   - component: {fileID: 739070978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15181,7 +15185,7 @@ GameObject:
   - component: {fileID: 771439075}
   - component: {fileID: 771439077}
   - component: {fileID: 771439076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (83)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -15596,7 +15600,7 @@ GameObject:
   - component: {fileID: 804519757}
   - component: {fileID: 804519759}
   - component: {fileID: 804519758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (44)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -16428,7 +16432,7 @@ GameObject:
   - component: {fileID: 834612239}
   - component: {fileID: 834612241}
   - component: {fileID: 834612240}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (34)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -16990,7 +16994,7 @@ GameObject:
   - component: {fileID: 865311091}
   - component: {fileID: 865311093}
   - component: {fileID: 865311092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (40)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -17276,7 +17280,7 @@ GameObject:
   - component: {fileID: 883972346}
   - component: {fileID: 883972348}
   - component: {fileID: 883972347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (42)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -18758,7 +18762,7 @@ GameObject:
   - component: {fileID: 958885521}
   - component: {fileID: 958885523}
   - component: {fileID: 958885522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (82)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -18983,7 +18987,7 @@ GameObject:
   - component: {fileID: 968646435}
   - component: {fileID: 968646437}
   - component: {fileID: 968646436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (34)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -19682,7 +19686,7 @@ GameObject:
   - component: {fileID: 1003141279}
   - component: {fileID: 1003141281}
   - component: {fileID: 1003141280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (40)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -19821,7 +19825,7 @@ GameObject:
   - component: {fileID: 1010045779}
   - component: {fileID: 1010045781}
   - component: {fileID: 1010045780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21447,6 +21451,180 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1053334896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1053334897}
+  - component: {fileID: 1053334901}
+  - component: {fileID: 1053334900}
+  - component: {fileID: 1053334899}
+  - component: {fileID: 1053334898}
+  m_Layer: 0
+  m_Name: NPCHard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1053334897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053334896}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.27, y: -2.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1481205895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1053334898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053334896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9dd5d11531a5d439a63a9ed0ec41aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::npcMovement
+  obstacleTag: Danger
+  checkPoints: []
+  profile: {fileID: 0}
+  targetY: 0
+--- !u!58 &1053334899
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053334896}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!50 &1053334900
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053334896}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!212 &1053334901
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053334896}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 0, g: 0.14226532, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
 --- !u!1 &1068864742
 GameObject:
   m_ObjectHideFlags: 0
@@ -22731,7 +22909,7 @@ GameObject:
   - component: {fileID: 1107802830}
   - component: {fileID: 1107802832}
   - component: {fileID: 1107802831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (39)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -23377,7 +23555,7 @@ GameObject:
   - component: {fileID: 1146436107}
   - component: {fileID: 1146436109}
   - component: {fileID: 1146436108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (78)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -24118,7 +24296,7 @@ GameObject:
   - component: {fileID: 1190120528}
   - component: {fileID: 1190120530}
   - component: {fileID: 1190120529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (66)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -26303,7 +26481,7 @@ GameObject:
   - component: {fileID: 1259828650}
   - component: {fileID: 1259828652}
   - component: {fileID: 1259828651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (38)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -26901,7 +27079,7 @@ GameObject:
   - component: {fileID: 1323224837}
   - component: {fileID: 1323224839}
   - component: {fileID: 1323224838}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (33)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -28105,7 +28283,7 @@ GameObject:
   - component: {fileID: 1422890709}
   - component: {fileID: 1422890711}
   - component: {fileID: 1422890710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (80)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -29500,6 +29678,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1481205894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481205895}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1481205895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481205894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 384.76126, y: 35.24966, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 516401940}
+  - {fileID: 1817399302}
+  - {fileID: 1053334897}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490322270
 GameObject:
   m_ObjectHideFlags: 0
@@ -30042,6 +30254,7 @@ GameObject:
   - component: {fileID: 1519221908}
   - component: {fileID: 1519221910}
   - component: {fileID: 1519221911}
+  - component: {fileID: 1519221912}
   m_Layer: 0
   m_Name: Checkpoint7
   m_TagString: Untagged
@@ -30116,6 +30329,20 @@ MonoBehaviour:
   activeColor: {r: 0, g: 1, b: 0, a: 1}
   isWinCheckpoint: 1
   showDebugLogs: 0
+--- !u!114 &1519221912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519221907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61160eeea7bf5584d8a73e7bd325c4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
+  targetMode: 0
+  npc: {fileID: 1053334898}
 --- !u!1 &1543140734
 GameObject:
   m_ObjectHideFlags: 0
@@ -31051,7 +31278,7 @@ GameObject:
   - component: {fileID: 1578774945}
   - component: {fileID: 1578774947}
   - component: {fileID: 1578774946}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32560,7 +32787,7 @@ GameObject:
   - component: {fileID: 1661512312}
   - component: {fileID: 1661512314}
   - component: {fileID: 1661512313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (65)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -32799,7 +33026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 0
-  npc: {fileID: 0}
+  npc: {fileID: 1817399303}
 --- !u!61 &1663191906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34181,7 +34408,7 @@ GameObject:
   - component: {fileID: 1717466729}
   - component: {fileID: 1717466731}
   - component: {fileID: 1717466730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (38)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -35821,7 +36048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 1
-  npc: {fileID: 0}
+  npc: {fileID: 1053334898}
 --- !u!61 &1785698803
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36018,7 +36245,7 @@ GameObject:
   - component: {fileID: 1802869326}
   - component: {fileID: 1802869328}
   - component: {fileID: 1802869327}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36371,6 +36598,180 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 9.001754, y: 1.2923656}
   m_EdgeRadius: 0
+--- !u!1 &1817399301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817399302}
+  - component: {fileID: 1817399306}
+  - component: {fileID: 1817399305}
+  - component: {fileID: 1817399304}
+  - component: {fileID: 1817399303}
+  m_Layer: 0
+  m_Name: NPCMedium
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817399302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817399301}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -182.49126, y: -23.49966, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1481205895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1817399303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817399301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9dd5d11531a5d439a63a9ed0ec41aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::npcMovement
+  obstacleTag: Danger
+  checkPoints: []
+  profile: {fileID: 0}
+  targetY: 0
+--- !u!50 &1817399304
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817399301}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1817399305
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817399301}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!212 &1817399306
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817399301}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 0.058713276, g: 0, b: 0.93207544, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
 --- !u!1 &1821522751
 GameObject:
   m_ObjectHideFlags: 0
@@ -37018,7 +37419,7 @@ GameObject:
   - component: {fileID: 1867263864}
   - component: {fileID: 1867263866}
   - component: {fileID: 1867263865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38177,7 +38578,7 @@ GameObject:
   - component: {fileID: 1914876978}
   - component: {fileID: 1914876980}
   - component: {fileID: 1914876979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (24)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -38884,7 +39285,7 @@ GameObject:
   - component: {fileID: 1947457252}
   - component: {fileID: 1947457254}
   - component: {fileID: 1947457253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39166,7 +39567,7 @@ GameObject:
   - component: {fileID: 1959155173}
   - component: {fileID: 1959155175}
   - component: {fileID: 1959155174}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (36)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -39305,7 +39706,7 @@ GameObject:
   - component: {fileID: 1966344579}
   - component: {fileID: 1966344581}
   - component: {fileID: 1966344580}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (77)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -39893,7 +40294,7 @@ GameObject:
   - component: {fileID: 1997549182}
   - component: {fileID: 1997549184}
   - component: {fileID: 1997549183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flat Ground (35)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -40396,7 +40797,7 @@ GameObject:
   - component: {fileID: 2011539969}
   - component: {fileID: 2011539971}
   - component: {fileID: 2011539970}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (79)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -40815,7 +41216,7 @@ GameObject:
   - component: {fileID: 2025733719}
   - component: {fileID: 2025733721}
   - component: {fileID: 2025733720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (39)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -41097,7 +41498,7 @@ GameObject:
   - component: {fileID: 2046376324}
   - component: {fileID: 2046376326}
   - component: {fileID: 2046376325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slope Ground (63)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -43599,4 +44000,4 @@ SceneRoots:
   - {fileID: 108604575}
   - {fileID: 2003979667}
   - {fileID: 2007123719}
-  - {fileID: 516401940}
+  - {fileID: 1481205895}

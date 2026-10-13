@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class npcMovement : MonoBehaviour
 {
+    [Header("NPC Respawning")]
+    public string obstacleTag = "Danger";
+    public Transform[] checkPoints;
+
     public npcProfile profile;
     public float targetY = 0f;
     private Rigidbody2D rb;
@@ -135,5 +139,51 @@ public class npcMovement : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, profile.radius + profile.safetyMargin);
         Gizmos.DrawLine(new Vector3(-100, targetY), new Vector3(100, targetY));
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag(obstacleTag))
+    {
+        RespawnAtNearestCheckpoint();
+    }
+}
+
+private void RespawnAtNearestCheckpoint()
+{
+    if (checkPoints == null || checkPoints.Length == 0)
+    {
+        Debug.LogWarning("NPC respawn failed: No checkpoints assigned!");
+        return;
+    }
+
+    Transform nearestCheckpoint = null;
+    float nearestDistance = float.PositiveInfinity;
+
+    foreach (Transform checkPoint in checkPoints)
+    {
+        if (checkPoint == null)
+            continue;
+
+        float distance = Vector2.Distance(
+            transform.position,
+            checkPoint.position
+        );
+
+        if (distance < nearestDistance)
+        {
+            nearestDistance = distance;
+            nearestCheckpoint = checkPoint;
+        }
+    }
+
+    if (nearestCheckpoint == null)
+        return;
+
+    // Stop the NPC and move it to the nearest checkpoint
+    rb.linearVelocity = Vector2.zero;
+    rb.position = nearestCheckpoint.position;
+
+    Debug.Log("NPC respawned at: " + nearestCheckpoint.name);
+}
     
 }
