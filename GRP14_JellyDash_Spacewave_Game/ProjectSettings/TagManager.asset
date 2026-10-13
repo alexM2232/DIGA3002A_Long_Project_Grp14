@@ -6,12 +6,9 @@ TagManager:
   tags:
   - Ground
   - Damage
-  - UpTrigger
-  - DownTrigger
-  - EnableTrigger
-  - DisableTrigger
-  - EnableTriggerTop
-  - DisableTriggerTop
+  - SwingWall
+  - CllimbingWall
+  - ClimbingWall
   layers:
   - Default
   - TransparentFX
