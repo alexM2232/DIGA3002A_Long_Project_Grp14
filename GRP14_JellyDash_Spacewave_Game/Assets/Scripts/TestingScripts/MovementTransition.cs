@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class MovementTransition : MonoBehaviour
 {
+    
     [Header("Movement Mode")]
     [SerializeField]
     private FinalPlayerMovement.MovementMode targetMode;
+
+    [Header("NPC")]
+    [SerializeField]
+    private npcMovement npc;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,6 +20,12 @@ public class MovementTransition : MonoBehaviour
             return;
 
         movement.SetMovementMode(targetMode);
+
+        if (targetMode == FinalPlayerMovement.MovementMode.SpaceWaves && npc != null)
+        {
+            npc.activateNPC();
+        }
+
 
         Debug.Log(
             "Movement transition triggered. New mode: " +

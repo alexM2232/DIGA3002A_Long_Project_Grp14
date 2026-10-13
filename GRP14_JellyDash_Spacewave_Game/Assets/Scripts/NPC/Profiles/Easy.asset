@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed353f409b275af4ca12931c1df4b650, type: 3}
   m_Name: Easy
   m_EditorClassIdentifier: Assembly-CSharp::npcProfile
-  speed: 4
+  speed: 2.5
   radius: 0.25
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   safetyMargin: 0.1
-  stepTime: 0.12
-  depth: 7
+  stepTime: 0.2
+  depth: 3
   yWeight: 1
-  switchPenalty: 0.5
-  decisionInterval: 0.03
+  switchPenalty: 1
+  decisionInterval: 0.15

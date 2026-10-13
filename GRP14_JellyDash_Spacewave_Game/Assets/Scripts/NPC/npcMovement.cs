@@ -10,16 +10,35 @@ public class npcMovement : MonoBehaviour
     private float nextDecisionTime;
     private float direction;
 
+    private bool isActive = false; //NPC is not active
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
     }
    
+   public void activateNPC()
+   {
+        isActive = true;
+        nextDecisionTime = Time.time;
+
+        Debug.Log("NPC activated by transition!");
+   }
+
+   public void deactivateNPC()
+   {
+        isActive = false;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+   }
 
     void Update()
     {
-        if (profile == null) return;
+        if (!isActive || profile == null) return;
 
         if (Time.time > nextDecisionTime)
         {
