@@ -27,7 +27,7 @@ MonoBehaviour:
     m_guid: 920f9c4a1a9d073488af5d5848e54ae1
   - m_enabled: 1
     m_path: Assets/Scenes/CompiledScene_Game.unity
-    m_guid: 2a042271f36998b469403deb4b2902c1
+    m_guid: 49c49a97df1f3b641ae84f5d20a3693d
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:

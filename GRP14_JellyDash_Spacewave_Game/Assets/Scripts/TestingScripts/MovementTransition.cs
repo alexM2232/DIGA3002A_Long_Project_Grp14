@@ -1,8 +1,8 @@
+
 using UnityEngine;
 
 public class MovementTransition : MonoBehaviour
 {
-    
     [Header("Movement Mode")]
     [SerializeField]
     private FinalPlayerMovement.MovementMode targetMode;
@@ -21,21 +21,16 @@ public class MovementTransition : MonoBehaviour
 
         movement.SetMovementMode(targetMode);
 
-        if (targetMode == FinalPlayerMovement.MovementMode.SpaceWaves && npc != null)
+        if (npc != null)
         {
-            npc.activateNPC();
+            if (targetMode == FinalPlayerMovement.MovementMode.SpaceWaves)
+                npc.activateNPC();
+            else
+                npc.deactivateNPC();
         }
-        else
-        {
-            npc.deactivateNPC();
-        }
-
 
         Debug.Log(
-            "Movement transition triggered. New mode: " +
-            targetMode
+            "Movement transition triggered. New mode: " + targetMode
         );
-
-    
     }
 }

@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class FinalPlayerMovement : MonoBehaviour
@@ -10,30 +11,23 @@ public class FinalPlayerMovement : MonoBehaviour
 
     [Header("Starting Movement Mode")]
     [SerializeField]
-    private MovementMode startingMode =
-        MovementMode.JellyDash;
+    private MovementMode startingMode = MovementMode.JellyDash;
 
-    
     private PlayerMovementJellyDash jellyDash;
     private SWPlayerControllerTest spaceWaves;
-
-  
 
     private MovementMode currentMode;
 
     private void Awake()
     {
-        jellyDash =
-            GetComponent<PlayerMovementJellyDash>();
-
-        spaceWaves =
-            GetComponent<SWPlayerControllerTest>();
+        jellyDash = GetComponent<PlayerMovementJellyDash>();
+        spaceWaves = GetComponent<SWPlayerControllerTest>();
 
         if (jellyDash == null)
-        Debug.LogError("FinalPlayerMovement: JellyDash script not found on " + name, this);
+            Debug.LogError("PlayerMovementJellyDash not found!", this);
 
-    if (spaceWaves == null)
-        Debug.LogError("FinalPlayerMovement: SpaceWaves script not found on " + name, this);
+        if (spaceWaves == null)
+            Debug.LogError("SWPlayerControllerTest not found!", this);
     }
 
     private void Start()
@@ -41,27 +35,25 @@ public class FinalPlayerMovement : MonoBehaviour
         SetMovementMode(startingMode);
     }
 
-    public void SetMovementMode(
-        MovementMode newMode)
+    public void SetMovementMode(MovementMode newMode)
     {
         currentMode = newMode;
 
-         if (jellyDash != null)
-         {
-             jellyDash.enabled =
-                 newMode == MovementMode.JellyDash;
-         }
+        if (jellyDash != null)
+            jellyDash.enabled = newMode == MovementMode.JellyDash;
 
-         if (spaceWaves != null)
-         {
-             spaceWaves.enabled =
-                 newMode == MovementMode.SpaceWaves;
-         }
+        if (spaceWaves != null)
+            spaceWaves.enabled = newMode == MovementMode.SpaceWaves;
 
-        Debug.Log($"Mode set: {newMode} | jelly enabled: {jellyDash?.enabled} | waves enabled: {spaceWaves?.enabled}");
+        if (AudioManager.Instance != null)
+        {
+            if (newMode == MovementMode.JellyDash)
+                AudioManager.Instance.PlayJellyDashMusic();
+            else
+                AudioManager.Instance.PlaySpaceWavesMusic();
+        }
 
-
-      
+        Debug.Log("Movement mode changed to: " + newMode);
     }
 
     public MovementMode GetMovementMode()

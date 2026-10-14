@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
@@ -8,11 +9,8 @@ public class Respawn : MonoBehaviour
 
     private void Start()
     {
-        // Default to the first checkpoint if none has been reached yet
         if (checkpoints != null && checkpoints.Length > 0)
-        {
             currentCheckpoint = checkpoints[0];
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,16 +28,22 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    // Call this from a trigger on each checkpoint object
     public void SetCheckpoint(Transform newCheckpoint)
     {
-        // Only update if this checkpoint comes after the current one
+        if (checkpoints == null || checkpoints.Length == 0)
+            return;
+
         int newIndex = System.Array.IndexOf(checkpoints, newCheckpoint);
         int currentIndex = System.Array.IndexOf(checkpoints, currentCheckpoint);
 
         if (newIndex > currentIndex)
         {
             currentCheckpoint = newCheckpoint;
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayCheckpointSFX();
+
+            Debug.Log("New checkpoint reached: " + newCheckpoint.name);
         }
     }
 }
