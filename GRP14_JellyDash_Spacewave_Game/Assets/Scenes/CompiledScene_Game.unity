@@ -10376,7 +10376,6 @@ GameObject:
   m_Component:
   - component: {fileID: 65566012}
   - component: {fileID: 65566016}
-  - component: {fileID: 65566015}
   - component: {fileID: 65566014}
   - component: {fileID: 65566013}
   m_Layer: 0
@@ -10395,8 +10394,8 @@ Transform:
   m_GameObject: {fileID: 65566011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 283.38, y: 44.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 283.6845, y: 43.2326, z: 0}
+  m_LocalScale: {x: 1.9516, y: 1.9516, z: 1.9516}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 380191222}
@@ -10446,42 +10445,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &65566015
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65566011}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
 --- !u!212 &65566016
 SpriteRenderer:
   serializedVersion: 3
@@ -10531,8 +10494,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.07122848, g: 0.020441417, b: 0.98490566, a: 1}
+  m_Sprite: {fileID: 2642147745542238601, guid: 400d600d6b0ec8f439e3dc9e1a5c81a8, type: 3}
+  m_Color: {r: 0.50641257, g: 0.27107868, b: 0.554717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13205,8 +13168,8 @@ Transform:
   m_GameObject: {fileID: 77923741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.89, y: -1.71, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -37.7544, y: -1.8329, z: 0}
+  m_LocalScale: {x: 1.4237, y: 1.4237, z: 1.4237}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986654251}
@@ -138776,7 +138739,6 @@ GameObject:
   - component: {fileID: 951307152}
   - component: {fileID: 951307156}
   - component: {fileID: 951307155}
-  - component: {fileID: 951307154}
   - component: {fileID: 951307153}
   m_Layer: 0
   m_Name: NPCMedium
@@ -138794,8 +138756,8 @@ Transform:
   m_GameObject: {fileID: 951307151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.5, y: 22.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 104.7702, y: 22.1569, z: 0}
+  m_LocalScale: {x: 1.8444, y: 1.8444, z: 1.8444}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 380191222}
@@ -138818,42 +138780,6 @@ MonoBehaviour:
   - {fileID: 1697383935}
   profile: {fileID: 11400000, guid: ed7733ce4a3460e40a288254939d0830, type: 2}
   targetY: 0
---- !u!58 &951307154
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951307151}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
 --- !u!50 &951307155
 Rigidbody2D:
   serializedVersion: 5
@@ -138930,8 +138856,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.0047000647, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 2642147745542238601, guid: 400d600d6b0ec8f439e3dc9e1a5c81a8, type: 3}
+  m_Color: {r: 0.93644804, g: 0.103773475, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
