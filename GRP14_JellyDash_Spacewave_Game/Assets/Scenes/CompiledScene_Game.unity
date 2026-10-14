@@ -7134,7 +7134,7 @@ GameObject:
   - component: {fileID: 50795518}
   m_Layer: 0
   m_Name: Flat Ground (1407)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13205,7 +13205,7 @@ Transform:
   m_GameObject: {fileID: 77923741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.25, y: -0.6, z: 0}
+  m_LocalPosition: {x: -37.89, y: -1.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -64098,7 +64098,7 @@ GameObject:
   - component: {fileID: 414457241}
   m_Layer: 0
   m_Name: Flat Ground (1411)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100091,7 +100091,7 @@ GameObject:
   - component: {fileID: 676931384}
   m_Layer: 0
   m_Name: Flat Ground (1414)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106871,7 +106871,7 @@ GameObject:
   - component: {fileID: 732332510}
   m_Layer: 0
   m_Name: Flat Ground (1417)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122253,7 +122253,7 @@ GameObject:
   - component: {fileID: 831221339}
   m_Layer: 0
   m_Name: Flat Ground (1406)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170517,7 +170517,7 @@ GameObject:
   - component: {fileID: 1170417662}
   m_Layer: 0
   m_Name: Flat Ground (1405)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179444,7 +179444,7 @@ GameObject:
   - component: {fileID: 1242232128}
   m_Layer: 0
   m_Name: Flat Ground (1415)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259395,7 +259395,7 @@ GameObject:
   - component: {fileID: 1804489857}
   m_Layer: 0
   m_Name: Flat Ground (1412)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276506,7 +276506,7 @@ GameObject:
   - component: {fileID: 1918973479}
   m_Layer: 0
   m_Name: Flat Ground (1416)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295445,7 +295445,7 @@ GameObject:
   - component: {fileID: 2053576623}
   m_Layer: 0
   m_Name: Flat Ground (1409)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306281,7 +306281,7 @@ GameObject:
   - component: {fileID: 2131177398}
   m_Layer: 0
   m_Name: Flat Ground (1413)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
