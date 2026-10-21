@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: Assembly-CSharp::npcProfile
   speed: 4
-  radius: 0.25
+  radius: 0.3
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
   safetyMargin: 0.1
-  stepTime: 0.2
-  depth: 3
-  recklessness: 0.7
+  stepTime: 0.17
+  depth: 4
+  recklessness: 0.4
   yWeight: 1
   switchPenalty: 1
-  decisionInterval: 0.15
+  decisionInterval: 0.12
