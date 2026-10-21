@@ -9,6 +9,8 @@ TagManager:
   - SwingWall
   - CllimbingWall
   - ClimbingWall
+  - DisableTrigger
+  - EnableTrigger
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Obstacle
-  - 
+  - Player
   - 
   - 
   - 
