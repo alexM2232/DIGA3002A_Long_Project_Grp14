@@ -176614,7 +176614,7 @@ GameObject:
   - component: {fileID: 1239401604}
   m_Layer: 0
   m_Name: Flat Ground (269)
-  m_TagString: SwingWall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
