@@ -92046,8 +92046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
-  speed: 4
-  intensity: 0.15
+  speed: 2
+  intensity: 0.1
   yOffset: 0
 --- !u!1 &632623399
 GameObject:
@@ -127526,8 +127526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
-  speed: 4
-  intensity: 0.15
+  speed: 2
+  intensity: 0.1
   yOffset: 0
 --- !u!1 &882485571
 GameObject:
@@ -278356,8 +278356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
-  speed: 4
-  intensity: 0.15
+  speed: 2
+  intensity: 0.1
   yOffset: 0
 --- !u!1 &1945486108
 GameObject:
@@ -284277,8 +284277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
-  speed: 4
-  intensity: 0.15
+  speed: 2
+  intensity: 0.1
   yOffset: 0
 --- !u!1 &1989347216
 GameObject:
