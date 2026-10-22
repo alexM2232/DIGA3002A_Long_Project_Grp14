@@ -37383,8 +37383,8 @@ Transform:
   m_GameObject: {fileID: 228745392}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.722, y: -3.0608, z: 0}
-  m_LocalScale: {x: 2, y: 1.9176, z: 1}
+  m_LocalPosition: {x: -28.722, y: -3.011, z: 0}
+  m_LocalScale: {x: 2, y: 1.9973722, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1761374027}
@@ -91864,6 +91864,7 @@ GameObject:
   - component: {fileID: 630862308}
   - component: {fileID: 630862310}
   - component: {fileID: 630862309}
+  - component: {fileID: 630862311}
   m_Layer: 0
   m_Name: Flat Ground (596)
   m_TagString: Damage
@@ -92033,6 +92034,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &630862311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630862307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
+  speed: 4
+  intensity: 0.15
+  yOffset: 0
 --- !u!1 &632623399
 GameObject:
   m_ObjectHideFlags: 0
@@ -127328,6 +127344,7 @@ GameObject:
   - component: {fileID: 882212613}
   - component: {fileID: 882212615}
   - component: {fileID: 882212614}
+  - component: {fileID: 882212616}
   m_Layer: 0
   m_Name: Flat Ground (595)
   m_TagString: Damage
@@ -127497,6 +127514,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &882212616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882212612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
+  speed: 4
+  intensity: 0.15
+  yOffset: 0
 --- !u!1 &882485571
 GameObject:
   m_ObjectHideFlags: 0
@@ -278142,6 +278174,7 @@ GameObject:
   - component: {fileID: 1943132606}
   - component: {fileID: 1943132608}
   - component: {fileID: 1943132607}
+  - component: {fileID: 1943132609}
   m_Layer: 0
   m_Name: Flat Ground (2061)
   m_TagString: Damage
@@ -278311,6 +278344,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1943132609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943132605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
+  speed: 4
+  intensity: 0.15
+  yOffset: 0
 --- !u!1 &1945486108
 GameObject:
   m_ObjectHideFlags: 0
@@ -284047,6 +284095,7 @@ GameObject:
   - component: {fileID: 1989252279}
   - component: {fileID: 1989252281}
   - component: {fileID: 1989252280}
+  - component: {fileID: 1989252282}
   m_Layer: 0
   m_Name: Flat Ground (2060)
   m_TagString: Damage
@@ -284216,6 +284265,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1989252282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989252278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a3fe5d77c0cb7498faae22795eb8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JellySpikes
+  speed: 4
+  intensity: 0.15
+  yOffset: 0
 --- !u!1 &1989347216
 GameObject:
   m_ObjectHideFlags: 0
