@@ -11,6 +11,12 @@ TagManager:
   - ClimbingWall
   - DisableTrigger
   - EnableTrigger
+  - Jelly 1
+  - Jelly 2
+  - Jelly 3
+  - Space 1
+  - Space 2
+  - Space 3
   layers:
   - Default
   - TransparentFX
