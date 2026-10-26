@@ -6,7 +6,7 @@ public class StartingInfoPanelTest : MonoBehaviour
     [SerializeField] private GameObject informationPanel;
 
     [Header("Display Settings")]
-    [SerializeField] private float displayTime = 2f;
+    [SerializeField] private float displayTime = 5f;
 
     private void Start()
     {

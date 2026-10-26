@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 37a276cd5cf3a144e9e4f8cdadaea0b0
+guid: e42e133f6d8d6fe4c9a754065f32fb41
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7296723601639622019
-    second: JellyCharacterAnim_0
+      213: 5457601208915957909
+    second: JellyCharacterimage-Recovered-sheet_0
   - first:
-      213: 3968920619595244831
-    second: JellyCharacterAnim_1
+      213: 7397209329332312334
+    second: JellyCharacterimage-Recovered-sheet_1
   - first:
-      213: 7510654670839345791
-    second: JellyCharacterAnim_2
+      213: -8099139309487432804
+    second: JellyCharacterimage-Recovered-sheet_2
   - first:
-      213: -6859359845672425127
-    second: JellyCharacterAnim_3
+      213: -6957905941590765119
+    second: JellyCharacterimage-Recovered-sheet_3
   - first:
-      213: 9044751893343575449
-    second: JellyCharacterAnim_4
+      213: -4771204794738858829
+    second: JellyCharacterimage-Recovered-sheet_4
   - first:
-      213: 8877864115373552635
-    second: JellyCharacterAnim_5
+      213: 4941663505971018786
+    second: JellyCharacterimage-Recovered-sheet_5
   - first:
-      213: 140704645759314452
-    second: JellyCharacterAnim_6
+      213: 4008808955298233688
+    second: JellyCharacterimage-Recovered-sheet_6
   - first:
-      213: -1159405106343310494
-    second: JellyCharacterAnim_7
+      213: 4617974068570806574
+    second: JellyCharacterimage-Recovered-sheet_7
   - first:
-      213: -2932733190747778164
-    second: JellyCharacterAnim_8
+      213: -1775140342720096600
+    second: JellyCharacterimage-Recovered-sheet_8
   - first:
-      213: -8656048050806238925
-    second: JellyCharacterAnim_9
+      213: -4506526419694934791
+    second: JellyCharacterimage-Recovered-sheet_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,221 +127,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JellyCharacterAnim_0
+      name: JellyCharacterimage-Recovered-sheet_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 89
         y: 29
-        width: 147
+        width: 59
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38540fbb47b234560800000000000000
-      internalID: 7296723601639622019
+      spriteID: 5989d27426b4dbb40800000000000000
+      internalID: 5457601208915957909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_1
+      name: JellyCharacterimage-Recovered-sheet_1
       rect:
         serializedVersion: 2
-        x: 246
+        x: 334
         y: 29
-        width: 146
+        width: 58
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f15a2b87640741730800000000000000
-      internalID: 3968920619595244831
+      spriteID: e09de0461ba28a660800000000000000
+      internalID: 7397209329332312334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_2
+      name: JellyCharacterimage-Recovered-sheet_2
       rect:
         serializedVersion: 2
-        x: 492
+        x: 578
         y: 29
-        width: 146
+        width: 60
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f72f10641a43b3860800000000000000
-      internalID: 7510654670839345791
+      spriteID: c9b599785b31a9f80800000000000000
+      internalID: -8099139309487432804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_3
+      name: JellyCharacterimage-Recovered-sheet_3
       rect:
         serializedVersion: 2
-        x: 736
+        x: 823
         y: 29
-        width: 147
+        width: 60
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 959ed141098aec0a0800000000000000
-      internalID: -6859359845672425127
+      spriteID: 1c117e2296d807f90800000000000000
+      internalID: -6957905941590765119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_4
+      name: JellyCharacterimage-Recovered-sheet_4
       rect:
         serializedVersion: 2
-        x: 981
+        x: 1068
         y: 29
-        width: 147
+        width: 60
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99d19440de9658d70800000000000000
-      internalID: 9044751893343575449
+      spriteID: 3b423f2a48649cdb0800000000000000
+      internalID: -4771204794738858829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_5
+      name: JellyCharacterimage-Recovered-sheet_5
       rect:
         serializedVersion: 2
-        x: 1226
+        x: 1314
         y: 29
-        width: 147
+        width: 59
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf337014062843b70800000000000000
-      internalID: 8877864115373552635
+      spriteID: 22cf9e0d6c0549440800000000000000
+      internalID: 4941663505971018786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_6
+      name: JellyCharacterimage-Recovered-sheet_6
       rect:
         serializedVersion: 2
-        x: 1471
+        x: 1559
         y: 29
-        width: 146
+        width: 58
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41a2bbc3122e3f100800000000000000
-      internalID: 140704645759314452
+      spriteID: 85db4f8518622a730800000000000000
+      internalID: 4008808955298233688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_7
+      name: JellyCharacterimage-Recovered-sheet_7
       rect:
         serializedVersion: 2
-        x: 1717
+        x: 1803
         y: 29
-        width: 146
+        width: 60
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26b02a5d237f8efe0800000000000000
-      internalID: -1159405106343310494
+      spriteID: e29d023c2f6561040800000000000000
+      internalID: 4617974068570806574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_8
+      name: JellyCharacterimage-Recovered-sheet_8
       rect:
         serializedVersion: 2
-        x: 1961
+        x: 2048
         y: 29
-        width: 147
+        width: 60
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c831b7883b6dc47d0800000000000000
-      internalID: -2932733190747778164
+      spriteID: 8a614bd634f6d57e0800000000000000
+      internalID: -1775140342720096600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JellyCharacterAnim_9
+      name: JellyCharacterimage-Recovered-sheet_9
       rect:
         serializedVersion: 2
-        x: 2206
+        x: 2293
         y: 29
-        width: 147
+        width: 60
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 3
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3315bf4d82a8fd780800000000000000
-      internalID: -8656048050806238925
+      spriteID: 9f4ab2f091a9571c0800000000000000
+      internalID: -4506526419694934791
       vertices: []
       indices: 
       edges: []
@@ -350,7 +350,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: be3739f5d2444e047a75938c7b209e42
+    spriteID: 5bb371b46af200643bd50d64e4e51674
     internalID: 0
     vertices: []
     indices: 
@@ -360,18 +360,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":90.0,"y":29.0},"gridSpriteSize":{"x":90.0,"y":29.0},"gridSpriteOffset":{"x":58.0,"y":59.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":1.0,"y":1.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":3,"pivotUnitMode":1,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      JellyCharacterAnim_0: 7296723601639622019
-      JellyCharacterAnim_1: 3968920619595244831
-      JellyCharacterAnim_2: 7510654670839345791
-      JellyCharacterAnim_3: -6859359845672425127
-      JellyCharacterAnim_4: 9044751893343575449
-      JellyCharacterAnim_5: 8877864115373552635
-      JellyCharacterAnim_6: 140704645759314452
-      JellyCharacterAnim_7: -1159405106343310494
-      JellyCharacterAnim_8: -2932733190747778164
-      JellyCharacterAnim_9: -8656048050806238925
+      JellyCharacterimage-Recovered-sheet_0: 5457601208915957909
+      JellyCharacterimage-Recovered-sheet_1: 7397209329332312334
+      JellyCharacterimage-Recovered-sheet_2: -8099139309487432804
+      JellyCharacterimage-Recovered-sheet_3: -6957905941590765119
+      JellyCharacterimage-Recovered-sheet_4: -4771204794738858829
+      JellyCharacterimage-Recovered-sheet_5: 4941663505971018786
+      JellyCharacterimage-Recovered-sheet_6: 4008808955298233688
+      JellyCharacterimage-Recovered-sheet_7: 4617974068570806574
+      JellyCharacterimage-Recovered-sheet_8: -1775140342720096600
+      JellyCharacterimage-Recovered-sheet_9: -4506526419694934791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
