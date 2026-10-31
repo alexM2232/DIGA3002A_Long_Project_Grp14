@@ -6,7 +6,8 @@ public class JD_NPCMovement : MonoBehaviour
     public enum MovementMode
     {
         SpaceWaves,
-        JellyDash
+        JellyDash,
+        JellyDashDown
     }
 
     [Header("Configuration")]
@@ -22,12 +23,24 @@ public class JD_NPCMovement : MonoBehaviour
 
     [Header("Obstacle Detection")]
     public float detectionDistance = 1.5f;
+    
+    [Header("Downward Traversal")]
+    public float horizontalJumpSpeed = 3f;
+    public float downwardJumpForce = 5f;
+    public float jumpCooldown = 0.25f;
+    public float landingCheckDistance = 2f;
+
 
     private Rigidbody2D rb;
     private float nextDecisionTime;
     private int verticalDirection =-1;
+    private float horizontalDirection = 1f;
     private bool isGrounded;
     private bool isTouchingWall;
+    private int jumpDirection = -1;
+    private bool isJumpingDown;
+    private bool hasLeftGround;
+    private float nextJumpTime;
 
     private void Awake()
     {
@@ -48,6 +61,10 @@ public class JD_NPCMovement : MonoBehaviour
 
             case MovementMode.JellyDash:
                 MoveJellyDash();
+                break;
+
+            case MovementMode.JellyDashDown:
+                MoveJellyDashDown();
                 break;
         }
     }
@@ -87,7 +104,7 @@ public class JD_NPCMovement : MonoBehaviour
         rb.gravityScale = 1f;
 
         //Automatic forward movement
-        rb.linearVelocity = new Vector2(profile.speed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, rb.linearVelocity.y);
 
         //Detect obstacles
         float castRadius = profile.radius + profile.safetyMargin;
@@ -95,10 +112,21 @@ public class JD_NPCMovement : MonoBehaviour
         //Basic obtacle avoidance 
         RaycastHit2D obstacle = Physics2D.CircleCast(rb.position,castRadius, Vector2.right,detectionDistance,profile.obstacleMask);
 
-        if ( isGrounded)
+        if (obstacle.collider != null)
         {
-            Jump();
+            Debug.Log("OBSTACLE DETECTED: " + obstacle.collider.name);
+            Debug.Log("IS GROUNDED: " + isGrounded);
+
+            if (isGrounded)
+            {
+                Jump();
+            }
+            else
+            {
+                Debug.Log("Cannot jump: NPC is not grounded.");
+            }
         }
+        
 
         //Wall jump
         if (isTouchingWall && !isGrounded)
@@ -127,7 +155,7 @@ public class JD_NPCMovement : MonoBehaviour
        }
        
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckDistance,groundMask);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckDistance,groundMask) != null;
 
         Debug.Log("is on ground");
     }
@@ -163,6 +191,10 @@ public class JD_NPCMovement : MonoBehaviour
         {
             SwitchMode(MovementMode.JellyDash);
         }
+        else if (other.CompareTag("JellyDashDownZone"))
+        {
+            SwitchMode(MovementMode.JellyDashDown);
+        }
     }
 
     public void SwitchMode(MovementMode newMode)
@@ -180,4 +212,50 @@ public class JD_NPCMovement : MonoBehaviour
 
         nextDecisionTime = 0f;
     }
+
+   private void MoveJellyDashDown()
+{
+    rb.gravityScale = 1f;
+
+    // Maintain horizontal movement
+    rb.linearVelocity = new Vector2(
+        horizontalJumpSpeed * jumpDirection,
+        rb.linearVelocity.y
+    );
+
+    // Start the downward jump
+    if (!isJumpingDown && isGrounded &&
+        Time.time >= nextJumpTime)
+    {
+        isJumpingDown = true;
+        hasLeftGround = false;
+
+        rb.linearVelocity = new Vector2(
+            horizontalJumpSpeed * jumpDirection,
+            0f
+        );
+
+        rb.AddForce(
+            Vector2.down * downwardJumpForce,
+            ForceMode2D.Impulse
+        );
+    }
+
+    // Confirm that the NPC has actually left the platform
+    if (isJumpingDown && !isGrounded)
+    {
+        hasLeftGround = true;
+    }
+
+    // Detect landing
+    if (isJumpingDown && hasLeftGround && isGrounded)
+    {
+        isJumpingDown = false;
+
+        // Reverse direction AFTER landing
+        jumpDirection *= -1;
+
+        nextJumpTime = Time.time + jumpCooldown;
+    }
+}
 }

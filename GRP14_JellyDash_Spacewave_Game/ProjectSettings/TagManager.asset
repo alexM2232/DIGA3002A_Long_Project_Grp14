@@ -19,6 +19,7 @@ TagManager:
   - Space 3
   - JellyDashZone
   - SpaceWavesZone
+  - JellyDashDownZone
   layers:
   - Default
   - TransparentFX
