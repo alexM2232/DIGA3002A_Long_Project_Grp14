@@ -89,10 +89,13 @@ public class JD_NPCMovement : MonoBehaviour
         //Automatic forward movement
         rb.linearVelocity = new Vector2(profile.speed, rb.linearVelocity.y);
 
-        //Basic obtacle avoidance 
-        RaycastHit2D obstacle = Physics2D.Raycast(rb.position,Vector2.right,detectionDistance,profile.obstacleMask);
+        //Detect obstacles
+        float castRadius = profile.radius + profile.safetyMargin;
 
-        if (obstacle.collider != null && isGrounded)
+        //Basic obtacle avoidance 
+        RaycastHit2D obstacle = Physics2D.CircleCast(rb.position,castRadius, Vector2.right,detectionDistance,profile.obstacleMask);
+
+        if ( isGrounded)
         {
             Jump();
         }
@@ -111,15 +114,22 @@ public class JD_NPCMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        Debug.Log("NPC jumps");
     }
 
     private void UpdateGrounded()
     {
-        isGrounded = false;
+       if (groundCheck == null) 
+       {
+            isGrounded = false;
+            return;
+       }
+       
 
-        if (groundCheck == null) return;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckDistance,groundMask);
 
-        isGrounded = Physics2D.Raycast(groundCheck.position,Vector2.down,groundCheckDistance,groundMask).collider != null;
+        Debug.Log("is on ground");
     }
 
      private void OnCollisionStay2D(Collision2D collision)
