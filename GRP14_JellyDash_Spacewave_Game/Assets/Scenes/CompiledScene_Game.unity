@@ -106140,7 +106140,7 @@ GameObject:
   - component: {fileID: 536070715}
   m_Layer: 0
   m_Name: Flat Ground (2337)
-  m_TagString: Ground
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152844,7 +152844,7 @@ GameObject:
   - component: {fileID: 777063028}
   m_Layer: 0
   m_Name: Flat Ground (2336)
-  m_TagString: Untagged
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306016,7 +306016,7 @@ GameObject:
   - component: {fileID: 1576988224}
   m_Layer: 0
   m_Name: Flat Ground (2335)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338526,7 +338526,7 @@ GameObject:
   - component: {fileID: 1729882640}
   m_Layer: 0
   m_Name: Flat Ground (2342)
-  m_TagString: Ground
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350763,7 +350763,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4908670576368162355, guid: b04faf553a3da624c8f6e6623b6cacb2, type: 3}
   m_Color: {r: 0.78867924, g: 0.61426365, b: 0.36160192, a: 1}
@@ -406007,7 +406007,7 @@ GameObject:
   - component: {fileID: 2052209944}
   m_Layer: 0
   m_Name: Flat Ground (2339)
-  m_TagString: Ground
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
