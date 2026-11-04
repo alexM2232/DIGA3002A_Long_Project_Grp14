@@ -6,7 +6,7 @@ public class npcMovement : MonoBehaviour
     [Header("NPC Respawning")]
     public string obstacleTag = "Damage";
     public Transform[] checkPoints;
-
+    
     public npcProfile profile;
     public float targetY = 0f;
     private Rigidbody2D rb;

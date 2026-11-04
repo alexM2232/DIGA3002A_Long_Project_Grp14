@@ -24,12 +24,13 @@ public class JD_NPCMovement : MonoBehaviour
     [Header("Obstacle Detection")]
     public float detectionDistance = 1.5f;
     
-    [Header("Downward Traversal")]
-    public float horizontalJumpSpeed = 3f;
-    public float downwardJumpForce = 5f;
-    public float jumpCooldown = 0.25f;
-    public float landingCheckDistance = 2f;
 
+    [Header("Downward Traversal")]
+    public Transform edgeCheck;
+    public float edgeCheckDistance = 0.4f;
+    public LayerMask wallMask;
+    public float wallcheckDistance = 0.3f;
+    public float turnCooldown = 0.3f;
 
     private Rigidbody2D rb;
     private float nextDecisionTime;
@@ -38,9 +39,13 @@ public class JD_NPCMovement : MonoBehaviour
     private bool isGrounded;
     private bool isTouchingWall;
     private int jumpDirection = -1;
-    private bool isJumpingDown;
-    private bool hasLeftGround;
-    private float nextJumpTime;
+    private bool wallJumping;
+private float wallJumpCooldown = 0.5f;
+private float nextWallJumpTime;
+private int moveDirection = 1;
+
+    private float nextTurnTime;
+
 
     private void Awake()
     {
@@ -157,7 +162,6 @@ public class JD_NPCMovement : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckDistance,groundMask) != null;
 
-        Debug.Log("is on ground");
     }
 
      private void OnCollisionStay2D(Collision2D collision)
@@ -213,49 +217,35 @@ public class JD_NPCMovement : MonoBehaviour
         nextDecisionTime = 0f;
     }
 
+    private bool IsPlatformAhead()
+    {
+        return Physics2D.Raycast(edgeCheck.position, Vector2.down, edgeCheckDistance, groundMask).collider != null;
+    }
+
    private void MoveJellyDashDown()
 {
     rb.gravityScale = 1f;
 
-    // Maintain horizontal movement
-    rb.linearVelocity = new Vector2(
-        horizontalJumpSpeed * jumpDirection,
-        rb.linearVelocity.y
-    );
+    //Look for wall
+    float castRadius = profile.radius + profile.safetyMargin;
+    Vector2 dir = Vector2.right * Mathf.Sign(horizontalDirection);
 
-    // Start the downward jump
-    if (!isJumpingDown && isGrounded &&
-        Time.time >= nextJumpTime)
+    RaycastHit2D wallHit = Physics2D.CircleCast(rb.position, castRadius, dir, wallcheckDistance, wallMask);
+
+    //Turn around
+    if(wallHit.collider != null && Time.time >= nextTurnTime)
     {
-        isJumpingDown = true;
-        hasLeftGround = false;
+        horizontalDirection *= -1f;
+        nextTurnTime = Time.time + turnCooldown;
 
-        rb.linearVelocity = new Vector2(
-            horizontalJumpSpeed * jumpDirection,
-            0f
-        );
-
-        rb.AddForce(
-            Vector2.down * downwardJumpForce,
-            ForceMode2D.Impulse
-        );
+        //Flip sprite
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontalDirection);
+        transform.localScale = scale;
     }
 
-    // Confirm that the NPC has actually left the platform
-    if (isJumpingDown && !isGrounded)
-    {
-        hasLeftGround = true;
-    }
+   //Keep walking
+   rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, rb.linearVelocity.y); 
 
-    // Detect landing
-    if (isJumpingDown && hasLeftGround && isGrounded)
-    {
-        isJumpingDown = false;
-
-        // Reverse direction AFTER landing
-        jumpDirection *= -1;
-
-        nextJumpTime = Time.time + jumpCooldown;
-    }
 }
 }
