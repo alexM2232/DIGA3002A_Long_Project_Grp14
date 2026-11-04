@@ -7,7 +7,8 @@ public class JD_NPCMovement : MonoBehaviour
     {
         SpaceWaves,
         JellyDash,
-        JellyDashDown
+        JellyDashDown,
+        JellyDashSwing
     }
 
     [Header("Configuration")]
@@ -24,6 +25,20 @@ public class JD_NPCMovement : MonoBehaviour
     [Header("Obstacle Detection")]
     public float detectionDistance = 1.5f;
     
+    [Header("Swinging")]
+    public LayerMask swingMask;
+    public float swingDetectRadius = 3f;
+    public Transform swingCheck;
+    public float swingForce = 6f;
+    public float releaseOffset = 0.5f;
+    public float maxSwingTime = 2.5f;
+    public Vector2 releaseBoost = new Vector2(3f,3f);
+    public float regrabCooldown = 0.5f;
+
+    [Header("Rope Visual")]
+    public LineRenderer ropeLine;
+    public float ropeWidth = 0.08f;
+    
 
     [Header("Downward Traversal")]
     public Transform edgeCheck;
@@ -37,19 +52,43 @@ public class JD_NPCMovement : MonoBehaviour
     private int verticalDirection =-1;
     private float horizontalDirection = 1f;
     private bool isGrounded;
+
     private bool isTouchingWall;
     private int jumpDirection = -1;
     private bool wallJumping;
-private float wallJumpCooldown = 0.5f;
-private float nextWallJumpTime;
-private int moveDirection = 1;
+    private float wallJumpCooldown = 0.5f;
+    private float nextWallJumpTime;
+    private int moveDirection = 1;
 
     private float nextTurnTime;
 
+    private DistanceJoint2D swingJoint;
+    private Transform currentAnchor;
+    private bool isSwinging;
+    private float swingStartTime;
+    private float nextGrabTime;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        SetupRope();
+    }
+
+    private void SetupRope()
+    {
+        if (ropeLine == null)
+        {
+            GameObject ropeObj = new GameObject("SwingRope");
+            ropeObj.transform.SetParent(transform);
+            ropeLine = ropeObj.AddComponent<LineRenderer>();
+        }
+
+        ropeLine.positionCount = 2;
+        ropeLine.useWorldSpace = true;
+        ropeLine.startWidth = ropeWidth;
+        ropeLine.endWidth = ropeWidth;
+        ropeLine.sortingOrder = 10;
+        ropeLine.enabled = false;
     }
 
     private void FixedUpdate()
@@ -70,6 +109,10 @@ private int moveDirection = 1;
 
             case MovementMode.JellyDashDown:
                 MoveJellyDashDown();
+                break;
+            
+            case MovementMode.JellyDashSwing:
+                MoveSwing();
                 break;
         }
     }
@@ -199,11 +242,18 @@ private int moveDirection = 1;
         {
             SwitchMode(MovementMode.JellyDashDown);
         }
+        else if (other.CompareTag("JellyDashSwingZone"))
+        {
+            SwitchMode(MovementMode.JellyDashSwing);
+        }
     }
 
     public void SwitchMode(MovementMode newMode)
     {
+        
         currentMode = newMode;
+
+        if (isSwinging) ReleaseSwing();
 
         if (newMode == MovementMode.SpaceWaves)
         {
@@ -247,5 +297,94 @@ private int moveDirection = 1;
    //Keep walking
    rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, rb.linearVelocity.y); 
 
+}
+
+    private void MoveSwing()
+{
+    rb.gravityScale = 1f;
+
+    if (!isSwinging)
+    {
+        // Run forward until an anchor comes into range
+        rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, rb.linearVelocity.y);
+
+        if (Time.time >= nextGrabTime)
+            TryGrabAnchor();
+        return;
+    }
+
+    // --- Currently swinging ---
+    // Keep momentum going in the travel direction
+    rb.AddForce(Vector2.right * horizontalDirection * swingForce);
+
+    // Rope visual follows the NPC every physics step
+    ropeLine.SetPosition(0, rb.position);
+    ropeLine.SetPosition(1, currentAnchor.position);
+
+    // Release once we've swung past the anchor, or after too long
+    float pastAnchor = (rb.position.x - currentAnchor.position.x) * Mathf.Sign(horizontalDirection);
+    if (pastAnchor >= releaseOffset || Time.time - swingStartTime >= maxSwingTime)
+    {
+        ReleaseSwing();
+    }
+}
+
+private void TryGrabAnchor()
+{
+    Vector2 origin = swingCheck != null ? (Vector2)swingCheck.position : rb.position;
+
+    Collider2D[] hits = Physics2D.OverlapCircleAll(origin, swingDetectRadius, swingMask);
+
+    Collider2D best = null;
+    float bestDist = float.MaxValue;
+
+    foreach (Collider2D hit in hits)
+    {
+        // Only anchors ahead of us
+        float ahead = (hit.transform.position.x - rb.position.x) * Mathf.Sign(horizontalDirection);
+        if (ahead <= 0f) continue;
+
+        float dist = Vector2.Distance(origin, hit.transform.position);
+        if (dist < bestDist)
+        {
+            bestDist = dist;
+            best = hit;
+        }
+    }
+
+    if (best != null)
+        StartSwing(best.transform);
+}
+
+private void StartSwing(Transform anchor)
+{
+    currentAnchor = anchor;
+    isSwinging = true;
+    swingStartTime = Time.time;
+
+    swingJoint = gameObject.AddComponent<DistanceJoint2D>();
+    swingJoint.autoConfigureConnectedAnchor = false;
+    swingJoint.connectedAnchor = anchor.position;     // World space (no connected body)
+    swingJoint.autoConfigureDistance = false;
+    swingJoint.distance = Vector2.Distance(rb.position, anchor.position);
+    swingJoint.maxDistanceOnly = true;                // Rope: can't stretch, can go slack
+    swingJoint.enableCollision = true;
+
+    ropeLine.enabled = true;
+    ropeLine.SetPosition(0, rb.position);
+    ropeLine.SetPosition(1, anchor.position);
+}
+
+private void ReleaseSwing()
+{
+    if (swingJoint != null) Destroy(swingJoint);
+
+    isSwinging = false;
+    currentAnchor = null;
+    ropeLine.enabled = false;
+    nextGrabTime = Time.time + regrabCooldown;
+
+    // Fling forward off the rope
+    rb.linearVelocity += new Vector2(releaseBoost.x * horizontalDirection, releaseBoost.y);
 }
 }
