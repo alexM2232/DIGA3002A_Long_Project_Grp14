@@ -151,6 +151,8 @@ public class JD_NPCMovement : MonoBehaviour
     {
         rb.gravityScale = 1f;
 
+        float dirSign = Mathf.Sign(horizontalDirection);
+
         //Automatic forward movement
         rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, rb.linearVelocity.y);
 
@@ -158,7 +160,7 @@ public class JD_NPCMovement : MonoBehaviour
         float castRadius = profile.radius + profile.safetyMargin;
 
         //Basic obtacle avoidance 
-        RaycastHit2D obstacle = Physics2D.CircleCast(rb.position,castRadius, Vector2.right,detectionDistance,profile.obstacleMask);
+        RaycastHit2D obstacle = Physics2D.CircleCast(rb.position,castRadius, Vector2.right * dirSign,detectionDistance,profile.obstacleMask);
 
         if (obstacle.collider != null)
         {
@@ -177,11 +179,20 @@ public class JD_NPCMovement : MonoBehaviour
         
 
         //Wall jump
-        if (isTouchingWall && !isGrounded)
+        if (isTouchingWall && !isGrounded && Time.time >= nextWallJumpTime)
         {
-            rb.linearVelocity = new Vector2(-profile.speed,rb.linearVelocity.y);
+            horizontalDirection *= -1f;   // actually turn around, otherwise the next frame overrides it
 
-            rb.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x) * wallJumpForce, jumpForce), ForceMode2D.Impulse);
+             rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, 0f);
+        rb.AddForce(new Vector2(horizontalDirection * wallJumpForce, jumpForce), ForceMode2D.Impulse);
+
+        nextWallJumpTime = Time.time + wallJumpCooldown;
+        isTouchingWall = false;
+
+        // Keep sprite facing the new direction
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontalDirection);
+        transform.localScale = scale;
         }
     }
 
