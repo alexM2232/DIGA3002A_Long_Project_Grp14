@@ -19,21 +19,22 @@ public class PlayerMovementJellyDash : MonoBehaviour
     [SerializeField] private string climbingWallTag = "ClimbingWall";
     [SerializeField] private string swingWallTag = "SwingWall";
 
-    [Header("Wall Jump")]
+    [Header("Wall Jump and Wall Slide")]
     [SerializeField] private float wallJumpHorizontalForce = 8f;
     [SerializeField] private float wallJumpVerticalForce = 10f;
+    [SerializeField] private float wallSlideSpeed = 2f;
 
     [Header("Swing")]
     [SerializeField] private Transform swingVisual;
     [SerializeField] private float swingRopeLength = 2.5f;
     [SerializeField] private float swingGravity = 20f;
     [SerializeField] private float swingLaunchBoost = 3f;
-    [SerializeField] private float swingLaunchAngle = 0.15f;
 
     private Rigidbody2D rb;
 
     private bool isGrounded;
     private bool touchingClimbingWall;
+    private bool isWallSliding;
     private bool isSwinging;
 
     private float horizontalInput;
@@ -45,6 +46,8 @@ public class PlayerMovementJellyDash : MonoBehaviour
     private float swingAngle;
     private float swingAngularVelocity;
     private float swingDirection = 1f;
+
+    private Collider2D currentSwingCollider;
 
     private void Awake()
     {
@@ -82,16 +85,25 @@ public class PlayerMovementJellyDash : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
             horizontalInput = 1f;
 
+        // While swinging, Space must remain held.
         if (isSwinging)
-            return;
+        {
+            if (!Keyboard.current.spaceKey.isPressed)
+                ReleaseSwing();
 
+            return;
+        }
+
+        // Wall jump.
         if (touchingClimbingWall)
         {
             if (Keyboard.current.aKey.wasPressedThisFrame)
                 WallJump(-1f);
+
             else if (Keyboard.current.dKey.wasPressedThisFrame)
                 WallJump(1f);
         }
+        // Normal jump.
         else if (isGrounded &&
                  Keyboard.current.spaceKey.wasPressedThisFrame)
         {
@@ -113,7 +125,21 @@ public class PlayerMovementJellyDash : MonoBehaviour
         }
 
         if (touchingClimbingWall)
+        {
+            isWallSliding = !isGrounded;
+
+            if (isWallSliding)
+            {
+                rb.linearVelocity = new Vector2(
+                    0f,
+                    Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed)
+                );
+            }
+
             return;
+        }
+
+        isWallSliding = false;
 
         float horizontalMovement = horizontalInput == 0f
             ? forwardPushSpeed
@@ -141,6 +167,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
         );
 
         touchingClimbingWall = false;
+        isWallSliding = false;
         isGrounded = false;
 
         Debug.Log("Wall jump!");
@@ -167,12 +194,16 @@ public class PlayerMovementJellyDash : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(climbingWallTag))
+        {
             touchingClimbingWall = false;
+            isWallSliding = false;
+        }
 
         if (collision.gameObject.CompareTag(groundTag))
             isGrounded = false;
     }
 
+    // Detect swing wall triggers.
     private void OnTriggerEnter2D(Collider2D other)
     {
         TryAttachToSwing(other);
@@ -189,24 +220,28 @@ public class PlayerMovementJellyDash : MonoBehaviour
         if (isSwinging)
             return;
 
+        // Player must hold Space to attach.
+        if (Keyboard.current == null ||
+            !Keyboard.current.spaceKey.isPressed)
+            return;
+
         Transform current = other.transform;
 
         while (current != null)
         {
             if (current.CompareTag(swingWallTag))
             {
-                BoxCollider2D wallCollider =
-                    current.GetComponent<BoxCollider2D>();
+                Collider2D wallCollider =
+                    current.GetComponent<Collider2D>();
 
                 if (wallCollider == null)
                     wallCollider =
-                        current.GetComponentInChildren<BoxCollider2D>();
+                        current.GetComponentInChildren<Collider2D>();
 
                 if (wallCollider == null)
                 {
                     Debug.LogWarning(
-                        current.name +
-                        " needs a BoxCollider2D to calculate its pivot."
+                        current.name + " needs a Collider2D."
                     );
                     return;
                 }
@@ -221,7 +256,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     private void AttachToSwing(
         Transform wall,
-        BoxCollider2D wallCollider)
+        Collider2D wallCollider)
     {
         Bounds bounds = wallCollider.bounds;
 
@@ -231,6 +266,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
         );
 
         swingWallTransform = wall;
+        currentSwingCollider = wallCollider;
 
         Vector2 offset = rb.position - swingAnchor;
 
@@ -243,7 +279,11 @@ public class PlayerMovementJellyDash : MonoBehaviour
         }
 
         swingRadius = swingRopeLength;
-        swingAngle = Mathf.Atan2(offset.x, -offset.y);
+
+        swingAngle = Mathf.Atan2(
+            offset.x,
+            -offset.y
+        );
 
         Vector2 tangent = new Vector2(
             Mathf.Cos(swingAngle),
@@ -275,7 +315,8 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     private void HandleSwingMovement()
     {
-        if (swingWallTransform == null)
+        if (swingWallTransform == null ||
+            currentSwingCollider == null)
         {
             ReleaseSwing();
             return;
@@ -306,19 +347,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             swingRadius;
 
         UpdateSwingVisual(swingAnchor, playerPosition);
-
-        // Automatically launch after swinging upward
-        // on the side the player is travelling toward.
-        bool passedBottom =
-            swingDirection > 0f
-                ? swingAngle > swingLaunchAngle
-                : swingAngle < -swingLaunchAngle;
-
-        bool movingUpward =
-            Mathf.Sign(swingAngularVelocity) == swingDirection;
-
-        if (passedBottom && movingUpward)
-            ReleaseSwing();
     }
 
     private void UpdateSwingVisual(
@@ -353,6 +381,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
         Vector2 launchVelocity = rb.linearVelocity;
 
         launchVelocity.x += swingDirection * swingLaunchBoost;
+
         launchVelocity.y = Mathf.Max(
             launchVelocity.y,
             jumpForce * 0.5f
@@ -360,6 +389,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
         isSwinging = false;
         swingWallTransform = null;
+        currentSwingCollider = null;
 
         rb.gravityScale = normalGravityScale;
         rb.linearVelocity = launchVelocity;
@@ -367,6 +397,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(false);
 
-        Debug.Log("Automatically launched from swing!");
+        Debug.Log("Released swing!");
     }
 }

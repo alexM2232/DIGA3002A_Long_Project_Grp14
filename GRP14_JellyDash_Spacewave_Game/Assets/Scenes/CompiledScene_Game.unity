@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 6787661}
   m_Layer: 0
   m_Name: Flat Ground (67)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13460,12 +13460,13 @@ Transform:
   m_GameObject: {fileID: 77923741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.8, y: -0.04, z: 0}
+  m_LocalPosition: {x: 144.07, y: -1.21, z: 0}
   m_LocalScale: {x: 1.735775, y: 1.735775, z: 1.735775}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986654251}
   - {fileID: 441515798}
+  - {fileID: 200401426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &77923747
@@ -13483,7 +13484,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -13724,18 +13725,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementJellyDash
   moveSpeed: 5
   forwardPushSpeed: 8
-  jumpForce: 15
+  jumpForce: 18
   fallGravityMultiplier: 2.5
   groundTag: Ground
   climbingWallTag: ClimbingWall
   swingWallTag: SwingWall
   wallJumpHorizontalForce: 8
-  wallJumpVerticalForce: 15
+  wallJumpVerticalForce: 10
+  wallSlideSpeed: 5
   swingVisual: {fileID: 441515798}
   swingRopeLength: 2.5
   swingGravity: 20
   swingLaunchBoost: 3
-  swingLaunchAngle: 0.15
 --- !u!95 &77923758
 Animator:
   serializedVersion: 7
@@ -14526,7 +14527,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0046691895, y: 0.056031823}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14536,7 +14537,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2614822, y: 1.1120636}
   m_EdgeRadius: 0
 --- !u!212 &82488808
 SpriteRenderer:
@@ -15306,7 +15307,7 @@ GameObject:
   - component: {fileID: 86372836}
   m_Layer: 0
   m_Name: Flat Ground (155)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15416,7 +15417,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -23060,7 +23061,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000047683716, y: 0.051362634}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -23070,7 +23071,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2708216, y: 1.1027253}
   m_EdgeRadius: 0
 --- !u!212 &136669908
 SpriteRenderer:
@@ -29351,7 +29352,7 @@ GameObject:
   - component: {fileID: 176264548}
   m_Layer: 0
   m_Name: Flat Ground (69)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29461,7 +29462,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -32849,14 +32850,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200401425}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.75, y: -1.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -97.48, y: -0.64, z: 0}
+  m_LocalScale: {x: 0.5761115, y: 0.5761115, z: 0.5761115}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667690377}
   - {fileID: 2026904052}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 77923742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200807769
 GameObject:
@@ -43385,7 +43386,7 @@ GameObject:
   - component: {fileID: 257264399}
   m_Layer: 0
   m_Name: Flat Ground (152)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43495,7 +43496,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -52408,7 +52409,7 @@ GameObject:
   - component: {fileID: 337747108}
   m_Layer: 0
   m_Name: Flat Ground (149)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52518,7 +52519,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -52542,7 +52543,9 @@ PolygonCollider2D:
       - {x: 0.47227058, y: 0.5854398}
       - {x: 0.3574505, y: 0.60999995}
       - {x: -0.635, y: 0.61}
+      - {x: -0.6350002, y: 0.26161784}
       - {x: -0.635, y: -0.61}
+      - {x: -0.29470253, y: -0.7628125}
       - {x: 0.035, y: -0.61}
       - {x: 0.074999996, y: -0.59999996}
       - {x: 0.205, y: -0.52}
@@ -68026,7 +68029,7 @@ GameObject:
   - component: {fileID: 432256383}
   m_Layer: 0
   m_Name: Flat Ground (70)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70926,7 +70929,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.04870987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -70936,7 +70939,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0974197}
   m_EdgeRadius: 0
 --- !u!212 &449868776
 SpriteRenderer:
@@ -77232,7 +77235,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.011240482, y: 0.056203604}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -77242,7 +77245,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2847643, y: 1.1124072}
   m_EdgeRadius: 0
 --- !u!212 &505258611
 SpriteRenderer:
@@ -94693,7 +94696,7 @@ GameObject:
   - component: {fileID: 626381300}
   m_Layer: 0
   m_Name: Flat Ground (151)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94803,7 +94806,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -109415,7 +109418,7 @@ GameObject:
   - component: {fileID: 727994547}
   m_Layer: 0
   m_Name: Flat Ground (154)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109525,7 +109528,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -112623,7 +112626,7 @@ GameObject:
   - component: {fileID: 750587105}
   m_Layer: 0
   m_Name: Flat Ground (150)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112733,7 +112736,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -112758,6 +112761,7 @@ PolygonCollider2D:
       - {x: -0.185, y: -0.56}
       - {x: -0.015, y: -0.61}
       - {x: 0.635, y: -0.61}
+      - {x: 0.6350002, y: -0.48061377}
       - {x: 0.6350002, y: 0.029682755}
       - {x: 0.6350002, y: 0.15509874}
       - {x: 0.6350002, y: 0.15509874}
@@ -115205,7 +115209,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.07227659, y: 0.016563356}
+  m_Offset: {x: 0.00009775162, y: 0.0562526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -115215,7 +115219,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1445532, y: 1.0331267}
+  m_Size: {x: 1.2893019, y: 1.1125052}
   m_EdgeRadius: 0
 --- !u!212 &770847831
 SpriteRenderer:
@@ -132851,7 +132855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 337.16003, y: -90.54993}
+  m_AnchoredPosition: {x: 337.16016, y: -90.549805}
   m_SizeDelta: {x: -674.32, y: -181.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885112931
@@ -139628,7 +139632,7 @@ GameObject:
   - component: {fileID: 932139264}
   m_Layer: 0
   m_Name: Flat Ground (148)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139738,7 +139742,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -141455,7 +141459,7 @@ GameObject:
   - component: {fileID: 947814168}
   m_Layer: 0
   m_Name: Flat Ground (68)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145223,7 +145227,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.052456617}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -145233,7 +145237,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2772713, y: 1.1049132}
   m_EdgeRadius: 0
 --- !u!212 &964752873
 SpriteRenderer:
@@ -149217,7 +149221,7 @@ GameObject:
   - component: {fileID: 993782797}
   m_Layer: 0
   m_Name: Flat Ground (156)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149327,7 +149331,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -152252,7 +152256,7 @@ GameObject:
   - component: {fileID: 1012850096}
   m_Layer: 0
   m_Name: Flat Ground (147)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152362,7 +152366,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -152386,6 +152390,7 @@ PolygonCollider2D:
       - {x: -0.275, y: -0.45999998}
       - {x: -0.185, y: -0.56}
       - {x: -0.015, y: -0.61}
+      - {x: 0.39035225, y: -0.58393526}
       - {x: 0.635, y: -0.61}
       - {x: 0.6350002, y: 0.15426636}
       - {x: 0.6350002, y: 0.15426636}
@@ -159070,7 +159075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 265.33997, y: -58.91394}
+  m_AnchoredPosition: {x: 265.33984, y: -58.914062}
   m_SizeDelta: {x: -530.6851, y: -117.8069}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069108915
@@ -170807,7 +170812,7 @@ GameObject:
   - component: {fileID: 1140477329}
   m_Layer: 0
   m_Name: Flat Ground (172)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170917,7 +170922,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -175614,7 +175619,7 @@ GameObject:
   - component: {fileID: 1174768809}
   m_Layer: 0
   m_Name: Flat Ground (171)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175724,7 +175729,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -187592,7 +187597,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.052456617}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -187602,7 +187607,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.1049132}
   m_EdgeRadius: 0
 --- !u!212 &1258578146
 SpriteRenderer:
@@ -188094,7 +188099,7 @@ GameObject:
   - component: {fileID: 1261355696}
   m_Layer: 0
   m_Name: Flat Ground (310)
-  m_TagString: Untagged
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196323,7 +196328,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0045779943, y: 0.016563356}
+  m_Offset: {x: -0.0045779943, y: 0.060921967}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -196333,7 +196338,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2799504, y: 1.0331267}
+  m_Size: {x: 1.2799504, y: 1.1218439}
   m_EdgeRadius: 0
 --- !u!212 &1324375372
 SpriteRenderer:
@@ -230893,7 +230898,7 @@ GameObject:
   - component: {fileID: 1569641486}
   m_Layer: 0
   m_Name: Flat Ground (66)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236774,7 +236779,7 @@ GameObject:
   - component: {fileID: 1620947518}
   m_Layer: 0
   m_Name: Flat Ground (145)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236884,7 +236889,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -236901,6 +236906,7 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.64, y: 0.64}
+      - {x: -0.6452122, y: -0.113906294}
       - {x: -0.64, y: -0.59}
       - {x: -0.48999998, y: -0.64}
       - {x: 0.53, y: -0.64}
@@ -242858,7 +242864,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.046836257}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -242868,7 +242874,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.0936725}
   m_EdgeRadius: 0
 --- !u!212 &1651871805
 SpriteRenderer:
@@ -245981,7 +245987,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.07915974, y: 0}
+  m_Offset: {x: 0.0153080225, y: 0.22535813}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -245991,7 +245997,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.673647, y: 1}
+  m_Size: {x: 2.3806822, y: 0.54928374}
   m_EdgeRadius: 0
 --- !u!1 &1668285400
 GameObject:
@@ -267964,7 +267970,7 @@ GameObject:
   - component: {fileID: 1802140111}
   m_Layer: 0
   m_Name: Flat Ground (153)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268074,7 +268080,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -278262,7 +278268,7 @@ GameObject:
   - component: {fileID: 1871113727}
   m_Layer: 0
   m_Name: Flat Ground (65)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290859,7 +290865,7 @@ GameObject:
   - component: {fileID: 1940956862}
   m_Layer: 0
   m_Name: Flat Ground (308)
-  m_TagString: Untagged
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297854,7 +297860,7 @@ GameObject:
   - component: {fileID: 1989347218}
   m_Layer: 0
   m_Name: Flat Ground (2058)
-  m_TagString: Untagged
+  m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303295,7 +303301,7 @@ GameObject:
   - component: {fileID: 2025973026}
   m_Layer: 0
   m_Name: Flat Ground (146)
-  m_TagString: Ground
+  m_TagString: SwingWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303405,7 +303411,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -303458,7 +303464,7 @@ Transform:
   m_GameObject: {fileID: 2026904051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.098, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -313292,12 +313298,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.47899723, y: 0.36042666}
-      - {x: 0.35622835, y: 0.23946214}
-      - {x: -0.5067482, y: -0.6089375}
+    - - {x: 0.4042883, y: 0.3887056}
+      - {x: 0.2908578, y: 0.26302797}
+      - {x: -0.018955708, y: -0.041307125}
+      - {x: -0.6328201, y: -0.64192986}
       - {x: 0.6289325, y: -0.6110165}
       - {x: 0.62907696, y: 0.11879897}
-      - {x: 0.63608503, y: 0.53184664}
+      - {x: 0.63608503, y: 0.62139666}
   m_UseDelaunayMesh: 1
 --- !u!1 &2086990799
 GameObject:
@@ -321111,7 +321118,6 @@ SceneRoots:
   - {fileID: 98343108}
   - {fileID: 1226460743}
   - {fileID: 641175194}
-  - {fileID: 200401426}
   - {fileID: 380191222}
   - {fileID: 842422785}
   - {fileID: 1725308181}
