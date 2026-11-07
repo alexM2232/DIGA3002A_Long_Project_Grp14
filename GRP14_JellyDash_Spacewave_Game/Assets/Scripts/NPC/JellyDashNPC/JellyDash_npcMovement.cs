@@ -24,6 +24,10 @@ public class JD_NPCMovement : MonoBehaviour
 
     [Header("Obstacle Detection")]
     public float detectionDistance = 1.5f;
+
+    [Header("Wall Jump")]
+    public LayerMask wallJumpMask;
+    public float wallJumpCheckDistance = 0.1f;
     
     [Header("Swinging")]
     public LayerMask swingMask;
@@ -176,25 +180,35 @@ public class JD_NPCMovement : MonoBehaviour
                 Debug.Log("Cannot jump: NPC is not grounded.");
             }
         }
-        
 
-        //Wall jump
-        if (isTouchingWall && !isGrounded && Time.time >= nextWallJumpTime)
+        if (!isGrounded && Time.time >= nextWallJumpTime && IsWallAhead(dirSign))
         {
-            horizontalDirection *= -1f;   // actually turn around, otherwise the next frame overrides it
+            WallJump();
+        }
+    }
 
-             rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, 0f);
-        rb.AddForce(new Vector2(horizontalDirection * wallJumpForce, jumpForce), ForceMode2D.Impulse);
+  private bool IsWallAhead(float dirSign)
+    {
+        return Physics2D.CircleCast(rb.position, profile.radius, Vector2.right * dirSign,wallJumpCheckDistance, wallJumpMask).collider != null;
+    }
+
+    private void WallJump()
+    {
+        // Turn away from the wall
+        horizontalDirection *= -1f;
+
+        // Set velocity directly: away from the wall and upward
+        rb.linearVelocity = new Vector2(profile.speed * horizontalDirection, wallJumpForce);
 
         nextWallJumpTime = Time.time + wallJumpCooldown;
-        isTouchingWall = false;
 
-        // Keep sprite facing the new direction
+        // Flip sprite
         Vector3 scale = transform.localScale;
         scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontalDirection);
         transform.localScale = scale;
-        }
-    }
+
+        Debug.Log("NPC wall jumps");
+    }  
 
     private void Jump()
     {
