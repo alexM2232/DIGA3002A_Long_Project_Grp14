@@ -28,6 +28,14 @@ public class JD_NPCMovement : MonoBehaviour
     [Header("Wall Jump")]
     public LayerMask wallJumpMask;
     public float wallJumpCheckDistance = 0.1f;
+
+    [Header("Hazard Arc Prediction")]
+    public int arcSamples = 12;               // More samples = more accurate
+    public float arcMaxDistance = 15f;        // Max shaft width to look across
+    public float slideSpeed = 1.5f;   // How slowly it slides while waiting
+    public LayerMask hazardMask;               // Deadly obstacles (keep OUT of wallJumpMask)
+    public float hazardSideMargin = 0.25f;     // Extra width so near-misses count as hits
+
     
     [Header("Swinging")]
     public LayerMask swingMask;
@@ -181,16 +189,55 @@ public class JD_NPCMovement : MonoBehaviour
             }
         }
 
-        if (!isGrounded && Time.time >= nextWallJumpTime && IsWallAhead(dirSign))
-        {
-            WallJump();
-        }
+        if (Time.time >= nextWallJumpTime && !isGrounded && IsWallAhead(dirSign))
+{
+    // After bouncing, the NPC travels the opposite way
+    if (IsArcSafe(-dirSign, wallJumpForce))
+    {
+        WallJump();
+    }
+    else
+    {
+        // Unsafe: cling to the wall and slide down until the arc is clear
+        rb.linearVelocity = new Vector2(0f, Mathf.Max(rb.linearVelocity.y, -slideSpeed));
+    }
+}
     }
 
-  private bool IsWallAhead(float dirSign)
+  private bool IsWallAhead(float dirSign, float distance = -1f)
     {
-        return Physics2D.CircleCast(rb.position, profile.radius, Vector2.right * dirSign,wallJumpCheckDistance, wallJumpMask).collider != null;
+        if (distance < 0f) distance = wallJumpCheckDistance;
+
+        return Physics2D.CircleCast(rb.position,profile.radius,Vector2.right * dirSign,distance,wallJumpMask).collider != null;
     }
+
+    // Simulates a wall jump launched toward travelDir with upward speed launchVy
+private bool IsArcSafe(float travelDir, float launchVy)
+{
+    // Find the far wall so we know where the arc ends
+    RaycastHit2D farWall = Physics2D.Raycast(
+        rb.position, Vector2.right * travelDir, arcMaxDistance, wallJumpMask);
+
+    float dist = farWall.collider != null ? farWall.distance : arcMaxDistance;
+
+    float vx = profile.speed * travelDir;
+    float g = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
+    float totalTime = dist / Mathf.Abs(vx);
+    float checkRadius = profile.radius + hazardSideMargin;
+
+    for (int i = 1; i <= arcSamples; i++)
+    {
+        float t = totalTime * i / arcSamples;
+
+        Vector2 p = rb.position + new Vector2(
+            vx * t,
+            launchVy * t - 0.5f * g * t * t);
+
+        if (Physics2D.OverlapCircle(p, checkRadius, hazardMask) != null)
+            return false;   // The arc hits a hazard
+    }
+    return true;
+}
 
     private void WallJump()
     {
@@ -212,6 +259,8 @@ public class JD_NPCMovement : MonoBehaviour
 
     private void Jump()
     {
+        if (!IsArcSafe(Mathf.Sign(horizontalDirection), jumpForce)) return;
+
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
