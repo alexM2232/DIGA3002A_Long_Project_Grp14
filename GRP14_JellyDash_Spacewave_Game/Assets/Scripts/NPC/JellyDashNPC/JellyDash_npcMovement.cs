@@ -25,6 +25,13 @@ public class JD_NPCMovement : MonoBehaviour
     [Header("Obstacle Detection")]
     public float detectionDistance = 1.5f;
 
+    [Header("Swinging Obstacle")]
+    public LayerMask swingHazardMask;          // Layer of the swinging blade/obstacle
+    public float swingDangerDistance = 3f;     // How far ahead to check (cover the swing's sweep)
+    public float swingZoneHeight = 3f;         // Height of the check area
+    public float retreatDuration = 1.2f;       // How long it backs away before trying again
+    public float retreatSpeedMultiplier = 1f;
+
     [Header("Wall Jump")]
     public LayerMask wallJumpMask;
     public float wallJumpCheckDistance = 0.1f;
@@ -59,6 +66,11 @@ public class JD_NPCMovement : MonoBehaviour
     public float wallcheckDistance = 0.3f;
     public float turnCooldown = 0.3f;
 
+    [Header("Turn Around Layer")]
+    public LayerMask turnMask;                 // Layer of the turn-around markers
+    public float turnCheckDistance = 0.6f;     // How far ahead to look
+    public float turnCooldownJD = 0.5f;          // Stops it flipping back and forth
+
     private Rigidbody2D rb;
     private float nextDecisionTime;
     private int verticalDirection =-1;
@@ -79,6 +91,12 @@ public class JD_NPCMovement : MonoBehaviour
     private bool isSwinging;
     private float swingStartTime;
     private float nextGrabTime;
+
+    private bool isRetreating;
+    private float retreatEndTime;
+    private float approachDirection;    
+
+    private float nextTurnTimeJD;
 
     private void Awake()
     {
@@ -162,6 +180,11 @@ public class JD_NPCMovement : MonoBehaviour
     private void MoveJellyDash()
     {
         rb.gravityScale = 1f;
+
+        HandleTurnMarker();
+        if (HandleSwingObstacle()) return;
+
+        if (HandleSwingObstacle()) return;
 
         float dirSign = Mathf.Sign(horizontalDirection);
 
@@ -461,4 +484,84 @@ private void ReleaseSwing()
     // Fling forward off the rope
     rb.linearVelocity += new Vector2(releaseBoost.x * horizontalDirection, releaseBoost.y);
 }
+
+// Returns true if this method controlled movement this frame
+private bool HandleSwingObstacle()
+{
+    if (!isGrounded) return false;
+
+    // Currently backing away
+    if (isRetreating)
+    {
+        if (Time.time < retreatEndTime)
+        {
+            float retreatDir = -approachDirection;
+            float retreatSign = Mathf.Sign(retreatDir);
+
+            // Stop if there's a wall or turn marker behind us; just wait
+            float vx = (IsWallAhead(retreatSign) || IsTurnMarkerAhead(retreatSign))
+                ? 0f
+                : profile.speed * retreatSpeedMultiplier * retreatDir;
+
+            rb.linearVelocity = new Vector2(vx, rb.linearVelocity.y);
+            return true;
+        }
+
+        // Retreat finished: go back to normal movement toward the obstacle
+        isRetreating = false;
+    }
+
+    // Path blocked by the swing? Start a retreat
+    if (IsSwingZoneBlocked())
+    {
+        isRetreating = true;
+        approachDirection = horizontalDirection;
+        retreatEndTime = Time.time + retreatDuration;
+        return true;
+    }
+
+    return false;
+}
+
+private bool IsSwingZoneBlocked()
+{
+    float dirSign = Mathf.Sign(horizontalDirection);
+
+    Vector2 center = rb.position + new Vector2(dirSign * swingDangerDistance * 0.5f, 0f);
+    Vector2 size = new Vector2(swingDangerDistance, swingZoneHeight);
+
+    return Physics2D.OverlapBox(center, size, 0f, swingHazardMask) != null;
+}
+
+private bool IsTurnMarkerAhead(float dirSign)
+{
+    return Physics2D.CircleCast(
+        rb.position,
+        profile.radius,
+        Vector2.right * dirSign,
+        turnCheckDistance,
+        turnMask).collider != null;
+}
+
+// Returns true if the NPC turned this frame
+private bool HandleTurnMarker()
+{
+    if (Time.time < nextTurnTimeJD) return false;
+
+    float dirSign = Mathf.Sign(horizontalDirection);
+    if (!IsTurnMarkerAhead(dirSign)) return false;
+
+    horizontalDirection *= -1f;
+    nextTurnTimeJD = Time.time + turnCooldownJD;
+    FaceDirection();   // you already have this from the earlier code
+    return true;
+}
+
+private void FaceDirection()
+{
+    Vector3 scale = transform.localScale;
+    scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontalDirection);
+    transform.localScale = scale;
+}
+
 }
