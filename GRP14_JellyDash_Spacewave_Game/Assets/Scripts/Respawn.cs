@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
+    [Header("Checkpoints")]
     [SerializeField] private Transform[] checkpoints;
 
     private Transform currentCheckpoint;
@@ -10,27 +11,42 @@ public class Respawn : MonoBehaviour
     private void Start()
     {
         if (checkpoints != null && checkpoints.Length > 0)
+        {
             currentCheckpoint = checkpoints[0];
+        }
+        else
+        {
+            Debug.LogWarning("Respawn: No checkpoints assigned!");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage"))
+        if (!collision.gameObject.CompareTag("Damage"))
+            return;
+
+        if (currentCheckpoint == null)
         {
-            if (currentCheckpoint != null)
-            {
-                transform.position = currentCheckpoint.position;
-            }
-            else
-            {
-                Debug.LogWarning("No checkpoint set!");
-            }
+            Debug.LogWarning("Respawn: No checkpoint set!");
+            return;
         }
+
+        transform.position = currentCheckpoint.position;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
+        Debug.Log("Player respawned at: " + currentCheckpoint.name);
     }
 
     public void SetCheckpoint(Transform newCheckpoint)
     {
-        if (checkpoints == null || checkpoints.Length == 0)
+        if (newCheckpoint == null || checkpoints == null)
             return;
 
         int newIndex = System.Array.IndexOf(checkpoints, newCheckpoint);
