@@ -91194,6 +91194,17 @@ MonoBehaviour:
     m_Bits: 4096
   turnCheckDistance: 0.6
   turnCooldownJD: 0.5
+  obstacleTag: Damage
+  checkPoints:
+  - {fileID: 1320830934}
+  - {fileID: 465555492}
+  - {fileID: 1673376612}
+  - {fileID: 696288831}
+  - {fileID: 1697383935}
+  - {fileID: 1017073134}
+  mistakeChance: 0.1
+  mistakeHoldTime: 0.3
+  wobbleChance: 0.02
 --- !u!61 &441445167
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123617,6 +123628,11 @@ MonoBehaviour:
     m_Bits: 4096
   turnCheckDistance: 0.6
   turnCooldownJD: 0.5
+  obstacleTag: Damage
+  checkPoints: []
+  mistakeChance: 0.1
+  mistakeHoldTime: 0.3
+  wobbleChance: 0.02
 --- !u!50 &620883926
 Rigidbody2D:
   serializedVersion: 5
@@ -362592,6 +362608,11 @@ MonoBehaviour:
     m_Bits: 4096
   turnCheckDistance: 0.6
   turnCooldownJD: 0.5
+  obstacleTag: Damage
+  checkPoints: []
+  mistakeChance: 0.1
+  mistakeHoldTime: 0.3
+  wobbleChance: 0.02
 --- !u!50 &1831482139
 Rigidbody2D:
   serializedVersion: 5
@@ -386480,6 +386501,17 @@ MonoBehaviour:
     m_Bits: 4096
   turnCheckDistance: 0.6
   turnCooldownJD: 0.5
+  obstacleTag: Damage
+  checkPoints:
+  - {fileID: 1320830934}
+  - {fileID: 465555492}
+  - {fileID: 1673376612}
+  - {fileID: 696288831}
+  - {fileID: 1697383935}
+  - {fileID: 1017073134}
+  mistakeChance: 0.1
+  mistakeHoldTime: 0.3
+  wobbleChance: 0.02
 --- !u!61 &1937365639
 BoxCollider2D:
   m_ObjectHideFlags: 0

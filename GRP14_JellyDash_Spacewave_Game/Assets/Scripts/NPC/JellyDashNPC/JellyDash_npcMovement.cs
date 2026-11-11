@@ -71,6 +71,15 @@ public class JD_NPCMovement : MonoBehaviour
     public float turnCheckDistance = 0.6f;     // How far ahead to look
     public float turnCooldownJD = 0.5f;          // Stops it flipping back and forth
 
+    [Header("NPC Respawning")]
+    public string obstacleTag = "Damage";
+    public Transform[] checkPoints;
+
+    [Header("Mistakes")]
+    [Range(0f,1f)] public float mistakeChance = 0.1f;   // Chance to misjudge when it needs to change course
+    public float mistakeHoldTime = 0.3f;                 // How long it commits to a mistake before it can correct
+    [Range(0f,1f)] public float wobbleChance = 0.02f;    // Chance of a pointless direction flip when the path is clear
+
     private Rigidbody2D rb;
     private float nextDecisionTime;
     private int verticalDirection =-1;
@@ -97,6 +106,8 @@ public class JD_NPCMovement : MonoBehaviour
     private float approachDirection;    
 
     private float nextTurnTimeJD;
+
+    private float mistakeLockUntil;
 
     private void Awake()
     {
@@ -562,6 +573,52 @@ private void FaceDirection()
     Vector3 scale = transform.localScale;
     scale.x = Mathf.Abs(scale.x) * Mathf.Sign(horizontalDirection);
     transform.localScale = scale;
+}
+
+ private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag(obstacleTag))
+    {
+        RespawnAtNearestCheckpoint();
+    }
+}
+
+private void RespawnAtNearestCheckpoint()
+{
+    if (checkPoints == null || checkPoints.Length == 0)
+    {
+        Debug.LogWarning("NPC respawn failed: No checkpoints assigned!");
+        return;
+    }
+
+    Transform nearestCheckpoint = null;
+    float nearestDistance = float.PositiveInfinity;
+
+    foreach (Transform checkPoint in checkPoints)
+    {
+        if (checkPoint == null)
+            continue;
+
+        float distance = Vector2.Distance(
+            transform.position,
+            checkPoint.position
+        );
+
+        if (distance < nearestDistance)
+        {
+            nearestDistance = distance;
+            nearestCheckpoint = checkPoint;
+        }
+    }
+
+    if (nearestCheckpoint == null)
+        return;
+
+    // Stop the NPC and move it to the nearest checkpoint
+    rb.linearVelocity = Vector2.zero;
+    rb.position = nearestCheckpoint.position;
+
+    Debug.Log("NPC respawned at: " + nearestCheckpoint.name);
 }
 
 }
