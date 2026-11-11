@@ -80,6 +80,10 @@ public class JD_NPCMovement : MonoBehaviour
     public float mistakeHoldTime = 0.3f;                 // How long it commits to a mistake before it can correct
     [Range(0f,1f)] public float wobbleChance = 0.02f;    // Chance of a pointless direction flip when the path is clear
 
+    [Header("Jelly Dash Risk")]
+    public float reactionDelayMax = 0.25f;     // Max extra delay before jumping at a reckless setting
+    [Range(0f,1f)] public float riskyJumpChance = 0.5f;   // At full recklessness, chance to ignore an unsafe arc
+
     private Rigidbody2D rb;
     private float nextDecisionTime;
     private int verticalDirection =-1;
@@ -164,7 +168,7 @@ public class JD_NPCMovement : MonoBehaviour
 
         if (Time.time >= nextDecisionTime)
         {
-            verticalDirection = ChooseVerticalDirection();
+            verticalDirection = Decide();
 
             nextDecisionTime = Time.time + profile.decisionInterval;
         }
@@ -213,7 +217,7 @@ public class JD_NPCMovement : MonoBehaviour
             Debug.Log("OBSTACLE DETECTED: " + obstacle.collider.name);
             Debug.Log("IS GROUNDED: " + isGrounded);
 
-            if (isGrounded)
+            if (isGrounded  && JumpDelayPassed())
             {
                 Jump();
             }
@@ -226,7 +230,7 @@ public class JD_NPCMovement : MonoBehaviour
         if (Time.time >= nextWallJumpTime && !isGrounded && IsWallAhead(dirSign))
 {
     // After bouncing, the NPC travels the opposite way
-    if (IsArcSafe(-dirSign, wallJumpForce))
+    if (IsArcSafe(-dirSign, wallJumpForce) || TakesRisk())
     {
         WallJump();
     }
@@ -293,7 +297,7 @@ private bool IsArcSafe(float travelDir, float launchVy)
 
     private void Jump()
     {
-        if (!IsArcSafe(Mathf.Sign(horizontalDirection), jumpForce)) return;
+        if (!IsArcSafe(Mathf.Sign(horizontalDirection), jumpForce) && !TakesRisk()) return;
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
@@ -523,7 +527,7 @@ private bool HandleSwingObstacle()
     }
 
     // Path blocked by the swing? Start a retreat
-    if (IsSwingZoneBlocked())
+    if (IsSwingZoneBlocked() && !TakesRisk(0.5f))
     {
         isRetreating = true;
         approachDirection = horizontalDirection;
@@ -620,5 +624,79 @@ private void RespawnAtNearestCheckpoint()
 
     Debug.Log("NPC respawned at: " + nearestCheckpoint.name);
 }
+
+private int Decide()
+{
+    // Committed to a previous mistake: keep going the same way
+    if (Time.time < mistakeLockUntil)
+        return verticalDirection;
+
+    float reck = profile.recklessness;
+
+    // Reckless NPCs leave less room and look less far ahead
+    float margin = profile.safetyMargin * (1f - reck);
+    float castRadius = profile.radius + margin;
+    float distance = profile.speed * profile.stepTime * Mathf.Lerp(1f, 0.5f, reck);
+    Vector2 pos = rb.position;
+
+    bool upBlocked = Physics2D.CircleCast(pos, castRadius, new Vector2(1f, 1f).normalized,
+                         distance, profile.obstacleMask).collider != null;
+    bool downBlocked = Physics2D.CircleCast(pos, castRadius, new Vector2(1f, -1f).normalized,
+                         distance, profile.obstacleMask).collider != null;
+
+    // What a perfect NPC would do
+    int best = verticalDirection;
+    if (upBlocked && !downBlocked) best = -1;
+    else if (!upBlocked && downBlocked) best = 1;
+
+    // Reckless NPCs make more mistakes
+    float chance = Mathf.Clamp01(profile.mistakeChance + reck * 0.3f);
+
+    // Needs to change course but may fail to react
+    if (best != verticalDirection)
+    {
+        if (Random.value < chance)
+        {
+            mistakeLockUntil = Time.time + profile.mistakeHoldTime;
+            return verticalDirection;
+        }
+        return best;
+    }
+
+    // Path is clear: reckless NPCs wobble more
+    if (!upBlocked && !downBlocked && Random.value < profile.wobbleChance * (1f + reck * 3f))
+    {
+        mistakeLockUntil = Time.time + profile.mistakeHoldTime;
+        return -verticalDirection;
+    }
+
+    return best;
+}
+
+// True if this NPC decides to ignore a danger this time
+private bool TakesRisk(float scale = 1f)
+{
+    return Random.value < profile.recklessness * profile.riskyJumpChance * scale;
+}
+
+private float nextJumpAllowedTime;
+private bool jumpDelayArmed;
+
+// Reckless NPCs react late; cautious ones react immediately
+private bool JumpDelayPassed()
+{
+    if (!jumpDelayArmed)
+    {
+        float delay = profile.recklessness * Random.Range(0f, profile.reactionDelayMax);
+        nextJumpAllowedTime = Time.time + delay;
+        jumpDelayArmed = true;
+    }
+
+    if (Time.time < nextJumpAllowedTime) return false;
+
+    jumpDelayArmed = false;   // reset for the next obstacle
+    return true;
+}
+
 
 }
