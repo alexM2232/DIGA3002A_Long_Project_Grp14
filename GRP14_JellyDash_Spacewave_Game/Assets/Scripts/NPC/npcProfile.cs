@@ -18,4 +18,11 @@ public class npcProfile : ScriptableObject
    public float yWeight = 1f; //how strongly they want to stay near target Y
    public float switchPenalty = 0.5f; //how much the NPC switches up and down
    public float decisionInterval = 0.03f;//reaction speed
+
+   [Header("Mistakes")]
+   [Range(0f,1f)] public float mistakeChance = 0.1f;   // Chance to misjudge when it needs to change course
+   public float mistakeHoldTime = 0.3f;                 // How long it commits to a mistake before it can correct
+   [Range(0f,1f)] public float wobbleChance = 0.02f;    // Chance of a pointless direction flip when the path is clear
+   public float reactionDelayMax = 0.25f;     // Max extra delay before jumping at a reckless setting
+   [Range(0f,1f)] public float riskyJumpChance = 0.5f;   // At full recklessness, chance to ignore an unsafe arc
 }

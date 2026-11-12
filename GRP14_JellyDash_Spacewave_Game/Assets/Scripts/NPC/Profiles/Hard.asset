@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed353f409b275af4ca12931c1df4b650, type: 3}
   m_Name: Hard
   m_EditorClassIdentifier: Assembly-CSharp::npcProfile
-  speed: 5
+  speed: 4.5
   radius: 0.25
   obstacleMask:
     serializedVersion: 2
@@ -24,3 +24,8 @@ MonoBehaviour:
   yWeight: 0.7
   switchPenalty: 0.2
   decisionInterval: 0.04
+  mistakeChance: 0.1
+  mistakeHoldTime: 0.2
+  wobbleChance: 0.02
+  reactionDelayMax: 0.1
+  riskyJumpChance: 0.05
