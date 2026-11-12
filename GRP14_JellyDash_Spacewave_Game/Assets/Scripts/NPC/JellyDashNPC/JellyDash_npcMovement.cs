@@ -75,14 +75,11 @@ public class JD_NPCMovement : MonoBehaviour
     public string obstacleTag = "Damage";
     public Transform[] checkPoints;
 
-    [Header("Mistakes")]
-    [Range(0f,1f)] public float mistakeChance = 0.1f;   // Chance to misjudge when it needs to change course
-    public float mistakeHoldTime = 0.3f;                 // How long it commits to a mistake before it can correct
-    [Range(0f,1f)] public float wobbleChance = 0.02f;    // Chance of a pointless direction flip when the path is clear
-
-    [Header("Jelly Dash Risk")]
-    public float reactionDelayMax = 0.25f;     // Max extra delay before jumping at a reckless setting
-    [Range(0f,1f)] public float riskyJumpChance = 0.5f;   // At full recklessness, chance to ignore an unsafe arc
+    [Header("Catch-Up Teleport")]
+    public Transform player;
+    public Transform[] checkpoints;              // Drag all checkpoint transforms here
+    public float maxDistanceFromPlayer = 25f;
+    public float teleportCooldown = 3f;          // Stops repeated teleports
 
     private Rigidbody2D rb;
     private float nextDecisionTime;
@@ -113,6 +110,8 @@ public class JD_NPCMovement : MonoBehaviour
 
     private float mistakeLockUntil;
 
+    private float nextTeleportTime;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -140,6 +139,7 @@ public class JD_NPCMovement : MonoBehaviour
     {
         if (profile == null) return;
 
+        CheckTeleport();
         UpdateGrounded();
 
         switch (currentMode)
@@ -698,5 +698,53 @@ private bool JumpDelayPassed()
     return true;
 }
 
+private void CheckTeleport()
+{
+    if (player == null || checkpoints == null || checkpoints.Length == 0) return;
+    if (Time.time < nextTeleportTime) return;
+    if (Vector2.Distance(rb.position, player.position) <= maxDistanceFromPlayer) return;
 
+    // Find the checkpoint closest to the PLAYER
+    Transform nearest = null;
+    float best = float.MaxValue;
+
+    foreach (Transform cp in checkpoints)
+    {
+        if (cp == null) continue;
+        float d = Vector2.Distance(player.position, cp.position);
+        if (d < best)
+        {
+            best = d;
+            nearest = cp;
+        }
+    }
+
+    if (nearest != null) TeleportTo(nearest);
+}
+
+private void TeleportTo(Transform cp)
+{
+    // Let go of any swing first
+    if (isSwinging) ReleaseSwing();
+
+    rb.position = cp.position;
+    rb.linearVelocity = Vector2.zero;
+
+    // Reset temporary behaviour state
+    isRetreating = false;
+    jumpDelayArmed = false;
+    mistakeLockUntil = 0f;
+    nextTurnTime = 0f;
+
+    // Optional: take the movement mode and direction stored on the checkpoint
+    NPCCheckpoint data = cp.GetComponent<NPCCheckpoint>();
+    if (data != null)
+    {
+        SwitchMode(data.mode);
+        horizontalDirection = data.direction;
+        FaceDirection();
+    }
+
+    nextTeleportTime = Time.time + teleportCooldown;
+}
 }

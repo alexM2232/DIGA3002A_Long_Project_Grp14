@@ -17610,7 +17610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &77923742
 Transform:
   m_ObjectHideFlags: 0
@@ -91202,9 +91202,16 @@ MonoBehaviour:
   - {fileID: 696288831}
   - {fileID: 1697383935}
   - {fileID: 1017073134}
-  mistakeChance: 0.1
-  mistakeHoldTime: 0.3
-  wobbleChance: 0.02
+  player: {fileID: 77923742}
+  checkpoints:
+  - {fileID: 1320830934}
+  - {fileID: 465555492}
+  - {fileID: 1673376612}
+  - {fileID: 696288831}
+  - {fileID: 1697383935}
+  - {fileID: 1017073134}
+  maxDistanceFromPlayer: 30
+  teleportCooldown: 3
 --- !u!61 &441445167
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95641,6 +95648,7 @@ GameObject:
   - component: {fileID: 465555494}
   - component: {fileID: 465555493}
   - component: {fileID: 465555495}
+  - component: {fileID: 465555496}
   m_Layer: 0
   m_Name: New Checkpoint line 1
   m_TagString: Untagged
@@ -95785,6 +95793,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &465555496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465555491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &466054017
 GameObject:
   m_ObjectHideFlags: 0
@@ -123630,9 +123652,10 @@ MonoBehaviour:
   turnCooldownJD: 0.5
   obstacleTag: Damage
   checkPoints: []
-  mistakeChance: 0.1
-  mistakeHoldTime: 0.3
-  wobbleChance: 0.02
+  player: {fileID: 0}
+  checkpoints: []
+  maxDistanceFromPlayer: 25
+  teleportCooldown: 3
 --- !u!50 &620883926
 Rigidbody2D:
   serializedVersion: 5
@@ -140077,6 +140100,7 @@ GameObject:
   - component: {fileID: 696288834}
   - component: {fileID: 696288833}
   - component: {fileID: 696288832}
+  - component: {fileID: 696288835}
   m_Layer: 0
   m_Name: New Checkpoint line 3
   m_TagString: SpaceWavesZone
@@ -140221,6 +140245,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &696288835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696288830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &696328553
 GameObject:
   m_ObjectHideFlags: 0
@@ -201368,6 +201406,7 @@ GameObject:
   - component: {fileID: 1017073137}
   - component: {fileID: 1017073136}
   - component: {fileID: 1017073135}
+  - component: {fileID: 1017073138}
   m_Layer: 0
   m_Name: New Checkpoint line 5
   m_TagString: SpaceWavesZone
@@ -201512,6 +201551,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1017073138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017073133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &1017883104
 GameObject:
   m_ObjectHideFlags: 0
@@ -242631,7 +242684,7 @@ Transform:
   m_GameObject: {fileID: 1221230385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.41, y: -19.85, z: 0}
+  m_LocalPosition: {x: -6.14, y: -19.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250359,7 +250412,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.018398166, y: 0.0040893555}
+  m_Offset: {x: 0.046901584, y: 0.0040893555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -250369,7 +250422,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2570512, y: 1.1553993}
+  m_Size: {x: 1.2000444, y: 1.1553993}
   m_EdgeRadius: 0
 --- !u!212 &1263293638
 SpriteRenderer:
@@ -261573,6 +261626,7 @@ GameObject:
   - component: {fileID: 1320830934}
   - component: {fileID: 1320830935}
   - component: {fileID: 1320830937}
+  - component: {fileID: 1320830938}
   m_Layer: 0
   m_Name: Checkpoint1
   m_TagString: Untagged
@@ -261647,6 +261701,20 @@ MonoBehaviour:
   activeColor: {r: 0, g: 1, b: 0, a: 1}
   isWinCheckpoint: 0
   showDebugLogs: 0
+--- !u!114 &1320830938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320830933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 1
+  direction: 1
 --- !u!1 &1323485514
 GameObject:
   m_ObjectHideFlags: 0
@@ -329587,6 +329655,7 @@ GameObject:
   - component: {fileID: 1673376615}
   - component: {fileID: 1673376614}
   - component: {fileID: 1673376613}
+  - component: {fileID: 1673376616}
   m_Layer: 0
   m_Name: New Checkpoint line 2
   m_TagString: JellyDashZone
@@ -329731,6 +329800,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1673376616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673376611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &1674955751
 GameObject:
   m_ObjectHideFlags: 0
@@ -333969,6 +334052,7 @@ GameObject:
   - component: {fileID: 1697383938}
   - component: {fileID: 1697383937}
   - component: {fileID: 1697383936}
+  - component: {fileID: 1697383939}
   m_Layer: 0
   m_Name: New Checkpoint line 4
   m_TagString: JellyDashZone
@@ -334113,6 +334197,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1697383939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697383934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 1
+  direction: 1
 --- !u!1 &1697566825
 GameObject:
   m_ObjectHideFlags: 0
@@ -362610,9 +362708,10 @@ MonoBehaviour:
   turnCooldownJD: 0.5
   obstacleTag: Damage
   checkPoints: []
-  mistakeChance: 0.1
-  mistakeHoldTime: 0.3
-  wobbleChance: 0.02
+  player: {fileID: 0}
+  checkpoints: []
+  maxDistanceFromPlayer: 25
+  teleportCooldown: 3
 --- !u!50 &1831482139
 Rigidbody2D:
   serializedVersion: 5
@@ -386428,7 +386527,7 @@ Transform:
   m_GameObject: {fileID: 1937365636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -134.02, y: 8.9, z: 0}
+  m_LocalPosition: {x: -133.89, y: 8.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -386509,9 +386608,16 @@ MonoBehaviour:
   - {fileID: 696288831}
   - {fileID: 1697383935}
   - {fileID: 1017073134}
-  mistakeChance: 0.1
-  mistakeHoldTime: 0.3
-  wobbleChance: 0.02
+  player: {fileID: 77923742}
+  checkpoints:
+  - {fileID: 1320830934}
+  - {fileID: 465555492}
+  - {fileID: 1673376612}
+  - {fileID: 696288831}
+  - {fileID: 1697383935}
+  - {fileID: 1017073134}
+  maxDistanceFromPlayer: 25
+  teleportCooldown: 3
 --- !u!61 &1937365639
 BoxCollider2D:
   m_ObjectHideFlags: 0
