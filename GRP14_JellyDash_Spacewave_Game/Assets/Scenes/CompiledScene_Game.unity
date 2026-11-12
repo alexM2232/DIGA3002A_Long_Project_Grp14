@@ -91107,7 +91107,7 @@ GameObject:
   - component: {fileID: 441445166}
   m_Layer: 0
   m_Name: NPCMedium
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91210,7 +91210,7 @@ MonoBehaviour:
   - {fileID: 696288831}
   - {fileID: 1697383935}
   - {fileID: 1017073134}
-  maxDistanceFromPlayer: 30
+  maxDistanceFromPlayer: 35
   teleportCooldown: 3
 --- !u!61 &441445167
 BoxCollider2D:
@@ -386513,7 +386513,7 @@ GameObject:
   - component: {fileID: 1937365638}
   m_Layer: 0
   m_Name: NPCHard
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386616,7 +386616,7 @@ MonoBehaviour:
   - {fileID: 696288831}
   - {fileID: 1697383935}
   - {fileID: 1017073134}
-  maxDistanceFromPlayer: 25
+  maxDistanceFromPlayer: 50
   teleportCooldown: 3
 --- !u!61 &1937365639
 BoxCollider2D:

@@ -21,6 +21,7 @@ TagManager:
   - SpaceWavesZone
   - JellyDashDownZone
   - JellyDashSwingZone
+  - NPC
   layers:
   - Default
   - TransparentFX
