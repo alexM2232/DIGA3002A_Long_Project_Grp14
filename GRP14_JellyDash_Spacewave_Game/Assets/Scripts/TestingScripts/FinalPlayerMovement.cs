@@ -13,6 +13,10 @@ public class FinalPlayerMovement : MonoBehaviour
     [SerializeField]
     private MovementMode startingMode = MovementMode.JellyDash;
 
+    [Header("Player Visuals")]
+    [SerializeField]
+    private PlayerVisualController playerVisuals;
+
     private PlayerMovementJellyDash jellyDash;
     private SWPlayerControllerTest spaceWaves;
 
@@ -28,6 +32,9 @@ public class FinalPlayerMovement : MonoBehaviour
 
         if (spaceWaves == null)
             Debug.LogError("SWPlayerControllerTest not found!", this);
+
+        if (playerVisuals == null)
+            playerVisuals = GetComponent<PlayerVisualController>();
     }
 
     private void Start()
@@ -45,6 +52,16 @@ public class FinalPlayerMovement : MonoBehaviour
         if (spaceWaves != null)
             spaceWaves.enabled = newMode == MovementMode.SpaceWaves;
 
+        // Switch player animations and trail.
+        if (playerVisuals != null)
+        {
+            if (newMode == MovementMode.JellyDash)
+                playerVisuals.EnterJellyDash();
+            else
+                playerVisuals.EnterSpaceWave();
+        }
+
+        // Switch music.
         if (AudioManager.Instance != null)
         {
             if (newMode == MovementMode.JellyDash)
