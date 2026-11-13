@@ -17543,7 +17543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &77923742
 Transform:
   m_ObjectHideFlags: 0
@@ -130485,7 +130485,7 @@ MonoBehaviour:
   - {fileID: 696288831}
   - {fileID: 1697383935}
   - {fileID: 1017073134}
-  maxDistanceFromPlayer: 30
+  maxDistanceFromPlayer: 50
   teleportCooldown: 3
 --- !u!1 &630690205
 GameObject:
@@ -433732,7 +433732,7 @@ MonoBehaviour:
   - {fileID: 696288831}
   - {fileID: 1697383935}
   - {fileID: 1017073134}
-  maxDistanceFromPlayer: 30
+  maxDistanceFromPlayer: 50
   teleportCooldown: 3
 --- !u!50 &2135637713
 Rigidbody2D:
