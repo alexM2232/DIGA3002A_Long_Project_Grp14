@@ -110,6 +110,8 @@ public class JD_NPCMovement : MonoBehaviour
 
     private float mistakeLockUntil;
 
+    private int lastCheckpointIndex = 0;   // Index of the last checkpoint reached
+
     private float nextTeleportTime;
 
     private void Awake()
@@ -358,6 +360,19 @@ private bool IsArcSafe(float travelDir, float launchVy)
         {
             SwitchMode(MovementMode.JellyDashSwing);
         }
+
+         // (keep your existing zone checks too)
+    if (other.CompareTag("Checkpoint"))
+    {
+        for (int i = 0; i < checkPoints.Length; i++)
+        {
+            if (checkPoints[i] == other.transform && i > lastCheckpointIndex)
+            {
+                lastCheckpointIndex = i;
+                break;
+            }
+        }
+    }
     }
 
     public void SwitchMode(MovementMode newMode)
@@ -587,6 +602,7 @@ private void FaceDirection()
     }
 }
 
+
 private void RespawnAtNearestCheckpoint()
 {
     if (checkPoints == null || checkPoints.Length == 0)
@@ -595,34 +611,15 @@ private void RespawnAtNearestCheckpoint()
         return;
     }
 
-    Transform nearestCheckpoint = null;
-    float nearestDistance = float.PositiveInfinity;
+    Transform cp = checkPoints[Mathf.Clamp(lastCheckpointIndex, 0, checkPoints.Length - 1)];
+    if (cp == null) return;
 
-    foreach (Transform checkPoint in checkPoints)
-    {
-        if (checkPoint == null)
-            continue;
+    if (isSwinging) ReleaseSwing();
 
-        float distance = Vector2.Distance(
-            transform.position,
-            checkPoint.position
-        );
-
-        if (distance < nearestDistance)
-        {
-            nearestDistance = distance;
-            nearestCheckpoint = checkPoint;
-        }
-    }
-
-    if (nearestCheckpoint == null)
-        return;
-
-    // Stop the NPC and move it to the nearest checkpoint
     rb.linearVelocity = Vector2.zero;
-    rb.position = nearestCheckpoint.position;
+    rb.position = cp.position;
 
-    Debug.Log("NPC respawned at: " + nearestCheckpoint.name);
+    Debug.Log("NPC respawned at: " + cp.name);
 }
 
 private int Decide()
