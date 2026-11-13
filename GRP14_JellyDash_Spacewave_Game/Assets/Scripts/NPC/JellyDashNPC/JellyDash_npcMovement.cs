@@ -71,6 +71,16 @@ public class JD_NPCMovement : MonoBehaviour
     public float turnCheckDistance = 0.6f;     // How far ahead to look
     public float turnCooldownJD = 0.5f;          // Stops it flipping back and forth
 
+    [Header("NPC Respawning")]
+    public string obstacleTag = "Damage";
+    public Transform[] checkPoints;
+
+    [Header("Catch-Up Teleport")]
+    public Transform player;
+    public Transform[] checkpoints;              // Drag all checkpoint transforms here
+    public float maxDistanceFromPlayer = 25f;
+    public float teleportCooldown = 3f;          // Stops repeated teleports
+
     private Rigidbody2D rb;
     private float nextDecisionTime;
     private int verticalDirection =-1;
@@ -97,6 +107,10 @@ public class JD_NPCMovement : MonoBehaviour
     private float approachDirection;    
 
     private float nextTurnTimeJD;
+
+    private float mistakeLockUntil;
+
+    private float nextTeleportTime;
 
     private void Awake()
     {
@@ -125,6 +139,7 @@ public class JD_NPCMovement : MonoBehaviour
     {
         if (profile == null) return;
 
+        CheckTeleport();
         UpdateGrounded();
 
         switch (currentMode)
@@ -153,7 +168,7 @@ public class JD_NPCMovement : MonoBehaviour
 
         if (Time.time >= nextDecisionTime)
         {
-            verticalDirection = ChooseVerticalDirection();
+            verticalDirection = Decide();
 
             nextDecisionTime = Time.time + profile.decisionInterval;
         }
@@ -202,7 +217,7 @@ public class JD_NPCMovement : MonoBehaviour
             Debug.Log("OBSTACLE DETECTED: " + obstacle.collider.name);
             Debug.Log("IS GROUNDED: " + isGrounded);
 
-            if (isGrounded)
+            if (isGrounded  && JumpDelayPassed())
             {
                 Jump();
             }
@@ -215,7 +230,7 @@ public class JD_NPCMovement : MonoBehaviour
         if (Time.time >= nextWallJumpTime && !isGrounded && IsWallAhead(dirSign))
 {
     // After bouncing, the NPC travels the opposite way
-    if (IsArcSafe(-dirSign, wallJumpForce))
+    if (IsArcSafe(-dirSign, wallJumpForce) || TakesRisk())
     {
         WallJump();
     }
@@ -282,7 +297,7 @@ private bool IsArcSafe(float travelDir, float launchVy)
 
     private void Jump()
     {
-        if (!IsArcSafe(Mathf.Sign(horizontalDirection), jumpForce)) return;
+        if (!IsArcSafe(Mathf.Sign(horizontalDirection), jumpForce) && !TakesRisk()) return;
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
 
@@ -512,7 +527,7 @@ private bool HandleSwingObstacle()
     }
 
     // Path blocked by the swing? Start a retreat
-    if (IsSwingZoneBlocked())
+    if (IsSwingZoneBlocked() && !TakesRisk(0.5f))
     {
         isRetreating = true;
         approachDirection = horizontalDirection;
@@ -564,4 +579,172 @@ private void FaceDirection()
     transform.localScale = scale;
 }
 
+ private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag(obstacleTag))
+    {
+        RespawnAtNearestCheckpoint();
+    }
+}
+
+private void RespawnAtNearestCheckpoint()
+{
+    if (checkPoints == null || checkPoints.Length == 0)
+    {
+        Debug.LogWarning("NPC respawn failed: No checkpoints assigned!");
+        return;
+    }
+
+    Transform nearestCheckpoint = null;
+    float nearestDistance = float.PositiveInfinity;
+
+    foreach (Transform checkPoint in checkPoints)
+    {
+        if (checkPoint == null)
+            continue;
+
+        float distance = Vector2.Distance(
+            transform.position,
+            checkPoint.position
+        );
+
+        if (distance < nearestDistance)
+        {
+            nearestDistance = distance;
+            nearestCheckpoint = checkPoint;
+        }
+    }
+
+    if (nearestCheckpoint == null)
+        return;
+
+    // Stop the NPC and move it to the nearest checkpoint
+    rb.linearVelocity = Vector2.zero;
+    rb.position = nearestCheckpoint.position;
+
+    Debug.Log("NPC respawned at: " + nearestCheckpoint.name);
+}
+
+private int Decide()
+{
+    // Committed to a previous mistake: keep going the same way
+    if (Time.time < mistakeLockUntil)
+        return verticalDirection;
+
+    float reck = profile.recklessness;
+
+    // Reckless NPCs leave less room and look less far ahead
+    float margin = profile.safetyMargin * (1f - reck);
+    float castRadius = profile.radius + margin;
+    float distance = profile.speed * profile.stepTime * Mathf.Lerp(1f, 0.5f, reck);
+    Vector2 pos = rb.position;
+
+    bool upBlocked = Physics2D.CircleCast(pos, castRadius, new Vector2(1f, 1f).normalized,
+                         distance, profile.obstacleMask).collider != null;
+    bool downBlocked = Physics2D.CircleCast(pos, castRadius, new Vector2(1f, -1f).normalized,
+                         distance, profile.obstacleMask).collider != null;
+
+    // What a perfect NPC would do
+    int best = verticalDirection;
+    if (upBlocked && !downBlocked) best = -1;
+    else if (!upBlocked && downBlocked) best = 1;
+
+    // Reckless NPCs make more mistakes
+    float chance = Mathf.Clamp01(profile.mistakeChance + reck * 0.3f);
+
+    // Needs to change course but may fail to react
+    if (best != verticalDirection)
+    {
+        if (Random.value < chance)
+        {
+            mistakeLockUntil = Time.time + profile.mistakeHoldTime;
+            return verticalDirection;
+        }
+        return best;
+    }
+
+    // Path is clear: reckless NPCs wobble more
+    if (!upBlocked && !downBlocked && Random.value < profile.wobbleChance * (1f + reck * 3f))
+    {
+        mistakeLockUntil = Time.time + profile.mistakeHoldTime;
+        return -verticalDirection;
+    }
+
+    return best;
+}
+
+// True if this NPC decides to ignore a danger this time
+private bool TakesRisk(float scale = 1f)
+{
+    return Random.value < profile.recklessness * profile.riskyJumpChance * scale;
+}
+
+private float nextJumpAllowedTime;
+private bool jumpDelayArmed;
+
+// Reckless NPCs react late; cautious ones react immediately
+private bool JumpDelayPassed()
+{
+    if (!jumpDelayArmed)
+    {
+        float delay = profile.recklessness * Random.Range(0f, profile.reactionDelayMax);
+        nextJumpAllowedTime = Time.time + delay;
+        jumpDelayArmed = true;
+    }
+
+    if (Time.time < nextJumpAllowedTime) return false;
+
+    jumpDelayArmed = false;   // reset for the next obstacle
+    return true;
+}
+
+private void CheckTeleport()
+{
+    if (player == null || checkpoints == null || checkpoints.Length == 0) return;
+    if (Time.time < nextTeleportTime) return;
+    if (Vector2.Distance(rb.position, player.position) <= maxDistanceFromPlayer) return;
+
+    // Find the checkpoint closest to the PLAYER
+    Transform nearest = null;
+    float best = float.MaxValue;
+
+    foreach (Transform cp in checkpoints)
+    {
+        if (cp == null) continue;
+        float d = Vector2.Distance(player.position, cp.position);
+        if (d < best)
+        {
+            best = d;
+            nearest = cp;
+        }
+    }
+
+    if (nearest != null) TeleportTo(nearest);
+}
+
+private void TeleportTo(Transform cp)
+{
+    // Let go of any swing first
+    if (isSwinging) ReleaseSwing();
+
+    rb.position = cp.position;
+    rb.linearVelocity = Vector2.zero;
+
+    // Reset temporary behaviour state
+    isRetreating = false;
+    jumpDelayArmed = false;
+    mistakeLockUntil = 0f;
+    nextTurnTime = 0f;
+
+    // Optional: take the movement mode and direction stored on the checkpoint
+    NPCCheckpoint data = cp.GetComponent<NPCCheckpoint>();
+    if (data != null)
+    {
+        SwitchMode(data.mode);
+        horizontalDirection = data.direction;
+        FaceDirection();
+    }
+
+    nextTeleportTime = Time.time + teleportCooldown;
+}
 }
