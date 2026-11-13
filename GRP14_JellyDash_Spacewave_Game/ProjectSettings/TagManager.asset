@@ -23,6 +23,7 @@ TagManager:
   - JellyDashSwingZone
   - NPC
   - Checkpoint
+  - SwingPoint
   layers:
   - Default
   - TransparentFX
