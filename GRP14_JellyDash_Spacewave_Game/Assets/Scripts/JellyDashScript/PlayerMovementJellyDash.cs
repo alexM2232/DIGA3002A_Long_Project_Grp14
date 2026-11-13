@@ -1,77 +1,84 @@
 
-
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerMovementJellyDash : MonoBehaviour
 {
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float forwardPushSpeed = 5f;
+    [Header("Normal Movement")]
+    [SerializeField] private float automaticMoveSpeed = 5f;
+    [SerializeField] private float manualControlSpeed = 5f;
 
     [Header("Normal Jump")]
     [SerializeField] private float jumpForce = 10f;
-
-    [Header("Gravity")]
     [SerializeField] private float fallGravityMultiplier = 1.5f;
+
+    [Header("Direct Wall Climbing")]
+    [SerializeField] private float climbingHorizontalSpeed = 5f;
+    [SerializeField] private float climbingVerticalSpeed = 6f;
+    [SerializeField] private float wallSlideSpeed = 5f;
+
+    [Header("Sprite")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Tags")]
     [SerializeField] private string groundTag = "Ground";
     [SerializeField] private string climbingWallTag = "ClimbingWall";
     [SerializeField] private string swingWallTag = "SwingWall";
 
-    [Header("Wall Jump")]
-    [SerializeField] private float wallJumpHorizontalForce = 8f;
-    [SerializeField] private float wallJumpVerticalForce = 10f;
-
     [Header("Swing")]
     [SerializeField] private Transform swingVisual;
-    [SerializeField] private float swingRopeLength = 2.5f;
     [SerializeField] private float swingGravity = 20f;
     [SerializeField] private float swingLaunchBoost = 3f;
-
-    [Tooltip("Maximum distance the player can be from the swing point to attach.")]
     [SerializeField] private float maxSwingAttachDistance = 3f;
 
     private Rigidbody2D rb;
+    private BoxCollider2D playerCollider;
+
+    private Vector2 originalColliderOffset;
+    private float originalGravityScale;
+
+    private float automaticDirection = 1f;
+    private float horizontalInput;
 
     private bool isGrounded;
     private bool touchingClimbingWall;
     private bool isSwinging;
 
-    private float horizontalInput;
-    private float normalGravityScale;
+    private readonly HashSet<Collider2D> climbingWallContacts =
+        new HashSet<Collider2D>();
 
-    private Transform swingWallTransform;
-    private Vector2 swingAnchor;
+    private readonly HashSet<Collider2D> groundContacts =
+        new HashSet<Collider2D>();
+
+    private Transform swingAnchor;
+
     private float swingRadius;
     private float swingAngle;
     private float swingAngularVelocity;
-    private float swingDirection = 1f;
-
-    private Collider2D currentSwingCollider;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
 
-        if (rb == null)
-        {
-            Debug.LogError("TestPlayer needs a Rigidbody2D.");
-            enabled = false;
-            return;
-        }
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
+        originalColliderOffset = playerCollider.offset;
+        originalGravityScale = rb.gravityScale;
 
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-        normalGravityScale = rb.gravityScale;
+        rb.freezeRotation = true;
 
-        if (swingVisual == null)
-            swingVisual = transform.Find("SwingVisual");
+        // Player faces left by default.
+        FaceDirection(-1f);
 
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(false);
-        else
-            Debug.LogWarning("Assign SwingVisual in the Inspector.");
     }
 
     private void Update()
@@ -83,31 +90,26 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
         if (Keyboard.current.aKey.isPressed)
             horizontalInput = -1f;
-
-        if (Keyboard.current.dKey.isPressed)
+        else if (Keyboard.current.dKey.isPressed)
             horizontalInput = 1f;
 
-        // Release swing when Space is released.
+        // Turn the sprite when pressing A or D.
+        if (horizontalInput != 0f && !isSwinging)
+            FaceDirection(horizontalInput);
+
+        // Swing release.
         if (isSwinging)
         {
-            if (!Keyboard.current.spaceKey.isPressed)
+            if (Keyboard.current.spaceKey.wasReleasedThisFrame)
                 ReleaseSwing();
 
             return;
         }
 
-        // Climbing wall jump.
-        if (touchingClimbingWall)
-        {
-            if (Keyboard.current.aKey.wasPressedThisFrame)
-                WallJump(-1f);
-
-            else if (Keyboard.current.dKey.wasPressedThisFrame)
-                WallJump(1f);
-        }
         // Normal ground jump.
-        else if (isGrounded &&
-                 Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (isGrounded &&
+            !touchingClimbingWall &&
+            Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             rb.linearVelocity = new Vector2(
                 rb.linearVelocity.x,
@@ -115,6 +117,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
             );
 
             isGrounded = false;
+            groundContacts.Clear();
         }
     }
 
@@ -126,53 +129,156 @@ public class PlayerMovementJellyDash : MonoBehaviour
             return;
         }
 
+        // DIRECT A AND D WALL CLIMBING.
         if (touchingClimbingWall)
+        {
+            if (horizontalInput != 0f)
+            {
+                // Holding A or D moves the player diagonally upwards.
+                rb.gravityScale = 0f;
+
+                rb.linearVelocity = new Vector2(
+                    horizontalInput * climbingHorizontalSpeed,
+                    climbingVerticalSpeed
+                );
+
+                FaceDirection(horizontalInput);
+            }
+            else
+            {
+                // Stop climbing when neither key is held.
+                rb.gravityScale = originalGravityScale;
+
+                float verticalSpeed = rb.linearVelocity.y;
+
+                if (verticalSpeed < 0f)
+                {
+                    verticalSpeed = Mathf.Max(
+                        verticalSpeed,
+                        -wallSlideSpeed
+                    );
+                }
+
+                rb.linearVelocity = new Vector2(
+                    0f,
+                    verticalSpeed
+                );
+            }
+
             return;
+        }
 
-        float horizontalMovement = horizontalInput == 0f
-            ? forwardPushSpeed
-            : horizontalInput * moveSpeed;
+        // NORMAL MOVEMENT OUTSIDE THE CLIMBING WALL.
+        rb.gravityScale = originalGravityScale;
 
-        rb.linearVelocity = new Vector2(
-            horizontalMovement,
-            rb.linearVelocity.y
-        );
+        if (horizontalInput != 0f)
+        {
+            rb.linearVelocity = new Vector2(
+                horizontalInput * manualControlSpeed,
+                rb.linearVelocity.y
+            );
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(
+                automaticDirection * automaticMoveSpeed,
+                rb.linearVelocity.y
+            );
+        }
 
+        ApplyFallGravity();
+    }
+
+    private void ApplyFallGravity()
+    {
         if (rb.linearVelocity.y < 0f)
         {
-            rb.linearVelocity += Vector2.up *
-                Physics2D.gravity.y *
-                (fallGravityMultiplier - 1f) *
-                Time.fixedDeltaTime;
+            rb.gravityScale =
+                originalGravityScale * fallGravityMultiplier;
+        }
+        else
+        {
+            rb.gravityScale = originalGravityScale;
         }
     }
 
-    // WALL JUMP
-    private void WallJump(float direction)
+    public void SetAutomaticDirection(float direction)
     {
-        rb.linearVelocity = new Vector2(
-            direction * wallJumpHorizontalForce,
-            wallJumpVerticalForce
-        );
+        if (direction == 0f)
+            return;
 
-        touchingClimbingWall = false;
-        isGrounded = false;
+        automaticDirection = Mathf.Sign(direction);
 
-        Debug.Log("Wall jump!");
+        if (!touchingClimbingWall && horizontalInput == 0f)
+            FaceDirection(automaticDirection);
     }
 
-    // COLLISION DETECTION
+    // Flip the sprite and mirror the original collider offset.
+    private void FaceDirection(float direction)
+    {
+        if (spriteRenderer == null ||
+            playerCollider == null ||
+            direction == 0f)
+            return;
+
+        bool facingLeft = direction < 0f;
+
+        spriteRenderer.flipX = facingLeft;
+
+        Vector2 newOffset = originalColliderOffset;
+
+        if (facingLeft)
+            newOffset.x = -originalColliderOffset.x;
+
+        playerCollider.offset = newOffset;
+    }
+
+    private bool HasTagInParents(Transform target, string tagName)
+    {
+        Transform current = target;
+
+        while (current != null)
+        {
+            if (current.CompareTag(tagName))
+                return true;
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
+        // CLIMBING WALL DETECTION.
         if (HasTagInParents(collision.transform, climbingWallTag))
-            touchingClimbingWall = true;
+        {
+            bool touchingSide = false;
 
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                if (Mathf.Abs(contact.normal.x) > 0.7f)
+                {
+                    touchingSide = true;
+                    break;
+                }
+            }
+
+            if (touchingSide)
+            {
+                climbingWallContacts.Add(collision.collider);
+                touchingClimbingWall = true;
+            }
+        }
+
+        // GROUND DETECTION.
         if (HasTagInParents(collision.transform, groundTag))
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
-                if (contact.normal.y > 0.5f)
+                if (contact.normal.y > 0.7f)
                 {
+                    groundContacts.Add(collision.collider);
                     isGrounded = true;
                     break;
                 }
@@ -182,229 +288,158 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (HasTagInParents(collision.transform, climbingWallTag))
-            touchingClimbingWall = false;
+        climbingWallContacts.Remove(collision.collider);
 
-        if (HasTagInParents(collision.transform, groundTag))
-            isGrounded = false;
+        touchingClimbingWall = climbingWallContacts.Count > 0;
+
+        groundContacts.Remove(collision.collider);
+        isGrounded = groundContacts.Count > 0;
     }
 
-    private bool HasTagInParents(Transform current, string targetTag)
-    {
-        while (current != null)
-        {
-            if (current.CompareTag(targetTag))
-                return true;
-
-            current = current.parent;
-        }
-
-        return false;
-    }
-
-    // SWING DETECTION
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("[PLAYER TEST] Entered trigger: " + other.gameObject.name);
-
-            TryAttachToSwing(other);
+        TryAttachToSwing(other);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!isSwinging)
-            TryAttachToSwing(other);
+        TryAttachToSwing(other);
     }
 
     private void TryAttachToSwing(Collider2D other)
     {
-        if (isSwinging)
+        if (isSwinging || Keyboard.current == null)
             return;
 
-        if (Keyboard.current == null ||
-            !Keyboard.current.spaceKey.isPressed)
+        if (!Keyboard.current.spaceKey.isPressed)
             return;
 
-        Transform current = other.transform;
+        Transform wall = other.transform;
 
-        while (current != null)
-        {
-            if (current.CompareTag(swingWallTag))
-            {
-                // Supports Polygon Collider 2D.
-                Collider2D wallCollider = other;
+        while (wall != null && !wall.CompareTag(swingWallTag))
+            wall = wall.parent;
 
-                // Calculate the swing point.
-                Bounds bounds = wallCollider.bounds;
+        if (wall == null)
+            return;
 
-                Vector2 potentialAnchor = new Vector2(
-                    bounds.center.x,
-                    bounds.max.y
-                );
+        Vector2 anchor = new Vector2(
+            other.bounds.center.x,
+            other.bounds.max.y
+        );
 
-                // CHECK PLAYER DISTANCE BEFORE ATTACHING.
-                float distanceToSwingPoint = Vector2.Distance(
-                    rb.position,
-                    potentialAnchor
-                );
+        float distance = Vector2.Distance(
+            transform.position,
+            anchor
+        );
 
-                if (distanceToSwingPoint > maxSwingAttachDistance)
-                {
-                    Debug.Log("Too far away from swing wall to attach.");
-                    return;
-                }
+        if (distance > maxSwingAttachDistance)
+            return;
 
-                AttachToSwing(current, wallCollider, potentialAnchor);
-                return;
-            }
-
-            current = current.parent;
-        }
+        AttachToSwing(wall, anchor);
     }
 
-    // ATTACH TO SWING WALL
-    private void AttachToSwing(
-        Transform wall,
-        Collider2D wallCollider,
-        Vector2 anchor)
+    private void AttachToSwing(Transform wall, Vector2 anchor)
     {
-        swingAnchor = anchor;
+        isSwinging = true;
+        swingAnchor = wall;
 
-        swingWallTransform = wall;
-        currentSwingCollider = wallCollider;
+        Vector2 difference =
+            (Vector2)transform.position - anchor;
 
-        Vector2 offset = rb.position - swingAnchor;
+        swingRadius = difference.magnitude;
 
-        if (offset.magnitude < 0.1f)
-        {
-            Debug.LogWarning("Player is too close to the swing pivot.");
-            return;
-        }
-
-        // Keep the player's actual distance from the pivot.
-        // This prevents snapping when attaching.
-        swingRadius = offset.magnitude;
+        if (swingRadius < 0.01f)
+            swingRadius = 0.01f;
 
         swingAngle = Mathf.Atan2(
-            offset.x,
-            -offset.y
+            difference.x,
+            -difference.y
         );
 
-        Vector2 tangent = new Vector2(
-            Mathf.Cos(swingAngle),
-            Mathf.Sin(swingAngle)
-        );
-
-        swingAngularVelocity = Vector2.Dot(
-            rb.linearVelocity,
-            tangent
-        ) / swingRadius;
-
-        swingDirection = Mathf.Sign(swingAngularVelocity);
-
-        if (swingDirection == 0f)
-            swingDirection = 1f;
-
-        isSwinging = true;
-        isGrounded = false;
-        touchingClimbingWall = false;
+        swingAngularVelocity = 0f;
 
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
 
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(true);
-
-        Debug.Log("Attached to swing wall: " + wall.name);
     }
 
-    // SWING MOVEMENT
     private void HandleSwingMovement()
     {
-        if (swingWallTransform == null ||
-            currentSwingCollider == null)
+        if (swingAnchor == null)
         {
             ReleaseSwing();
             return;
         }
 
-        swingAngularVelocity +=
+        float angularAcceleration =
             -(swingGravity / swingRadius) *
-            Mathf.Sin(swingAngle) *
-            Time.fixedDeltaTime;
+            Mathf.Sin(swingAngle);
 
-        swingAngle += swingAngularVelocity *
-            Time.fixedDeltaTime;
+        swingAngularVelocity +=
+            angularAcceleration * Time.fixedDeltaTime;
 
-        Vector2 playerPosition = swingAnchor + new Vector2(
+        swingAngle +=
+            swingAngularVelocity * Time.fixedDeltaTime;
+
+        Vector2 anchorPosition = swingAnchor.position;
+
+        Vector2 newPosition = anchorPosition + new Vector2(
             Mathf.Sin(swingAngle) * swingRadius,
             -Mathf.Cos(swingAngle) * swingRadius
         );
 
-        rb.MovePosition(playerPosition);
+        rb.MovePosition(newPosition);
 
-        Vector2 tangent = new Vector2(
-            Mathf.Cos(swingAngle),
-            Mathf.Sin(swingAngle)
-        );
+        if (swingVisual != null)
+        {
+            swingVisual.position = anchorPosition;
 
-        rb.linearVelocity = tangent *
-            swingAngularVelocity *
-            swingRadius;
+            Vector2 direction = newPosition - anchorPosition;
 
-        UpdateSwingVisual(swingAnchor, playerPosition);
+            float angle =
+                Mathf.Atan2(direction.y, direction.x) *
+                Mathf.Rad2Deg;
+
+            swingVisual.rotation =
+                Quaternion.Euler(0f, 0f, angle - 90f);
+
+            Vector3 scale = swingVisual.localScale;
+            scale.y = direction.magnitude;
+            swingVisual.localScale = scale;
+        }
     }
 
-    // UPDATE ROPE VISUAL
-    private void UpdateSwingVisual(
-        Vector2 anchorPosition,
-        Vector2 playerPosition)
-    {
-        if (swingVisual == null)
-            return;
-
-        Vector2 direction = playerPosition - anchorPosition;
-
-        swingVisual.position =
-            (anchorPosition + playerPosition) / 2f;
-
-        swingVisual.rotation = Quaternion.Euler(
-            0f,
-            0f,
-            Mathf.Atan2(direction.y, direction.x) *
-            Mathf.Rad2Deg - 90f
-        );
-
-        Vector3 scale = swingVisual.localScale;
-        scale.y = direction.magnitude;
-        swingVisual.localScale = scale;
-    }
-
-    // RELEASE SWING
     private void ReleaseSwing()
     {
         if (!isSwinging)
             return;
 
-        Vector2 launchVelocity = rb.linearVelocity;
-
-        launchVelocity.x += swingDirection * swingLaunchBoost;
-
-        launchVelocity.y = Mathf.Max(
-            launchVelocity.y,
-            jumpForce * 0.5f
-        );
-
         isSwinging = false;
-        swingWallTransform = null;
-        currentSwingCollider = null;
+        rb.gravityScale = originalGravityScale;
 
-        rb.gravityScale = normalGravityScale;
-        rb.linearVelocity = launchVelocity;
+        if (swingAnchor != null)
+        {
+            Vector2 launchDirection =
+                (Vector2)transform.position -
+                (Vector2)swingAnchor.position;
+
+            if (launchDirection.sqrMagnitude > 0f)
+                launchDirection.Normalize();
+
+            rb.linearVelocity = new Vector2(
+                launchDirection.x * swingLaunchBoost,
+                Mathf.Max(
+                    launchDirection.y * swingLaunchBoost,
+                    jumpForce * 0.5f
+                )
+            );
+        }
 
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(false);
 
-        Debug.Log("Released swing!");
+        swingAnchor = null;
     }
 }
