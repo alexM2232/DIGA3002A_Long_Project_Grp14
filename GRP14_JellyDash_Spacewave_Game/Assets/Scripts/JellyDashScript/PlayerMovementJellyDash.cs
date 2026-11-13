@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
@@ -32,13 +33,11 @@ public class PlayerMovementJellyDash : MonoBehaviour
     [Header("Swing")]
     [SerializeField] private Transform swingVisual;
     [SerializeField] private float swingGravity = 20f;
-    [SerializeField] private float swingLaunchBoost = 1.5f;
-    [SerializeField] private float swingDamping = 0.15f;
-    [SerializeField] private float swingLaunchControlDuration = 0.35f;
+    [SerializeField] private float swingLaunchBoost = 3f;
+    [SerializeField] private float maxSwingAttachDistance = 3f;
 
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
-    private SpriteRenderer swingVisualRenderer;
 
     private Vector2 originalColliderOffset;
     private float originalGravityScale;
@@ -50,15 +49,14 @@ public class PlayerMovementJellyDash : MonoBehaviour
     private bool touchingClimbingWall;
     private bool isSwinging;
 
-    private float swingLaunchControlTimer;
-
     private readonly HashSet<Collider2D> climbingWallContacts =
         new HashSet<Collider2D>();
 
     private readonly HashSet<Collider2D> groundContacts =
         new HashSet<Collider2D>();
 
-    private Vector2 swingAnchorPosition;
+    private Transform swingAnchor;
+
     private float swingRadius;
     private float swingAngle;
     private float swingAngularVelocity;
@@ -71,25 +69,17 @@ public class PlayerMovementJellyDash : MonoBehaviour
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (swingVisual != null)
-        {
-            swingVisualRenderer =
-                swingVisual.GetComponent<SpriteRenderer>();
-
-            if (swingVisualRenderer == null)
-                swingVisualRenderer =
-                    swingVisual.GetComponentInChildren<SpriteRenderer>();
-
-            swingVisual.gameObject.SetActive(false);
-        }
-
         originalColliderOffset = playerCollider.offset;
         originalGravityScale = rb.gravityScale;
 
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         rb.freezeRotation = true;
 
+        // Player faces RIGHT at the beginning.
         FaceDirection(1f);
+
+        if (swingVisual != null)
+            swingVisual.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -137,13 +127,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             return;
         }
 
-        if (swingLaunchControlTimer > 0f)
-        {
-            swingLaunchControlTimer -= Time.fixedDeltaTime;
-            ApplyFallGravity();
-            return;
-        }
-
         if (touchingClimbingWall)
         {
             if (horizontalInput != 0f)
@@ -164,9 +147,17 @@ public class PlayerMovementJellyDash : MonoBehaviour
                 float verticalSpeed = rb.linearVelocity.y;
 
                 if (verticalSpeed < 0f)
-                    verticalSpeed = Mathf.Max(verticalSpeed, -wallSlideSpeed);
+                {
+                    verticalSpeed = Mathf.Max(
+                        verticalSpeed,
+                        -wallSlideSpeed
+                    );
+                }
 
-                rb.linearVelocity = new Vector2(0f, verticalSpeed);
+                rb.linearVelocity = new Vector2(
+                    0f,
+                    verticalSpeed
+                );
             }
 
             return;
@@ -195,9 +186,14 @@ public class PlayerMovementJellyDash : MonoBehaviour
     private void ApplyFallGravity()
     {
         if (rb.linearVelocity.y < 0f)
-            rb.gravityScale = originalGravityScale * fallGravityMultiplier;
+        {
+            rb.gravityScale =
+                originalGravityScale * fallGravityMultiplier;
+        }
         else
+        {
             rb.gravityScale = originalGravityScale;
+        }
     }
 
     public void SetAutomaticDirection(float direction)
@@ -213,13 +209,14 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     private void FaceDirection(float direction)
     {
-        if (direction == 0f)
+        if (spriteRenderer == null ||
+            playerCollider == null ||
+            direction == 0f)
             return;
 
         bool facingLeft = direction < 0f;
 
-        if (spriteRenderer != null)
-            spriteRenderer.flipX = facingLeft;
+        spriteRenderer.flipX = facingLeft;
 
         Vector2 newOffset = originalColliderOffset;
 
@@ -227,9 +224,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             newOffset.x = -originalColliderOffset.x;
 
         playerCollider.offset = newOffset;
-
-        if (swingVisualRenderer != null)
-            swingVisualRenderer.flipX = facingLeft;
     }
 
     private bool HasTagInParents(Transform target, string tagName)
@@ -286,6 +280,7 @@ public class PlayerMovementJellyDash : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         climbingWallContacts.Remove(collision.collider);
+
         touchingClimbingWall = climbingWallContacts.Count > 0;
 
         groundContacts.Remove(collision.collider);
@@ -318,36 +313,40 @@ public class PlayerMovementJellyDash : MonoBehaviour
         if (wall == null)
             return;
 
-        // Each SwingWall collider supplies its own anchor.
-        Bounds bounds = other.bounds;
-
-        swingAnchorPosition = new Vector2(
-            bounds.center.x,
-            bounds.max.y
+        Vector2 anchor = new Vector2(
+            other.bounds.center.x,
+            other.bounds.max.y
         );
 
-        AttachToSwing();
+        float distance = Vector2.Distance(
+            transform.position,
+            anchor
+        );
+
+        if (distance > maxSwingAttachDistance)
+            return;
+
+        AttachToSwing(wall, anchor);
     }
 
-    private void AttachToSwing()
+    private void AttachToSwing(Transform wall, Vector2 anchor)
     {
+        isSwinging = true;
+        swingAnchor = wall;
+
         Vector2 difference =
-            (Vector2)transform.position - swingAnchorPosition;
+            (Vector2)transform.position - anchor;
 
         swingRadius = difference.magnitude;
 
-        if (swingRadius < 0.1f)
-            return;
-
-        isSwinging = true;
+        if (swingRadius < 0.01f)
+            swingRadius = 0.01f;
 
         swingAngle = Mathf.Atan2(
             difference.x,
             -difference.y
         );
 
-        // Start without artificial sideways movement.
-        // Gravity will naturally accelerate the swing.
         swingAngularVelocity = 0f;
 
         rb.linearVelocity = Vector2.zero;
@@ -355,13 +354,16 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(true);
-
-        Debug.Log("Player attached to gravity-driven swing!");
     }
 
     private void HandleSwingMovement()
     {
-        // Pendulum acceleration caused by gravity.
+        if (swingAnchor == null)
+        {
+            ReleaseSwing();
+            return;
+        }
+
         float angularAcceleration =
             -(swingGravity / swingRadius) *
             Mathf.Sin(swingAngle);
@@ -369,21 +371,35 @@ public class PlayerMovementJellyDash : MonoBehaviour
         swingAngularVelocity +=
             angularAcceleration * Time.fixedDeltaTime;
 
-        // Small damping prevents endless swinging.
-        swingAngularVelocity *=
-            Mathf.Clamp01(1f - swingDamping * Time.fixedDeltaTime);
-
         swingAngle +=
             swingAngularVelocity * Time.fixedDeltaTime;
 
-        Vector2 newPosition = swingAnchorPosition + new Vector2(
+        Vector2 anchorPosition = swingAnchor.position;
+
+        Vector2 newPosition = anchorPosition + new Vector2(
             Mathf.Sin(swingAngle) * swingRadius,
             -Mathf.Cos(swingAngle) * swingRadius
         );
 
         rb.MovePosition(newPosition);
 
-        // The visual keeps its original position, rotation and scale.
+        if (swingVisual != null)
+        {
+            swingVisual.position = anchorPosition;
+
+            Vector2 direction = newPosition - anchorPosition;
+
+            float angle =
+                Mathf.Atan2(direction.y, direction.x) *
+                Mathf.Rad2Deg;
+
+            swingVisual.rotation =
+                Quaternion.Euler(0f, 0f, angle - 90f);
+
+            Vector3 scale = swingVisual.localScale;
+            scale.y = direction.magnitude;
+            swingVisual.localScale = scale;
+        }
     }
 
     private void ReleaseSwing()
@@ -394,31 +410,27 @@ public class PlayerMovementJellyDash : MonoBehaviour
         isSwinging = false;
         rb.gravityScale = originalGravityScale;
 
-        // Tangent direction of the player's current swing.
-        Vector2 launchDirection = new Vector2(
-            Mathf.Cos(swingAngle),
-            Mathf.Sin(swingAngle)
-        );
-
-        launchDirection *= Mathf.Sign(swingAngularVelocity);
-
-        if (launchDirection.sqrMagnitude > 0.001f)
+        if (swingAnchor != null)
         {
-            launchDirection.Normalize();
+            Vector2 launchDirection =
+                (Vector2)transform.position -
+                (Vector2)swingAnchor.position;
 
-            float launchSpeed =
-                swingAngularVelocity * swingRadius + swingLaunchBoost;
+            if (launchDirection.sqrMagnitude > 0f)
+                launchDirection.Normalize();
 
-            launchSpeed = Mathf.Max(launchSpeed, swingLaunchBoost);
-
-            rb.linearVelocity = launchDirection * launchSpeed;
+            rb.linearVelocity = new Vector2(
+                launchDirection.x * swingLaunchBoost,
+                Mathf.Max(
+                    launchDirection.y * swingLaunchBoost,
+                    jumpForce * 0.5f
+                )
+            );
         }
-
-        swingLaunchControlTimer = swingLaunchControlDuration;
 
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(false);
 
-        Debug.Log("Player launched from swing!");
+        swingAnchor = null;
     }
 }

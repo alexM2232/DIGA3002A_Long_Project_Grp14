@@ -1,179 +1,76 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameUIManagerTest : MonoBehaviour
 {
     [Header("UI Panels")]
+    [SerializeField] private GameObject deathPanel;
     [SerializeField] private GameObject winPanel;
-    [SerializeField] private GameObject losePanel;
 
-    [Header("Win Panel Confetti Animations")]
-    [SerializeField] private Animator confettiAnimator1;
-    [SerializeField] private Animator confettiAnimator2;
-
-    [Header("Lose Panel Placement Text")]
-    [SerializeField] private TMP_Text secondPlaceText;
-    [SerializeField] private TMP_Text thirdPlaceText;
-    [SerializeField] private TMP_Text fourthPlaceText;
-
-    private int finishPosition = 0;
     private bool gameEnded = false;
-    private bool playerHasFinished = false;
 
     private void Awake()
     {
+        // Hide panels when the game starts
+        if (deathPanel != null)
+        {
+            deathPanel.SetActive(false);
+        }
+
         if (winPanel != null)
+        {
             winPanel.SetActive(false);
+        }
 
-        if (losePanel != null)
-            losePanel.SetActive(false);
-
-        HidePlacementTexts();
-
+        // Make sure the game starts normally
         Time.timeScale = 1f;
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Called by the player's PanelTrigger and NPC finish triggers.
-    public void RacerFinished(bool isPlayer)
-    {
-        if (gameEnded)
-            return;
-
-        if (isPlayer && playerHasFinished)
-            return;
-
-        if (isPlayer)
-            playerHasFinished = true;
-
-        finishPosition++;
-
-        Debug.Log(
-            (isPlayer ? "Player" : "NPC") +
-            " finished in position: " + finishPosition
-        );
-
-        if (isPlayer)
-            ShowPlayerResult(finishPosition);
-    }
-
-    private void ShowPlayerResult(int position)
-    {
-        if (gameEnded)
-            return;
-
-        gameEnded = true;
-
-        if (position == 1)
-        {
-            ShowWinPanel();
-            return;
-        }
-
-        if (losePanel != null)
-            losePanel.SetActive(true);
-
-        HidePlacementTexts();
-
-        if (position == 2 && secondPlaceText != null)
-            secondPlaceText.gameObject.SetActive(true);
-        else if (position == 3 && thirdPlaceText != null)
-            thirdPlaceText.gameObject.SetActive(true);
-        else if (position >= 4 && fourthPlaceText != null)
-            fourthPlaceText.gameObject.SetActive(true);
-
-        PauseAndShowCursor();
-
-        Debug.Log("Player finished in position: " + position);
-    }
-
-    private void HidePlacementTexts()
-    {
-        if (secondPlaceText != null)
-            secondPlaceText.gameObject.SetActive(false);
-
-        if (thirdPlaceText != null)
-            thirdPlaceText.gameObject.SetActive(false);
-
-        if (fourthPlaceText != null)
-            fourthPlaceText.gameObject.SetActive(false);
-    }
-
-    public void ShowWinPanel()
-    {
-        if (gameEnded && winPanel != null && winPanel.activeSelf)
-            return;
-
-        gameEnded = true;
-
-        if (losePanel != null)
-            losePanel.SetActive(false);
-
-        if (winPanel != null)
-            winPanel.SetActive(true);
-
-        PlayConfetti(confettiAnimator1);
-        PlayConfetti(confettiAnimator2);
-
-        PauseAndShowCursor();
-
-        Debug.Log("Win Panel shown. Both confetti animations started.");
-    }
-
-    private void PlayConfetti(Animator confettiAnimator)
-    {
-        if (confettiAnimator == null)
-        {
-            Debug.LogWarning("A confetti Animator has not been assigned.");
-            return;
-        }
-
-        confettiAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-
-        confettiAnimator.Rebind();
-        confettiAnimator.Update(0f);
-
-        AnimatorStateInfo state =
-            confettiAnimator.GetCurrentAnimatorStateInfo(0);
-
-        confettiAnimator.Play(state.fullPathHash, 0, 0f);
-    }
-
-    public void ShowLosePanel()
-    {
-        if (gameEnded)
-            return;
-
-        gameEnded = true;
-
-        if (winPanel != null)
-            winPanel.SetActive(false);
-
-        if (losePanel != null)
-            losePanel.SetActive(true);
-
-        PauseAndShowCursor();
-
-        Debug.Log("Lose Panel shown.");
-    }
-
-    // Compatibility method for scripts that still call ShowDeathPanel.
-    // It displays the existing Lose Panel.
     public void ShowDeathPanel()
     {
-        ShowLosePanel();
-    }
+        if (gameEnded)
+        {
+            return;
+        }
 
-    private void PauseAndShowCursor()
-    {
+        gameEnded = true;
+
+        if (deathPanel != null)
+        {
+            deathPanel.SetActive(true);
+        }
+
         Time.timeScale = 0f;
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        Debug.Log("Death Panel shown.");
+    }
+
+    public void ShowWinPanel()
+    {
+        if (gameEnded)
+        {
+            return;
+        }
+
+        gameEnded = true;
+
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+        }
+
+        Time.timeScale = 0f;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        Debug.Log("Win Panel shown.");
     }
 
     public void Retry()
@@ -188,6 +85,7 @@ public class GameUIManagerTest : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
+
         SceneManager.LoadScene("MainMenu");
     }
 }
