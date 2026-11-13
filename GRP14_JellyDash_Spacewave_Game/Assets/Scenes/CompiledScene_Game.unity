@@ -17661,7 +17661,7 @@ Transform:
   m_GameObject: {fileID: 77923741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.9, y: -10.3, z: 0}
+  m_LocalPosition: {x: -38, y: 0.9, z: 0}
   m_LocalScale: {x: 1.735775, y: 1.735775, z: 1.735775}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -84048,6 +84048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 1
+  playerTag: Player
   npc: {fileID: 951307153}
 --- !u!61 &385493032
 BoxCollider2D:
@@ -113771,52 +113772,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!1 &547642485
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 547642487}
-  - component: {fileID: 547642486}
-  m_Layer: 0
-  m_Name: StartingInfoManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &547642486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547642485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7230ceee91d48b3418ea10ebf7833433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StartingInfoPanelTest
-  informationPanel: {fileID: 0}
-  displayTime: 10
---- !u!4 &547642487
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547642485}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1665, y: 1239, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547933596
 GameObject:
   m_ObjectHideFlags: 0
@@ -265626,6 +265581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 1
+  playerTag: Player
   npc: {fileID: 2118820826}
 --- !u!223 &1323485518
 Canvas:
@@ -295246,6 +295202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 0
+  playerTag: Player
   npc: {fileID: 2118820826}
 --- !u!61 &1490322274
 BoxCollider2D:
@@ -331794,6 +331751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 0
+  playerTag: Player
   npc: {fileID: 951307153}
 --- !u!61 &1663191906
 BoxCollider2D:
@@ -332800,8 +332758,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0, y: 1}
       - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.68355125, y: -0.23442101}
-      - {x: 0.61970484, y: -0.1705764}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
       - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 1
 --- !u!1 &1668285400
@@ -353431,7 +353389,7 @@ Transform:
   m_GameObject: {fileID: 1764495495}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 181.69, y: 14.7, z: 0}
+  m_LocalPosition: {x: -33.73, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -357774,6 +357732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementTransition
   targetMode: 1
+  playerTag: Player
   npc: {fileID: 65566013}
 --- !u!61 &1785698803
 BoxCollider2D:
@@ -373575,7 +373534,7 @@ Transform:
   m_GameObject: {fileID: 1867327192}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.11, y: -11.73, z: 0}
+  m_LocalPosition: {x: -60.65, y: -11.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -434588,6 +434547,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 750461665}
+  - {fileID: 1764495497}
   - {fileID: 231546262}
   - {fileID: 1730564510}
   - {fileID: 77923742}
@@ -434595,7 +434555,6 @@ SceneRoots:
   - {fileID: 321628525}
   - {fileID: 56408861}
   - {fileID: 340678604}
-  - {fileID: 547642487}
   - {fileID: 108604575}
   - {fileID: 2003979667}
   - {fileID: 2001770379}
@@ -434632,5 +434591,4 @@ SceneRoots:
   - {fileID: 2001869041}
   - {fileID: 802822460}
   - {fileID: 481189836}
-  - {fileID: 1764495497}
   - {fileID: 1762100131}

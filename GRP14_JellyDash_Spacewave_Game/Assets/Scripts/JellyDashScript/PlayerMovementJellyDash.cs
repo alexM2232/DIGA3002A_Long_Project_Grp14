@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
@@ -74,8 +75,8 @@ public class PlayerMovementJellyDash : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         rb.freezeRotation = true;
 
-        // Player faces left by default.
-        FaceDirection(-1f);
+        // Player faces RIGHT at the beginning.
+        FaceDirection(1f);
 
         if (swingVisual != null)
             swingVisual.gameObject.SetActive(false);
@@ -93,11 +94,9 @@ public class PlayerMovementJellyDash : MonoBehaviour
         else if (Keyboard.current.dKey.isPressed)
             horizontalInput = 1f;
 
-        // Turn the sprite when pressing A or D.
         if (horizontalInput != 0f && !isSwinging)
             FaceDirection(horizontalInput);
 
-        // Swing release.
         if (isSwinging)
         {
             if (Keyboard.current.spaceKey.wasReleasedThisFrame)
@@ -106,7 +105,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             return;
         }
 
-        // Normal ground jump.
         if (isGrounded &&
             !touchingClimbingWall &&
             Keyboard.current.spaceKey.wasPressedThisFrame)
@@ -129,12 +127,10 @@ public class PlayerMovementJellyDash : MonoBehaviour
             return;
         }
 
-        // DIRECT A AND D WALL CLIMBING.
         if (touchingClimbingWall)
         {
             if (horizontalInput != 0f)
             {
-                // Holding A or D moves the player diagonally upwards.
                 rb.gravityScale = 0f;
 
                 rb.linearVelocity = new Vector2(
@@ -146,7 +142,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             }
             else
             {
-                // Stop climbing when neither key is held.
                 rb.gravityScale = originalGravityScale;
 
                 float verticalSpeed = rb.linearVelocity.y;
@@ -168,7 +163,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             return;
         }
 
-        // NORMAL MOVEMENT OUTSIDE THE CLIMBING WALL.
         rb.gravityScale = originalGravityScale;
 
         if (horizontalInput != 0f)
@@ -213,7 +207,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             FaceDirection(automaticDirection);
     }
 
-    // Flip the sprite and mirror the original collider offset.
     private void FaceDirection(float direction)
     {
         if (spriteRenderer == null ||
@@ -250,7 +243,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        // CLIMBING WALL DETECTION.
         if (HasTagInParents(collision.transform, climbingWallTag))
         {
             bool touchingSide = false;
@@ -271,7 +263,6 @@ public class PlayerMovementJellyDash : MonoBehaviour
             }
         }
 
-        // GROUND DETECTION.
         if (HasTagInParents(collision.transform, groundTag))
         {
             foreach (ContactPoint2D contact in collision.contacts)
