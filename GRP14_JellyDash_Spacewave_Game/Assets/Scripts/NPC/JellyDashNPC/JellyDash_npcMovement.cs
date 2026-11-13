@@ -232,7 +232,7 @@ public class JD_NPCMovement : MonoBehaviour
         if (Time.time >= nextWallJumpTime && !isGrounded && IsWallAhead(dirSign))
 {
     // After bouncing, the NPC travels the opposite way
-    if (IsArcSafe(-dirSign, wallJumpForce) || TakesRisk())
+    if (IsArcSafe(-dirSign, wallJumpForce))
     {
         WallJump();
     }

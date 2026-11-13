@@ -26666,7 +26666,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0058250427, y: 0.0039321184}
+  m_Offset: {x: -0.0058250427, y: -0.24374127}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -26676,7 +26676,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1560745, y: 1.1808784}
+  m_Size: {x: 1.1560745, y: 1.6762252}
   m_EdgeRadius: 0
 --- !u!212 &128170351
 SpriteRenderer:
@@ -69872,7 +69872,7 @@ Transform:
   m_GameObject: {fileID: 312196088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.67, y: -0.36, z: 0}
+  m_LocalPosition: {x: 0.78, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76887,7 +76887,7 @@ GameObject:
   - component: {fileID: 347976032}
   - component: {fileID: 347976034}
   - component: {fileID: 347976033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (2059)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -130215,7 +130215,7 @@ Transform:
   m_GameObject: {fileID: 630490587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.5, y: -2.1, z: 0}
+  m_LocalPosition: {x: 37.9, y: 1.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -130372,13 +130372,13 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 5cbfebda026447d45be9e3b08d3a350c, type: 2}
   currentMode: 1
   jumpForce: 6
-  wallJumpForce: 7
+  wallJumpForce: 8
   groundCheckDistance: 0.15
   groundCheck: {fileID: 1512340776}
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  detectionDistance: 1.5
+  detectionDistance: 3
   swingHazardMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -130390,13 +130390,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   wallJumpCheckDistance: 0.5
-  arcSamples: 12
+  arcSamples: 20
   arcMaxDistance: 15
   slideSpeed: 1.5
   hazardMask:
     serializedVersion: 2
     m_Bits: 64
-  hazardSideMargin: 0.25
+  hazardSideMargin: 0.4
   swingMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -130413,7 +130413,7 @@ MonoBehaviour:
   edgeCheckDistance: 0.4
   wallMask:
     serializedVersion: 2
-    m_Bits: 8704
+    m_Bits: 512
   wallcheckDistance: 0.3
   turnCooldown: 0.3
   turnMask:
