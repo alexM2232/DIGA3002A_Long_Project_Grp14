@@ -1798,7 +1798,7 @@ GameObject:
   - component: {fileID: 6787658}
   - component: {fileID: 6787660}
   - component: {fileID: 6787661}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flat Ground (67)
   m_TagString: SwingWall
   m_Icon: {fileID: 0}
@@ -4536,7 +4536,7 @@ GameObject:
   - component: {fileID: 23443878}
   - component: {fileID: 23443880}
   - component: {fileID: 23443879}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (91)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8299,7 +8299,7 @@ GameObject:
   - component: {fileID: 40482073}
   - component: {fileID: 40482075}
   - component: {fileID: 40482074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (39)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -14333,7 +14333,7 @@ GameObject:
   - component: {fileID: 65919297}
   - component: {fileID: 65919299}
   - component: {fileID: 65919298}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2248)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -19543,6 +19543,145 @@ PolygonCollider2D:
       - {x: 0.62, y: -0.62}
       - {x: 0.63, y: -0.51}
   m_UseDelaunayMesh: 1
+--- !u!1 &86873140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86873141}
+  - component: {fileID: 86873143}
+  - component: {fileID: 86873142}
+  m_Layer: 0
+  m_Name: npcChange (1)
+  m_TagString: JellyDashDownZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86873141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86873140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -94.57, y: -10.57, z: 0}
+  m_LocalScale: {x: 5.8216, y: 0.9137988, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212811765}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &86873142
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86873140}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &86873143
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86873140}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
 --- !u!1 &87317943
 GameObject:
   m_ObjectHideFlags: 0
@@ -20816,7 +20955,7 @@ GameObject:
   - component: {fileID: 96772553}
   - component: {fileID: 96772555}
   - component: {fileID: 96772554}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2183)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -28972,7 +29111,7 @@ GameObject:
   - component: {fileID: 137936398}
   - component: {fileID: 137936400}
   - component: {fileID: 137936399}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (28)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -34116,7 +34255,7 @@ GameObject:
   - component: {fileID: 159911752}
   - component: {fileID: 159911754}
   - component: {fileID: 159911753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (212)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -34255,7 +34394,7 @@ GameObject:
   - component: {fileID: 161373492}
   - component: {fileID: 161373494}
   - component: {fileID: 161373493}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (60)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -40867,7 +41006,7 @@ GameObject:
   - component: {fileID: 169497812}
   - component: {fileID: 169497814}
   - component: {fileID: 169497813}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2244)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41401,7 +41540,7 @@ GameObject:
   - component: {fileID: 172084629}
   - component: {fileID: 172084631}
   - component: {fileID: 172084630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2847)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -43199,6 +43338,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &178416405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178416406}
+  m_Layer: 0
+  m_Name: NPCCheckpoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178416406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178416405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 380191222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &178423134
 GameObject:
   m_ObjectHideFlags: 0
@@ -47041,7 +47211,7 @@ GameObject:
   - component: {fileID: 201591115}
   - component: {fileID: 201591117}
   - component: {fileID: 201591116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (26)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -52784,7 +52954,7 @@ GameObject:
   - component: {fileID: 229268425}
   - component: {fileID: 229268427}
   - component: {fileID: 229268426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2739)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -56978,7 +57148,7 @@ GameObject:
   - component: {fileID: 245086077}
   - component: {fileID: 245086079}
   - component: {fileID: 245086078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (199)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -57034,7 +57204,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03536415, y: -0.0059080124}
+  m_Offset: {x: -0.03536415, y: 0.013844967}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -57044,7 +57214,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1702766, y: 0.988184}
+  m_Size: {x: 1.1702766, y: 1.0276899}
   m_EdgeRadius: 0
 --- !u!212 &245086079
 SpriteRenderer:
@@ -59297,7 +59467,7 @@ GameObject:
   - component: {fileID: 253760483}
   - component: {fileID: 253760485}
   - component: {fileID: 253760484}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2200)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -60732,7 +60902,7 @@ GameObject:
   - component: {fileID: 260264276}
   - component: {fileID: 260264278}
   - component: {fileID: 260264277}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2209)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -63665,7 +63835,7 @@ GameObject:
   - component: {fileID: 276911297}
   - component: {fileID: 276911299}
   - component: {fileID: 276911298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (115)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -63804,7 +63974,7 @@ GameObject:
   - component: {fileID: 278588866}
   - component: {fileID: 278588868}
   - component: {fileID: 278588867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (89)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -67701,7 +67871,7 @@ GameObject:
   - component: {fileID: 300264510}
   - component: {fileID: 300264512}
   - component: {fileID: 300264511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (117)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -76717,7 +76887,7 @@ GameObject:
   - component: {fileID: 348715448}
   - component: {fileID: 348715450}
   - component: {fileID: 348715449}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2211)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -78530,7 +78700,7 @@ GameObject:
   - component: {fileID: 356713368}
   - component: {fileID: 356713370}
   - component: {fileID: 356713369}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2854)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -81637,7 +81807,7 @@ GameObject:
   - component: {fileID: 376034184}
   - component: {fileID: 376034186}
   - component: {fileID: 376034185}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (46)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -82543,6 +82713,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 983616438}
+  - {fileID: 1212811765}
+  - {fileID: 178416406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &380808911
@@ -87119,7 +87291,7 @@ GameObject:
   - component: {fileID: 400142476}
   - component: {fileID: 400142478}
   - component: {fileID: 400142477}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2755)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88378,7 +88550,7 @@ GameObject:
   - component: {fileID: 402563541}
   - component: {fileID: 402563543}
   - component: {fileID: 402563542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2748)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -89396,7 +89568,7 @@ GameObject:
   - component: {fileID: 410539437}
   - component: {fileID: 410539439}
   - component: {fileID: 410539438}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2754)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89912,7 +90084,7 @@ GameObject:
   - component: {fileID: 412362595}
   - component: {fileID: 412362597}
   - component: {fileID: 412362596}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2203)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -90930,7 +91102,7 @@ GameObject:
   - component: {fileID: 415766908}
   - component: {fileID: 415766910}
   - component: {fileID: 415766909}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2199)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -92761,7 +92933,7 @@ GameObject:
   - component: {fileID: 424488760}
   - component: {fileID: 424488762}
   - component: {fileID: 424488761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (12)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -96632,7 +96804,7 @@ GameObject:
   - component: {fileID: 445023552}
   - component: {fileID: 445023554}
   - component: {fileID: 445023553}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2246)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -98637,7 +98809,7 @@ GameObject:
   - component: {fileID: 455519227}
   - component: {fileID: 455519229}
   - component: {fileID: 455519228}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (109)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -101330,6 +101502,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &471809570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471809571}
+  m_Layer: 0
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &471809571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471809570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.057, y: -0.578, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 983616438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472839073
 GameObject:
   m_ObjectHideFlags: 0
@@ -112391,7 +112594,7 @@ GameObject:
   - component: {fileID: 538837982}
   - component: {fileID: 538837984}
   - component: {fileID: 538837983}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2749)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -116070,7 +116273,7 @@ GameObject:
   - component: {fileID: 563053217}
   - component: {fileID: 563053219}
   - component: {fileID: 563053218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (90)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -118650,7 +118853,7 @@ GameObject:
   - component: {fileID: 574427637}
   - component: {fileID: 574427639}
   - component: {fileID: 574427638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (31)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -126317,7 +126520,7 @@ GameObject:
   - component: {fileID: 611127403}
   - component: {fileID: 611127405}
   - component: {fileID: 611127404}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2192)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -131563,7 +131766,7 @@ GameObject:
   - component: {fileID: 639783336}
   - component: {fileID: 639783338}
   - component: {fileID: 639783337}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (116)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -131702,7 +131905,7 @@ GameObject:
   - component: {fileID: 639927006}
   - component: {fileID: 639927008}
   - component: {fileID: 639927007}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2187)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -135917,7 +136120,7 @@ GameObject:
   - component: {fileID: 658587173}
   - component: {fileID: 658587175}
   - component: {fileID: 658587174}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2185)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -136201,7 +136404,7 @@ GameObject:
   - component: {fileID: 659268770}
   - component: {fileID: 659268772}
   - component: {fileID: 659268771}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2245)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -142504,7 +142707,7 @@ GameObject:
   - component: {fileID: 688797574}
   - component: {fileID: 688797576}
   - component: {fileID: 688797575}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (80)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -144916,7 +145119,7 @@ GameObject:
   - component: {fileID: 696684777}
   - component: {fileID: 696684779}
   - component: {fileID: 696684778}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2208)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -145055,7 +145258,7 @@ GameObject:
   - component: {fileID: 696803391}
   - component: {fileID: 696803393}
   - component: {fileID: 696803392}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2194)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -148897,7 +149100,7 @@ GameObject:
   - component: {fileID: 722651533}
   - component: {fileID: 722651535}
   - component: {fileID: 722651534}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2756)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149314,7 +149517,7 @@ GameObject:
   - component: {fileID: 724368339}
   - component: {fileID: 724368341}
   - component: {fileID: 724368340}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (73)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -151620,7 +151823,7 @@ GameObject:
   - component: {fileID: 739724040}
   - component: {fileID: 739724042}
   - component: {fileID: 739724041}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (108)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -157400,7 +157603,7 @@ GameObject:
   - component: {fileID: 767483721}
   - component: {fileID: 767483723}
   - component: {fileID: 767483722}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (101)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -158260,7 +158463,7 @@ GameObject:
   - component: {fileID: 771145914}
   - component: {fileID: 771145916}
   - component: {fileID: 771145915}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2213)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -168133,7 +168336,7 @@ GameObject:
   - component: {fileID: 817855620}
   - component: {fileID: 817855622}
   - component: {fileID: 817855621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (48)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -168973,7 +169176,7 @@ GameObject:
   - component: {fileID: 821563036}
   - component: {fileID: 821563038}
   - component: {fileID: 821563037}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (99)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -170721,7 +170924,7 @@ GameObject:
   - component: {fileID: 827944311}
   - component: {fileID: 827944313}
   - component: {fileID: 827944312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (52)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -173652,7 +173855,7 @@ GameObject:
   - component: {fileID: 843136183}
   - component: {fileID: 843136185}
   - component: {fileID: 843136184}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2172)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175412,7 +175615,7 @@ GameObject:
   - component: {fileID: 848240548}
   - component: {fileID: 848240550}
   - component: {fileID: 848240549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (29)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -177375,7 +177578,7 @@ GameObject:
   - component: {fileID: 860058745}
   - component: {fileID: 860058744}
   - component: {fileID: 860058743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: World_Tree_Roots_2D_Platformer_Tileset_Environment - Fence 02_0 (1)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -180535,7 +180738,7 @@ GameObject:
   - component: {fileID: 874918608}
   - component: {fileID: 874918610}
   - component: {fileID: 874918609}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2173)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185336,7 +185539,7 @@ GameObject:
   - component: {fileID: 901467835}
   - component: {fileID: 901467837}
   - component: {fileID: 901467836}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2205)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -192906,7 +193109,7 @@ GameObject:
   - component: {fileID: 947814165}
   - component: {fileID: 947814167}
   - component: {fileID: 947814168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flat Ground (68)
   m_TagString: SwingWall
   m_Icon: {fileID: 0}
@@ -196527,7 +196730,7 @@ GameObject:
   - component: {fileID: 964273168}
   - component: {fileID: 964273170}
   - component: {fileID: 964273169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (77)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -198546,6 +198749,37 @@ PolygonCollider2D:
       - {x: 0.62, y: -0.62}
       - {x: 0.63, y: -0.51}
   m_UseDelaunayMesh: 1
+--- !u!1 &973361939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973361940}
+  m_Layer: 0
+  m_Name: wallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973361940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973361939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.663, y: -0.487, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 983616438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974353979
 GameObject:
   m_ObjectHideFlags: 0
@@ -198696,7 +198930,7 @@ GameObject:
   - component: {fileID: 974587432}
   - component: {fileID: 974587434}
   - component: {fileID: 974587433}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2744)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -199998,7 +200232,7 @@ GameObject:
   - component: {fileID: 981597840}
   - component: {fileID: 981597842}
   - component: {fileID: 981597841}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2174)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200560,6 +200794,7 @@ GameObject:
   - component: {fileID: 983616441}
   - component: {fileID: 983616440}
   - component: {fileID: 983616439}
+  - component: {fileID: 983616442}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: NPC
@@ -200576,10 +200811,13 @@ Transform:
   m_GameObject: {fileID: 983616437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -130.86, y: 9.06, z: 0}
+  m_LocalPosition: {x: -130.84, y: 9.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 471809571}
+  - {fileID: 973361940}
+  - {fileID: 1111205181}
   m_Father: {fileID: 380191222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &983616439
@@ -200616,7 +200854,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0016198158, y: 0.0051412582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -200626,7 +200864,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0335817, y: 1.0335827}
   m_EdgeRadius: 0
 --- !u!50 &983616440
 Rigidbody2D:
@@ -200654,7 +200892,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &983616441
 SpriteRenderer:
   serializedVersion: 3
@@ -200715,6 +200953,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &983616442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983616437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630665f3a2e91234590c16a5e743871a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JD_NPCMovement
+  profile: {fileID: 11400000, guid: 5cbfebda026447d45be9e3b08d3a350c, type: 2}
+  currentMode: 1
+  jumpForce: 7.5
+  wallJumpForce: 7
+  groundCheckDistance: 0.15
+  groundCheck: {fileID: 471809571}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  detectionDistance: 1.5
+  swingHazardMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  swingDangerDistance: 3
+  swingZoneHeight: 3
+  retreatDuration: 1.2
+  retreatSpeedMultiplier: 1
+  wallJumpMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  wallJumpCheckDistance: 0.5
+  arcSamples: 12
+  arcMaxDistance: 15
+  slideSpeed: 1.5
+  hazardMask:
+    serializedVersion: 2
+    m_Bits: 64
+  hazardSideMargin: 0.25
+  swingMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  swingDetectRadius: 3
+  swingCheck: {fileID: 1111205181}
+  swingForce: 6
+  releaseOffset: 0.5
+  maxSwingTime: 2.5
+  releaseBoost: {x: 5, y: 5}
+  regrabCooldown: 0.5
+  ropeLine: {fileID: 0}
+  ropeWidth: 0.08
+  edgeCheck: {fileID: 973361940}
+  edgeCheckDistance: 0.4
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 512
+  wallcheckDistance: 0.3
+  turnCooldown: 0.5
+  turnMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  turnCheckDistance: 1
+  turnCooldownJD: 0.5
+  obstacleTag: Damage
+  checkPoints: []
+  player: {fileID: 77923742}
+  checkpoints: []
+  maxDistanceFromPlayer: 30
+  teleportCooldown: 3
 --- !u!1 &984836956
 GameObject:
   m_ObjectHideFlags: 0
@@ -206670,7 +206978,7 @@ GameObject:
   - component: {fileID: 1020901556}
   - component: {fileID: 1020901558}
   - component: {fileID: 1020901557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (45)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -207053,7 +207361,7 @@ GameObject:
   - component: {fileID: 1022455904}
   - component: {fileID: 1022455906}
   - component: {fileID: 1022455905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2741)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -214216,7 +214524,7 @@ GameObject:
   - component: {fileID: 1068498741}
   - component: {fileID: 1068498743}
   - component: {fileID: 1068498742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (62)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -215725,7 +216033,7 @@ GameObject:
   - component: {fileID: 1076460376}
   - component: {fileID: 1076460378}
   - component: {fileID: 1076460377}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (79)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -218421,7 +218729,7 @@ GameObject:
   - component: {fileID: 1085767689}
   - component: {fileID: 1085767691}
   - component: {fileID: 1085767690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2740)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -219542,7 +219850,7 @@ GameObject:
   - component: {fileID: 1091759210}
   - component: {fileID: 1091759212}
   - component: {fileID: 1091759211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (51)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -221128,7 +221436,7 @@ GameObject:
   - component: {fileID: 1098374639}
   - component: {fileID: 1098374641}
   - component: {fileID: 1098374640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2184)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -222240,7 +222548,7 @@ GameObject:
   - component: {fileID: 1103609493}
   - component: {fileID: 1103609495}
   - component: {fileID: 1103609494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2180)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -223625,6 +223933,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1111205180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111205181}
+  m_Layer: 0
+  m_Name: swingCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1111205181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111205180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.037, y: 0.845, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 983616438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111540255
 GameObject:
   m_ObjectHideFlags: 0
@@ -224468,7 +224807,7 @@ GameObject:
   - component: {fileID: 1115681729}
   - component: {fileID: 1115681731}
   - component: {fileID: 1115681730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2745)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -231046,7 +231385,7 @@ GameObject:
   - component: {fileID: 1146235893}
   - component: {fileID: 1146235895}
   - component: {fileID: 1146235894}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2186)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -234161,7 +234500,7 @@ GameObject:
   - component: {fileID: 1159299799}
   - component: {fileID: 1159299801}
   - component: {fileID: 1159299800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (50)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -234624,7 +234963,7 @@ GameObject:
   - component: {fileID: 1161018128}
   - component: {fileID: 1161018130}
   - component: {fileID: 1161018129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (67)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -236071,7 +236410,7 @@ GameObject:
   - component: {fileID: 1168198563}
   - component: {fileID: 1168198565}
   - component: {fileID: 1168198564}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2250)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -236127,7 +236466,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.018398166, y: 0.0040893555}
+  m_Offset: {x: 0.018398166, y: -0.30486584}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -236137,7 +236476,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2570512, y: 1.1553993}
+  m_Size: {x: 1.2570512, y: 1.7733097}
   m_EdgeRadius: 0
 --- !u!212 &1168198565
 SpriteRenderer:
@@ -239117,7 +239456,7 @@ GameObject:
   - component: {fileID: 1183702434}
   - component: {fileID: 1183702436}
   - component: {fileID: 1183702435}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2206)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -239653,6 +239992,145 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8225929696269335997, guid: 6e7151c0591efbc4998c34351305aadd, type: 3}
   m_Color: {r: 0.78867924, g: 0.61426365, b: 0.36160192, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
+--- !u!1 &1187267147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187267148}
+  - component: {fileID: 1187267150}
+  - component: {fileID: 1187267149}
+  m_Layer: 0
+  m_Name: npcChange (3)
+  m_TagString: JellyDashZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1187267148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187267147}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -101.36, y: 12.2045, z: 0}
+  m_LocalScale: {x: 1, y: 7.258132, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212811765}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1187267149
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187267147}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &1187267150
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187267147}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -240771,7 +241249,7 @@ GameObject:
   - component: {fileID: 1190925009}
   - component: {fileID: 1190925011}
   - component: {fileID: 1190925010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (30)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -244939,6 +245417,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1212811764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212811765}
+  m_Layer: 0
+  m_Name: NPCTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1212811765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212811764}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1417386319}
+  - {fileID: 1187267148}
+  - {fileID: 86873141}
+  - {fileID: 1501377345}
+  m_Father: {fileID: 380191222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1212845233
 GameObject:
   m_ObjectHideFlags: 0
@@ -244950,7 +245463,7 @@ GameObject:
   - component: {fileID: 1212845234}
   - component: {fileID: 1212845236}
   - component: {fileID: 1212845235}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2207)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -246113,7 +246626,7 @@ GameObject:
   - component: {fileID: 1221230388}
   - component: {fileID: 1221230387}
   - component: {fileID: 1221230386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: World_Tree_Roots_2D_Platformer_Tileset_Environment - Fence 02_0 (2)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -246277,7 +246790,7 @@ Transform:
   m_GameObject: {fileID: 1221230385}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.482002, y: -6.138, z: 0}
+  m_LocalPosition: {x: -39.322, y: -6.138, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -247642,7 +248155,7 @@ GameObject:
   - component: {fileID: 1230415455}
   - component: {fileID: 1230415454}
   - component: {fileID: 1230415453}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: World_Tree_Roots_2D_Platformer_Tileset_Environment - Fence 02_0
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -253949,7 +254462,7 @@ GameObject:
   - component: {fileID: 1263293636}
   - component: {fileID: 1263293638}
   - component: {fileID: 1263293637}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2214)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -254783,7 +255296,7 @@ GameObject:
   - component: {fileID: 1266838803}
   - component: {fileID: 1266838805}
   - component: {fileID: 1266838804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (61)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -256682,7 +257195,7 @@ GameObject:
   - component: {fileID: 1279564260}
   - component: {fileID: 1279564262}
   - component: {fileID: 1279564261}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2175)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257979,7 +258492,7 @@ GameObject:
   - component: {fileID: 1285587180}
   - component: {fileID: 1285587182}
   - component: {fileID: 1285587181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2845)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264307,7 +264820,7 @@ GameObject:
   - component: {fileID: 1314072493}
   - component: {fileID: 1314072495}
   - component: {fileID: 1314072494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (203)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -264909,7 +265422,7 @@ GameObject:
   - component: {fileID: 1317933078}
   - component: {fileID: 1317933080}
   - component: {fileID: 1317933079}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2204)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -267439,7 +267952,7 @@ GameObject:
   - component: {fileID: 1328700117}
   - component: {fileID: 1328700119}
   - component: {fileID: 1328700118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (113)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -268411,7 +268924,7 @@ GameObject:
   - component: {fileID: 1334106979}
   - component: {fileID: 1334106981}
   - component: {fileID: 1334106980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2743)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -271637,7 +272150,7 @@ GameObject:
   - component: {fileID: 1344022288}
   - component: {fileID: 1344022290}
   - component: {fileID: 1344022289}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2182)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -271776,7 +272289,7 @@ GameObject:
   - component: {fileID: 1344643542}
   - component: {fileID: 1344643544}
   - component: {fileID: 1344643543}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2242)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -281468,7 +281981,7 @@ GameObject:
   - component: {fileID: 1399175331}
   - component: {fileID: 1399175333}
   - component: {fileID: 1399175332}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2210)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -284153,6 +284666,145 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2025788203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &1417386318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417386319}
+  - component: {fileID: 1417386320}
+  - component: {fileID: 1417386321}
+  m_Layer: 0
+  m_Name: npcChange
+  m_TagString: JellyDashSwingZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1417386319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417386318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -121.23, y: 12.2045, z: 0}
+  m_LocalScale: {x: 1, y: 7.258132, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212811765}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1417386320
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417386318}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
+--- !u!61 &1417386321
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417386318}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1417606399
 GameObject:
   m_ObjectHideFlags: 0
@@ -285913,7 +286565,7 @@ GameObject:
   - component: {fileID: 1430774633}
   - component: {fileID: 1430774635}
   - component: {fileID: 1430774634}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2758)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286527,7 +287179,7 @@ GameObject:
   - component: {fileID: 1433854448}
   - component: {fileID: 1433854450}
   - component: {fileID: 1433854449}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2249)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -292853,7 +293505,7 @@ GameObject:
   - component: {fileID: 1473806874}
   - component: {fileID: 1473806876}
   - component: {fileID: 1473806875}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2197)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -297163,6 +297815,145 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1501377344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501377345}
+  - component: {fileID: 1501377347}
+  - component: {fileID: 1501377346}
+  m_Layer: 0
+  m_Name: npcChange (2)
+  m_TagString: JellyDashZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1501377345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501377344}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -93.5, y: -21.2792, z: 0}
+  m_LocalScale: {x: 0.9920928, y: 3.43139, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212811765}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1501377346
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501377344}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &1501377347
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501377344}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
 --- !u!1 &1502693016
 GameObject:
   m_ObjectHideFlags: 0
@@ -298798,7 +299589,7 @@ GameObject:
   - component: {fileID: 1509188460}
   - component: {fileID: 1509188459}
   - component: {fileID: 1509188458}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: World_Tree_Roots_2D_Platformer_Tileset_Environment - Fence 02_0 (4)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -299859,7 +300650,7 @@ GameObject:
   - component: {fileID: 1516455993}
   - component: {fileID: 1516455995}
   - component: {fileID: 1516455994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (211)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -303244,7 +304035,7 @@ GameObject:
   - component: {fileID: 1536231404}
   - component: {fileID: 1536231406}
   - component: {fileID: 1536231405}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2195)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -303932,7 +304723,7 @@ GameObject:
   - component: {fileID: 1537594298}
   - component: {fileID: 1537594297}
   - component: {fileID: 1537594296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: World_Tree_Roots_2D_Platformer_Tileset_Environment - Fence 02_0 (3)
   m_TagString: Damage
   m_Icon: {fileID: 0}
@@ -305359,7 +306150,7 @@ GameObject:
   - component: {fileID: 1549082160}
   - component: {fileID: 1549082162}
   - component: {fileID: 1549082161}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2198)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -306528,7 +307319,7 @@ GameObject:
   - component: {fileID: 1556867882}
   - component: {fileID: 1556867884}
   - component: {fileID: 1556867883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (11)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -312003,7 +312794,7 @@ GameObject:
   - component: {fileID: 1569641483}
   - component: {fileID: 1569641485}
   - component: {fileID: 1569641486}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flat Ground (66)
   m_TagString: SwingWall
   m_Icon: {fileID: 0}
@@ -313033,7 +313824,7 @@ GameObject:
   - component: {fileID: 1574328210}
   - component: {fileID: 1574328212}
   - component: {fileID: 1574328211}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2196)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -313773,7 +314564,7 @@ GameObject:
   - component: {fileID: 1577720262}
   - component: {fileID: 1577720264}
   - component: {fileID: 1577720263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (47)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -318582,7 +319373,7 @@ GameObject:
   - component: {fileID: 1608354581}
   - component: {fileID: 1608354583}
   - component: {fileID: 1608354582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (68)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -321435,7 +322226,7 @@ GameObject:
   - component: {fileID: 1620947515}
   - component: {fileID: 1620947517}
   - component: {fileID: 1620947518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flat Ground (145)
   m_TagString: SwingWall
   m_Icon: {fileID: 0}
@@ -326047,7 +326838,7 @@ GameObject:
   - component: {fileID: 1638857914}
   - component: {fileID: 1638857916}
   - component: {fileID: 1638857915}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2757)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336071,7 +336862,7 @@ GameObject:
   - component: {fileID: 1684874701}
   - component: {fileID: 1684874703}
   - component: {fileID: 1684874702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (14)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -337044,7 +337835,7 @@ GameObject:
   - component: {fileID: 1690048663}
   - component: {fileID: 1690048665}
   - component: {fileID: 1690048664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (34)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -338588,7 +339379,7 @@ GameObject:
   - component: {fileID: 1698561788}
   - component: {fileID: 1698561790}
   - component: {fileID: 1698561789}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (100)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -340933,7 +341724,7 @@ GameObject:
   - component: {fileID: 1706894892}
   - component: {fileID: 1706894894}
   - component: {fileID: 1706894893}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2201)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -344809,7 +345600,7 @@ GameObject:
   - component: {fileID: 1724299706}
   - component: {fileID: 1724299708}
   - component: {fileID: 1724299707}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2193)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -347035,7 +347826,7 @@ GameObject:
   - component: {fileID: 1733339914}
   - component: {fileID: 1733339916}
   - component: {fileID: 1733339915}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2243)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -349555,7 +350346,7 @@ GameObject:
   - component: {fileID: 1744943526}
   - component: {fileID: 1744943528}
   - component: {fileID: 1744943527}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2247)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -360257,7 +361048,7 @@ GameObject:
   - component: {fileID: 1799569886}
   - component: {fileID: 1799569888}
   - component: {fileID: 1799569887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (38)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -361543,7 +362334,7 @@ GameObject:
   - component: {fileID: 1805680981}
   - component: {fileID: 1805680983}
   - component: {fileID: 1805680982}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2240)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -363631,7 +364422,7 @@ GameObject:
   - component: {fileID: 1813767565}
   - component: {fileID: 1813767567}
   - component: {fileID: 1813767566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (13)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -365665,7 +366456,7 @@ GameObject:
   - component: {fileID: 1825660393}
   - component: {fileID: 1825660395}
   - component: {fileID: 1825660394}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2848)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -365721,7 +366512,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.018398166, y: 0.084851265}
+  m_Offset: {x: 0.018398166, y: -0.7168379}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -365731,7 +366522,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2570512, y: 1.3169231}
+  m_Size: {x: 1.2570512, y: 2.9203014}
   m_EdgeRadius: 0
 --- !u!212 &1825660395
 SpriteRenderer:
@@ -368598,7 +369389,7 @@ GameObject:
   - component: {fileID: 1840239392}
   - component: {fileID: 1840239394}
   - component: {fileID: 1840239393}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (15)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -374298,7 +375089,7 @@ GameObject:
   - component: {fileID: 1871113724}
   - component: {fileID: 1871113726}
   - component: {fileID: 1871113727}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flat Ground (65)
   m_TagString: SwingWall
   m_Icon: {fileID: 0}
@@ -375283,7 +376074,7 @@ GameObject:
   - component: {fileID: 1873579073}
   - component: {fileID: 1873579075}
   - component: {fileID: 1873579074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (36)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -385387,7 +386178,7 @@ GameObject:
   - component: {fileID: 1918423202}
   - component: {fileID: 1918423204}
   - component: {fileID: 1918423203}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2742)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -388870,7 +389661,7 @@ GameObject:
   - component: {fileID: 1930073293}
   - component: {fileID: 1930073295}
   - component: {fileID: 1930073294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (114)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -389426,7 +390217,7 @@ GameObject:
   - component: {fileID: 1933376911}
   - component: {fileID: 1933376913}
   - component: {fileID: 1933376912}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (71)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -390953,7 +391744,7 @@ GameObject:
   - component: {fileID: 1939852654}
   - component: {fileID: 1939852656}
   - component: {fileID: 1939852655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (76)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -392157,7 +392948,7 @@ GameObject:
   - component: {fileID: 1942373166}
   - component: {fileID: 1942373168}
   - component: {fileID: 1942373167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (78)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -397190,7 +397981,7 @@ GameObject:
   - component: {fileID: 1967600415}
   - component: {fileID: 1967600417}
   - component: {fileID: 1967600416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (72)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -403050,7 +403841,7 @@ GameObject:
   - component: {fileID: 1997829513}
   - component: {fileID: 1997829515}
   - component: {fileID: 1997829514}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (102)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -404722,7 +405513,7 @@ GameObject:
   - component: {fileID: 2004051250}
   - component: {fileID: 2004051252}
   - component: {fileID: 2004051251}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2751)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405614,7 +406405,7 @@ GameObject:
   - component: {fileID: 2008927422}
   - component: {fileID: 2008927424}
   - component: {fileID: 2008927423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (49)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -408464,7 +409255,7 @@ GameObject:
   - component: {fileID: 2020034343}
   - component: {fileID: 2020034345}
   - component: {fileID: 2020034344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (74)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -408973,7 +409764,7 @@ GameObject:
   - component: {fileID: 2022327467}
   - component: {fileID: 2022327469}
   - component: {fileID: 2022327468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (32)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -409586,7 +410377,7 @@ GameObject:
   - component: {fileID: 2025745858}
   - component: {fileID: 2025745860}
   - component: {fileID: 2025745859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (75)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -415399,7 +416190,7 @@ GameObject:
   - component: {fileID: 2053810997}
   - component: {fileID: 2053810999}
   - component: {fileID: 2053810998}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flat Ground (2746)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -415538,7 +416329,7 @@ GameObject:
   - component: {fileID: 2053883848}
   - component: {fileID: 2053883850}
   - component: {fileID: 2053883849}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (88)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -420095,7 +420886,7 @@ GameObject:
   - component: {fileID: 2074707453}
   - component: {fileID: 2074707455}
   - component: {fileID: 2074707454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flat Ground (112)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -422360,7 +423151,7 @@ GameObject:
   - component: {fileID: 2083861676}
   - component: {fileID: 2083861678}
   - component: {fileID: 2083861677}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (103)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -422777,7 +423568,7 @@ GameObject:
   - component: {fileID: 2085020677}
   - component: {fileID: 2085020679}
   - component: {fileID: 2085020678}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2212)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
@@ -423232,7 +424023,7 @@ GameObject:
   - component: {fileID: 2087484270}
   - component: {fileID: 2087484272}
   - component: {fileID: 2087484271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flat Ground (2179)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -429415,7 +430206,7 @@ GameObject:
   - component: {fileID: 2122486583}
   - component: {fileID: 2122486585}
   - component: {fileID: 2122486584}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (92)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -431697,7 +432488,7 @@ GameObject:
   - component: {fileID: 2133838684}
   - component: {fileID: 2133838686}
   - component: {fileID: 2133838685}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flat Ground (2241)
   m_TagString: ClimbingWall
   m_Icon: {fileID: 0}
