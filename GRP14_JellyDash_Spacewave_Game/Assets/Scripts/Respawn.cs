@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
@@ -7,6 +8,12 @@ public class Respawn : MonoBehaviour
     [SerializeField] private Transform[] checkpoints;
 
     private Transform currentCheckpoint;
+    private PlayerVisualController playerVisuals;
+
+    private void Awake()
+    {
+        playerVisuals = GetComponent<PlayerVisualController>();
+    }
 
     private void Start()
     {
@@ -31,6 +38,7 @@ public class Respawn : MonoBehaviour
             return;
         }
 
+        // Move player to checkpoint.
         transform.position = currentCheckpoint.position;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -40,6 +48,10 @@ public class Respawn : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
+
+        // Clear and restart Space Waves trail if applicable.
+        if (playerVisuals != null)
+            playerVisuals.OnPlayerRespawn();
 
         Debug.Log("Player respawned at: " + currentCheckpoint.name);
     }

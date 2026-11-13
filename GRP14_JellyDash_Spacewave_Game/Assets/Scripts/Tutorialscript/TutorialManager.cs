@@ -24,13 +24,15 @@ public class TutorialManager : MonoBehaviour
 
     private bool isShowingDialogue;
     private bool resumePressed;
-    private float previousTimeScale = 1f;
 
     private Coroutine dialogueCoroutine;
 
     private void Awake()
     {
         Debug.Log("[TutorialManager] Initialising.");
+
+        // Ensure the game starts at normal speed.
+        Time.timeScale = 1f;
 
         if (dialoguePanel == null || dialogueText == null || resumeButton == null)
         {
@@ -49,11 +51,9 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        // Connect the existing Resume button.
         resumeButton.onClick.RemoveListener(ResumeTutorial);
         resumeButton.onClick.AddListener(ResumeTutorial);
 
-        // Hide dialogue when gameplay starts.
         dialoguePanel.SetActive(false);
         resumeButton.gameObject.SetActive(false);
 
@@ -78,7 +78,6 @@ public class TutorialManager : MonoBehaviour
         }
 
         isShowingDialogue = true;
-
         dialogueCoroutine = StartCoroutine(ShowDialogue(message));
 
         return true;
@@ -86,21 +85,15 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator ShowDialogue(string message)
     {
-        // Remember the previous game speed.
-        previousTimeScale = Time.timeScale;
-
         resumePressed = false;
 
-        // Pause gameplay.
+        // Pause gameplay while the tutorial is displayed.
         Time.timeScale = 0f;
 
-        // Show and unlock the mouse cursor.
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // Activate dialogue panel.
         dialoguePanel.SetActive(true);
-
         resumeButton.gameObject.SetActive(false);
 
         dialogueText.text = "";
@@ -111,7 +104,6 @@ public class TutorialManager : MonoBehaviour
 
         panelRect.anchoredPosition = hiddenPosition;
 
-        // Slide dialogue into view.
         yield return AnimatePanel(
             hiddenPosition,
             visiblePosition,
@@ -119,27 +111,21 @@ public class TutorialManager : MonoBehaviour
             1f
         );
 
-        // Type dialogue letter by letter.
         yield return TypeMessage(message);
 
-        // Show Resume button after typing finishes.
         resumeButton.gameObject.SetActive(true);
         canvasGroup.interactable = true;
 
         Debug.Log("[TutorialManager] Waiting for Resume button.");
 
-        // Keep gameplay paused until Resume is clicked.
         while (!resumePressed)
         {
             yield return null;
         }
 
-        // Hide Resume button.
         resumeButton.gameObject.SetActive(false);
-
         canvasGroup.interactable = false;
 
-        // Slide dialogue away.
         yield return AnimatePanel(
             visiblePosition,
             hiddenPosition,
@@ -149,10 +135,9 @@ public class TutorialManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
 
-        // Restore previous gameplay speed.
-        Time.timeScale = previousTimeScale;
+        // Always restore normal gameplay speed.
+        Time.timeScale = 1f;
 
-        // Hide and lock cursor for gameplay.
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -171,7 +156,6 @@ public class TutorialManager : MonoBehaviour
         foreach (char letter in message)
         {
             dialogueText.text += letter;
-
             yield return new WaitForSecondsRealtime(delay);
         }
     }
@@ -222,14 +206,13 @@ public class TutorialManager : MonoBehaviour
     private void OnDestroy()
     {
         if (resumeButton != null)
-        {
             resumeButton.onClick.RemoveListener(ResumeTutorial);
-        }
 
         if (isShowingDialogue)
         {
-            Time.timeScale = previousTimeScale;
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }
-
