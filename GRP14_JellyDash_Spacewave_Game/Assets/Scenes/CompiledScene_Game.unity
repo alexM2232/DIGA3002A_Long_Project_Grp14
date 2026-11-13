@@ -21229,6 +21229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 96867072}
+  - component: {fileID: 96867073}
   m_Layer: 5
   m_Name: MiniMap
   m_TagString: Untagged
@@ -21256,6 +21257,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &96867073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96867071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756ba89754ade4943b88d7acddb5f57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniMapPlayerTracker
+  player: {fileID: 77923742}
+  raceStartPoint: {fileID: 1432186443}
+  raceFinishPoint: {fileID: 325040741}
+  trackArea: {fileID: 797284170}
+  playerHead: {fileID: 1887705181}
 --- !u!1 &97502349
 GameObject:
   m_ObjectHideFlags: 0
@@ -72157,6 +72175,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &325040740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325040741}
+  m_Layer: 5
+  m_Name: RaceFinishPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &325040741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325040740}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 494.5, y: -34.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &325780435
 GameObject:
   m_ObjectHideFlags: 0
@@ -144112,7 +144161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 83.1, y: 49.024185}
+  m_AnchoredPosition: {x: 17.6, y: 49.024185}
   m_SizeDelta: {x: 36.4835, y: 35.6779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694329160
@@ -286507,6 +286556,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1432186442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432186443}
+  m_Layer: 5
+  m_Name: RaceStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432186443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432186442}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -37.96, y: -1.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1432613359
 GameObject:
   m_ObjectHideFlags: 0
@@ -379256,10 +379336,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 797284170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 212.2, y: 49}
-  m_SizeDelta: {x: 36.436, y: 35.6309}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -300, y: 0}
+  m_SizeDelta: {x: 36.436005, y: 35.630905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887705182
 MonoBehaviour:
@@ -417418,7 +417498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 147.3, y: 0.27768707}
+  m_AnchoredPosition: {x: 17, y: 0.27768707}
   m_SizeDelta: {x: 36.4837, y: -61.8127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057987950
@@ -434931,6 +435011,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 750461665}
   - {fileID: 108604575}
+  - {fileID: 1432186443}
+  - {fileID: 325040741}
   - {fileID: 1764495497}
   - {fileID: 231546262}
   - {fileID: 1730564510}
