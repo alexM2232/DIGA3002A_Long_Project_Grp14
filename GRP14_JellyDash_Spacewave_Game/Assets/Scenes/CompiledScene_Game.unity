@@ -100731,6 +100731,7 @@ GameObject:
   - component: {fileID: 465555494}
   - component: {fileID: 465555493}
   - component: {fileID: 465555495}
+  - component: {fileID: 465555496}
   m_Layer: 0
   m_Name: New Checkpoint line 1
   m_TagString: Checkpoint
@@ -100875,6 +100876,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &465555496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465555491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &466054017
 GameObject:
   m_ObjectHideFlags: 0
@@ -145035,6 +145050,7 @@ GameObject:
   - component: {fileID: 696288834}
   - component: {fileID: 696288833}
   - component: {fileID: 696288832}
+  - component: {fileID: 696288835}
   m_Layer: 0
   m_Name: New Checkpoint line 3
   m_TagString: Checkpoint
@@ -145179,6 +145195,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &696288835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696288830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &696328553
 GameObject:
   m_ObjectHideFlags: 0
@@ -206295,6 +206325,7 @@ GameObject:
   - component: {fileID: 1017073137}
   - component: {fileID: 1017073136}
   - component: {fileID: 1017073135}
+  - component: {fileID: 1017073138}
   m_Layer: 0
   m_Name: New Checkpoint line 5
   m_TagString: Checkpoint
@@ -206439,6 +206470,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1017073138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017073133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 0
+  direction: 1
 --- !u!1 &1017883104
 GameObject:
   m_ObjectHideFlags: 0
@@ -266103,6 +266148,7 @@ GameObject:
   - component: {fileID: 1320830934}
   - component: {fileID: 1320830935}
   - component: {fileID: 1320830937}
+  - component: {fileID: 1320830938}
   m_Layer: 0
   m_Name: Checkpoint1
   m_TagString: Checkpoint
@@ -266177,6 +266223,20 @@ MonoBehaviour:
   activeColor: {r: 0, g: 1, b: 0, a: 1}
   isWinCheckpoint: 0
   showDebugLogs: 0
+--- !u!114 &1320830938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320830933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 1
+  direction: 1
 --- !u!1 &1323485514
 GameObject:
   m_ObjectHideFlags: 0
@@ -334947,6 +335007,7 @@ GameObject:
   - component: {fileID: 1673376615}
   - component: {fileID: 1673376614}
   - component: {fileID: 1673376613}
+  - component: {fileID: 1673376616}
   m_Layer: 0
   m_Name: New Checkpoint line 2
   m_TagString: Checkpoint
@@ -335091,6 +335152,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1673376616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673376611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 1
+  direction: 1
 --- !u!1 &1674955751
 GameObject:
   m_ObjectHideFlags: 0
@@ -339329,6 +339404,7 @@ GameObject:
   - component: {fileID: 1697383938}
   - component: {fileID: 1697383937}
   - component: {fileID: 1697383936}
+  - component: {fileID: 1697383939}
   m_Layer: 0
   m_Name: New Checkpoint line 4
   m_TagString: Checkpoint
@@ -339473,6 +339549,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1697383939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697383934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4c6fecff5a1fb44b6c278ff7cef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCheckpoint
+  mode: 1
+  direction: 1
 --- !u!1 &1697566825
 GameObject:
   m_ObjectHideFlags: 0
