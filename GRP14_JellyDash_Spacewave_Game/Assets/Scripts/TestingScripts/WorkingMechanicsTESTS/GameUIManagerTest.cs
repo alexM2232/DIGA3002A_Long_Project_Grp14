@@ -9,6 +9,10 @@ public class GameUIManagerTest : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
 
+    [Header("Win Panel Confetti Animations")]
+    [SerializeField] private Animator confettiAnimator1;
+    [SerializeField] private Animator confettiAnimator2;
+
     [Header("Lose Panel Placement Text")]
     [SerializeField] private TMP_Text secondPlaceText;
     [SerializeField] private TMP_Text thirdPlaceText;
@@ -29,10 +33,12 @@ public class GameUIManagerTest : MonoBehaviour
         HidePlacementTexts();
 
         Time.timeScale = 1f;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // Called by the player's PanelTrigger and NPC finish triggers.
     public void RacerFinished(bool isPlayer)
     {
         if (gameEnded)
@@ -99,14 +105,42 @@ public class GameUIManagerTest : MonoBehaviour
 
     public void ShowWinPanel()
     {
+        if (gameEnded && winPanel != null && winPanel.activeSelf)
+            return;
+
         gameEnded = true;
+
+        if (losePanel != null)
+            losePanel.SetActive(false);
 
         if (winPanel != null)
             winPanel.SetActive(true);
 
+        PlayConfetti(confettiAnimator1);
+        PlayConfetti(confettiAnimator2);
+
         PauseAndShowCursor();
 
-        Debug.Log("Win Panel shown.");
+        Debug.Log("Win Panel shown. Both confetti animations started.");
+    }
+
+    private void PlayConfetti(Animator confettiAnimator)
+    {
+        if (confettiAnimator == null)
+        {
+            Debug.LogWarning("A confetti Animator has not been assigned.");
+            return;
+        }
+
+        confettiAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        confettiAnimator.Rebind();
+        confettiAnimator.Update(0f);
+
+        AnimatorStateInfo state =
+            confettiAnimator.GetCurrentAnimatorStateInfo(0);
+
+        confettiAnimator.Play(state.fullPathHash, 0, 0f);
     }
 
     public void ShowLosePanel()
@@ -116,6 +150,9 @@ public class GameUIManagerTest : MonoBehaviour
 
         gameEnded = true;
 
+        if (winPanel != null)
+            winPanel.SetActive(false);
+
         if (losePanel != null)
             losePanel.SetActive(true);
 
@@ -124,8 +161,8 @@ public class GameUIManagerTest : MonoBehaviour
         Debug.Log("Lose Panel shown.");
     }
 
-    // Compatibility method for other scripts that still call ShowDeathPanel().
-    // It displays the existing Lose Panel. No Death Panel is required.
+    // Compatibility method for scripts that still call ShowDeathPanel.
+    // It displays the existing Lose Panel.
     public void ShowDeathPanel()
     {
         ShowLosePanel();
@@ -134,6 +171,7 @@ public class GameUIManagerTest : MonoBehaviour
     private void PauseAndShowCursor()
     {
         Time.timeScale = 0f;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -141,7 +179,10 @@ public class GameUIManagerTest : MonoBehaviour
     public void Retry()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().name
+        );
     }
 
     public void BackToMainMenu()
