@@ -21,8 +21,7 @@ TagManager:
   - SpaceWavesZone
   - JellyDashDownZone
   - JellyDashSwingZone
-  - NPC
-  - Checkpoint
+  - SwingPoint
   layers:
   - Default
   - TransparentFX
