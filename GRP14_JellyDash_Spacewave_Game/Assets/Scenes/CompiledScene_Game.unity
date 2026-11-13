@@ -17798,13 +17798,12 @@ Transform:
   m_GameObject: {fileID: 77923741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 486.3, y: -34.49, z: 0}
+  m_LocalPosition: {x: -37.9, y: 0.8, z: 0}
   m_LocalScale: {x: 1.735775, y: 1.735775, z: 1.735775}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986654251}
   - {fileID: 441515798}
-  - {fileID: 200401426}
   - {fileID: 169885288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18075,9 +18074,10 @@ MonoBehaviour:
   climbingWallTag: ClimbingWall
   swingWallTag: SwingWall
   swingVisual: {fileID: 441515798}
-  swingGravity: 10
-  swingLaunchBoost: 2
-  maxSwingAttachDistance: 3
+  swingGravity: 100
+  swingLaunchBoost: 9
+  swingDamping: 0
+  swingLaunchControlDuration: 0.35
 --- !u!95 &77923758
 Animator:
   serializedVersion: 7
@@ -23389,7 +23389,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -41613,7 +41613,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.019720316, y: -0.015355639}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -41623,7 +41623,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6, y: 0.61203694}
+  m_Size: {x: 0.23103449, y: 0.12757817}
   m_EdgeRadius: 0
 --- !u!1 &171659022
 GameObject:
@@ -43126,7 +43126,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -46978,14 +46978,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200401425}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.04, y: 0.6, z: 0}
-  m_LocalScale: {x: 0.5761115, y: 0.5761115, z: 0.5761115}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7028463, w: 0.71134174}
+  m_LocalPosition: {x: -38.407227, y: 29.480465, z: 0}
+  m_LocalScale: {x: 2.2539809, y: 0.322309, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667690377}
   - {fileID: 2026904052}
-  m_Father: {fileID: 77923742}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200807769
 GameObject:
@@ -94612,7 +94612,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -96459,7 +96459,7 @@ GameObject:
   - component: {fileID: 441515799}
   m_Layer: 0
   m_Name: SlideVisual
-  m_TagString: SwingWall
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96472,13 +96472,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441515797}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2862, y: 0.3637, z: 0}
-  m_LocalScale: {x: 0.44365966, y: 1.4717551, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7028463, w: 0.71134174}
+  m_LocalPosition: {x: -0.3359, y: 0.0094, z: 0}
+  m_LocalScale: {x: 1, y: 0.47436017, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 77923742}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.312}
 --- !u!212 &441515799
 SpriteRenderer:
   serializedVersion: 3
@@ -96530,7 +96530,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5950925129807998822, guid: 13ad66182768c1546a6eca54ddb007d8, type: 3}
   m_Color: {r: 0.07011216, g: 0.7735849, b: 0.062762484, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.88, y: 0.59}
@@ -123664,7 +123664,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -153917,7 +153917,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -193400,7 +193400,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -310635,6 +310635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1561112226}
   - component: {fileID: 1561112228}
+  - component: {fileID: 1561112229}
   m_Layer: 0
   m_Name: Flat Ground (2777)
   m_TagString: Ground
@@ -310717,6 +310718,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!60 &1561112229
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561112225}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.26, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.63, y: 0.53}
+      - {x: 0.59999996, y: 0.63}
+      - {x: 0.52, y: 0.64}
+      - {x: -0.58, y: 0.64}
+      - {x: -0.63, y: 0.57}
+      - {x: -0.63, y: -0.45999998}
+      - {x: -0.62, y: -0.58}
+      - {x: -0.59, y: -0.62}
+      - {x: -0.53999996, y: -0.64}
+      - {x: 0.57, y: -0.64}
+      - {x: 0.62, y: -0.62}
+      - {x: 0.63, y: -0.51}
+  m_UseDelaunayMesh: 1
 --- !u!1 &1562116617
 GameObject:
   m_ObjectHideFlags: 0
@@ -332985,7 +333045,7 @@ Transform:
   m_GameObject: {fileID: 1667690376}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: -0.94, z: 0}
+  m_LocalPosition: {x: -12.45, y: -51.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -333037,11 +333097,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+    - - {x: -0.15767841, y: 4.6030974}
+      - {x: -0.32068622, y: 0.61679095}
+      - {x: -0.19247563, y: -2.6189513}
+      - {x: -0.06804635, y: 0.109348595}
+      - {x: -0.11578016, y: 0.946545}
   m_UseDelaunayMesh: 1
 --- !u!1 &1668285400
 GameObject:
@@ -410736,7 +410796,7 @@ GameObject:
   - component: {fileID: 2026904052}
   m_Layer: 0
   m_Name: SwingPoint
-  m_TagString: SwingWall
+  m_TagString: SwingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410750,7 +410810,7 @@ Transform:
   m_GameObject: {fileID: 2026904051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.12, z: 0}
+  m_LocalPosition: {x: -12.71, y: -50.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435110,6 +435170,7 @@ SceneRoots:
   - {fileID: 325040741}
   - {fileID: 728592135}
   - {fileID: 1764495497}
+  - {fileID: 200401426}
   - {fileID: 231546262}
   - {fileID: 1730564510}
   - {fileID: 77923742}
